@@ -1,0 +1,30 @@
+// @import "../utils/variables";
+@import "../utils/mixins";
+
+.button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-wrapper .button {
+  margin: 0 var(--text-size-base) var(--space-unit);
+}
+
+.component {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: var(--text-size-base) 0;
+  padding: var(--text-size-base);
+  background-color: var(--color-info);
+  border: 1.5px solid #fff;
+}
+
+.component__headline {
+  margin-top: var(--space-xxs);
+  color: var(--color-white);
+  text-align: center;
+}

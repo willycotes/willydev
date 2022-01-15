@@ -1,0 +1,78 @@
+.button,
+[type="button"].button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  // margin: var(--space-unit) var(--text-size-base);
+  padding-top: var(--space-xxxs);
+  padding-right: var(--space-xs);
+  padding-bottom: var(--space-xxxs);
+  padding-left: var(--space-xs);
+  color: var(--color-text);
+  background-color: hsl(0deg 0% 95%);
+  border: 1px solid var(--color-grey-low);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition-property: border, "box-shadow", "background-color", "transform";
+  transition-duration: 0.2s;
+  font-size: var(--text-size-base);
+  line-height: var(--line-height-button);
+  white-space: nowrap;
+  @include on-event {
+    color: inherit;
+    background-color: hsl(0deg 0% 85%);
+  }
+
+  &:active,
+  &:focus {
+    box-shadow: 0 0 4px 2px hsl(0deg 0% 50%);
+    transform: translateY(4px);
+  }
+}
+
+.button--primary {
+  @include button(--color-primary);
+}
+
+.button--line-primary {
+  @include button-line(--color-primary);
+}
+
+.button--secondary {
+  @include button(--color-secondary);
+}
+
+.button--line-secondary {
+  @include button-line(--color-secondary);
+}
+
+.button--info {
+  @include button(--color-info);
+}
+
+.button--error {
+  @include button(--color-error);
+}
+
+.button--success {
+  @include button(--color-success);
+}
+
+.button--warning {
+  @include button(--color-warning);
+}
+// btn disabled
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled),
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+[type="button"]:disabled,
+[type="reset"]:disabled,
+[type="submit"]:disabled,
+button:disabled {
+  opacity: 0.4;
+}

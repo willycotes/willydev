@@ -1,0 +1,83 @@
+.cluster-taxonomy__container {
+  .cluster-taxonomy__list {
+    display: grid;
+    margin: 0;
+    padding: 1rem;
+    list-style: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+
+    .taxonomy__item {
+      .taxonomy-link__image {
+        .thumbnail {
+        }
+      }
+
+      .taxonomy-link__name {
+        .taxonomy__name {
+          margin-top: 1rem !important;
+          padding: 0 !important;
+          font-size: 17px !important;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.breadcrumb-back__container {
+  .breadcrumb-back__content {
+    .breadcrumb-back__list {
+      margin: 0;
+      list-style: none;
+
+      .breadcrumb-back__item {
+        margin-left: 1rem;
+
+        .breadcrumb-back__link {
+          display: flex;
+          color: #16a9ae;
+          font-weight: 600;
+
+          .icon {
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .cluster-taxonomy__container {
+    .cluster-taxonomy__list {
+      grid-template-columns: repeat(3, 1fr);
+
+      .taxonomy__item {
+        .taxonomy-link__image {
+          .thumbnail {
+          }
+        }
+
+        .taxonomy-link__name {
+          .taxonomy__name {
+            font-size: 15px !important;
+          }
+        }
+      }
+    }
+  }
+
+  .breadcrumb-back__container {
+    .breadcrumb-back__content {
+      .breadcrumb-back__list {
+        .breadcrumb-back__item {
+          .breadcrumb-back__link {
+            .icon {
+            }
+          }
+        }
+      }
+    }
+  }
+}
