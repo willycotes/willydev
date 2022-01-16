@@ -1,4 +1,5 @@
 module.exports = {
+  eol: 'lf',
   semi: true,
   singleQuote: true,
   tabWidth: 2,

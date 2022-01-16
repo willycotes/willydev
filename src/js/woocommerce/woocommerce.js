@@ -1,3 +1,1 @@
-import './cluster-categories.js';
-import './cluster-information.js';
-import './cluster-services.js';
+console.log('woocommerce.js empty in "willydevtheme" executing...');

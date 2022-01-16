@@ -101,10 +101,6 @@ module.exports = (env, argv) => {
   const woocommerce = {
     entry: {
       woocommerce: path.resolve(root, 'src/js/woocommerce/woocommerce.js'),
-      'carousel-themes': path.resolve(
-        root,
-        'src/js/woocommerce/carousel-themes.js',
-      ),
       'header-cart': path.resolve(root, 'src/js/woocommerce/header-cart.js'),
       footer: path.resolve(root, 'src/js/woocommerce/footer.js'),
       'sticky-add-to-cart': path.resolve(

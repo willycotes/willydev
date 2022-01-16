@@ -12,7 +12,8 @@
     "stylelint:fix": "stylelint src/**/*.scss --fix",
     "preclean": "rm ./*.css ./*.map ./*.rtl || true",
     "clean": "rm -rf ./assets/",
-    "check:webpack": "webpack configtest ./webpack-config/webpack.config.js"
+    "check:webpack": "webpack configtest ./webpack-config/webpack.config.js",
+    "format": "prettier --end-of-line lf --write"
   },
   "author": "",
   "license": "ISC",
