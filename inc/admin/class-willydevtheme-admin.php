@@ -78,7 +78,7 @@ if ( ! class_exists( 'willydevtheme_Admin' ) ) :
 				</section>
 
 				<div class="willydevtheme-logo">
-					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/admin/willydevtheme-icon.svg" alt="willydevtheme" />
+					<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/willydevtheme-icon.svg" alt="willydevtheme" />
 				</div>
 
 				<div class="willydevtheme-intro">

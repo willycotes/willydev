@@ -2,6 +2,7 @@ const path = require('path');
 const root = process.cwd();
 const eslintWebpackPlugin = require('eslint-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
+const copyWebpackPlugin = require('copy-webpack-plugin');
 
 /** @type {import('webpack').Configuration} */
 
@@ -27,13 +28,6 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset',
-        generator: {
-          filename: 'images/[name][ext][query]',
-        },
-      },
-      {
         test: /\.(woff|woff2)$/,
         type: 'asset/resource',
         generator: {
@@ -45,6 +39,14 @@ module.exports = {
   plugins: [
     // new eslintWebpackPlugin(),
     // new StylelintPlugin(),
+    new copyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(root, 'src/images/'),
+          to: path.resolve(root, 'assets/images/'),
+        },
+      ],
+    }),
   ],
   stats: {
     colors: true,
