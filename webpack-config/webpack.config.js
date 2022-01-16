@@ -8,7 +8,7 @@ const { argv } = require('process');
 
 /** @type {import('webpack').Configuration} */
 
-// server
+// server.
 // const browserSync = require('browser-sync').create();
 // browserSync.init({
 //   https: {
@@ -19,16 +19,14 @@ const { argv } = require('process');
 //   ui: false,
 //   injectChanges: true,
 //   proxy: {
-//     target: process.env.WP_SITEURL,
+//     // target: process.env.WP_SITEURL,
+//     target: 'https://local.brandketings.com',
 //     reqHeaders: function () {
 //       return { host: 'localhost:3000' };
 //     },
 //   },
 //   port: 3000,
 //   files: ['**/*.php', 'src/**'],
-//   snippetOptions: {
-//     ignorePaths: `${process.env.WP_SITEURL}/wordpress-core/**`,
-//   },
 // });
 
 module.exports = (env, argv) => {

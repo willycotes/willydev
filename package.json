@@ -6,13 +6,13 @@
     "start": "webpack --watch --config ./webpack-config/webpack.config.js --mode=development",
     "build": "webpack --config ./webpack-config/webpack.config.js --mode=production",
     "serve": "webpack serve --config ./webpack-config/webpack.config.js --mode=development",
-    "eslint": "eslint \"./assets/src/**/*.js\"",
-    "eslint:fix": "eslint \"./wp-content/themes/brandketings/assets/src/**/*.js\" --fix",
+    "eslint": "eslint \"./src/**/*.js\"",
+    "eslint:fix": "eslint \"./src/**/*.js\" --fix",
     "stylelint": "stylelint src/**/*.scss",
     "stylelint:fix": "stylelint src/**/*.scss --fix",
     "preclean": "rm ./*.css ./*.map ./*.rtl || true",
     "clean": "rm -rf ./assets/",
-    "checkWebpack": "webpack configtest ./webpack-config/webpack.config.js"
+    "check:webpack": "webpack configtest ./webpack-config/webpack.config.js"
   },
   "author": "",
   "license": "ISC",
