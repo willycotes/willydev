@@ -228,6 +228,23 @@ module.exports = (env, argv) => {
     ],
   };
 
+  const woocommerceCSS = {
+    entry: {
+      woocommerce: path.resolve(root, 'src/sass/woocommerce/woocommerce.scss'),
+    },
+    output: {
+      path: path.resolve(root, 'assets/'),
+    },
+    plugins: [
+      new miniCssExtractPlugin({
+        filename: isDev
+          ? 'css/woocommerce/[name].css'
+          : 'css/woocommerce/[name].min.css',
+      }),
+      new FixStyleOnlyEntriesPlugin(),
+    ],
+  };
+
   const config = [
     // JS.
     merge(mainConfig, public),
@@ -240,6 +257,7 @@ module.exports = (env, argv) => {
     merge(mainConfig, customizerCSS),
     merge(mainConfig, welcomeScreenCSS),
     merge(mainConfig, baseCSS),
+    merge(mainConfig, woocommerceCSS),
   ];
   // console.log(config[4].plugins[1]);
   return config;
