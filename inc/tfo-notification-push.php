@@ -20,7 +20,7 @@ if ( !function_exists('register_scripts_tfo_notification_push')) {
     }
 }
     //function modal 
-    add_action('storefront_page_before', 'tfo_notification_push');
+    add_action('willydevtheme_page_before', 'tfo_notification_push');
 
     if ( !function_exists('tfo_notification_push')) {
         function tfo_notification_push() {

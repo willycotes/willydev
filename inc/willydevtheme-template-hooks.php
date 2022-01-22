@@ -135,12 +135,10 @@ add_action( 'willydevtheme_page_bottom', 'willydevtheme_display_comments', 40 );
  * 
  * @see willydevtheme_frontpage_header()
  * @see willydevtheme_frontpage_content()
- * @see willydevtheme_banner_hero()
  */
 add_action('willydevtheme_frontpage', 'willydevtheme_frontpage_header', 10);
 add_action('willydevtheme_frontpage', 'willydevtheme_frontpage_content', 20);
 
-add_action( 'willydevtheme_frontpage_header_top', 'willydevtheme_banner_hero', 10 );
 add_action( 'willydevtheme_frontpage_content_header', 'willydevtheme_post_excerpt', 10 );
 
 /**

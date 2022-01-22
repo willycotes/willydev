@@ -21,24 +21,24 @@ if ( !function_exists( 'register_scripts_footer_custom_template' )) {
 
 //remove hook of footer 
 
-// * Functions hooked in to storefront_footer action
+// * Functions hooked in to willydevtheme_footer action
 //              *
-//              * @hooked storefront_footer_widgets - 10
-//              * @hooked storefront_credit         - 20
+//              * @hooked willydevtheme_footer_widgets - 10
+//              * @hooked willydevtheme_credit         - 20
 
 add_action('wp_head', 'remove_footer_custom_template_hook');
 
 if ( !function_exists('remove_footer_custom_template_hook')) {
     function remove_footer_custom_template_hook() {
-        remove_action('storefront_footer', 'storefront_credit', 20);
-        remove_action('storefront_footer', 'storefront_handheld_footer_bar', 999 );
+        remove_action('willydevtheme_footer', 'willydevtheme_credit', 20);
+        remove_action('willydevtheme_footer', 'willydevtheme_handheld_footer_bar', 999 );
     }
 }
 
 
 //agregando nueva funcion al footer por hook 
 
-add_action('storefront_footer', 'footer_custom_tempate');
+add_action('willydevtheme_footer', 'footer_custom_tempate');
 
 if ( !function_exists('footer_custom_tempate')) {
     function footer_custom_tempate() { 

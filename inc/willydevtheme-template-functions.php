@@ -7,8 +7,8 @@
 
 if ( ! function_exists( 'willydevtheme_display_comments' ) ) {
 	/**
-	 * willydevtheme display comments
-	 * 
+	 * Display comments
+	 *
 	 * Loads the comment template specified in $file args at comments_template function.
 	 *
 	 * @since  1.0.0
@@ -23,7 +23,7 @@ if ( ! function_exists( 'willydevtheme_display_comments' ) ) {
 
 if ( ! function_exists( 'willydevtheme_comment' ) ) {
 	/**
-	 * willydevtheme comment template
+	 * Comment template
 	 *
 	 * @param array $comment the comment array.
 	 * @param array $args the comment args.
@@ -94,21 +94,21 @@ if ( ! function_exists( 'willydevtheme_primary_navigation' ) ) {
 	function willydevtheme_primary_navigation() {
 		?>
 		<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Primary Navigation', 'willydevtheme' ); ?>">
-		<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><span><?php echo esc_html( apply_filters( 'willydevtheme_menu_toggle_text', __( 'Menu', 'willydevtheme' ) ) ); ?></span></button>
+			<button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><span><?php echo esc_html( apply_filters( 'willydevtheme_menu_toggle_text', __( 'Menu', 'willydevtheme' ) ) ); ?></span></button>
 			<?php
-			wp_nav_menu(
-				array(
-					'theme_location'  => 'primary',
-					'container_class' => 'primary-navigation',
-				)
-			);
+				wp_nav_menu(
+					array(
+						'theme_location'  => 'primary',
+						'container_class' => 'primary-navigation',
+					)
+				);
 
-			wp_nav_menu(
-				array(
-					'theme_location'  => 'handheld',
-					'container_class' => 'handheld-navigation',
-				)
-			);
+				wp_nav_menu(
+					array(
+						'theme_location'  => 'handheld',
+						'container_class' => 'handheld-navigation',
+					)	
+				);
 			?>
 		</nav><!-- #site-navigation -->
 		<?php
@@ -215,11 +215,9 @@ if ( ! function_exists( 'willydevtheme_site_title_or_logo' ) ) {
 	function willydevtheme_site_title_or_logo( $echo = true ) {
 		if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
 			$logo = get_custom_logo();
-			$html = is_home() ? '<h1 class="logo">' . $logo . '</h1>' : $logo;
+			$html = is_home() ? '<div class="logo">' . $logo . '</div>' : $logo;
 		} else {
-			$tag = is_home() ? 'h1' : 'div';
-
-			$html = '<' . esc_attr( $tag ) . ' class="beta site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a></' . esc_attr( $tag ) . '>';
+				$html = '<div class="beta site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a></div>';
 
 			if ( '' !== get_bloginfo( 'description' ) ) {
 				$html .= '<p class="site-description">' . esc_html( get_bloginfo( 'description', 'display' ) ) . '</p>';
@@ -250,25 +248,6 @@ if ( ! function_exists( 'willydevtheme_post_thumbnail' ) ) {
 		}
 	}
 }
-
-if ( ! function_exists( 'willydevtheme_banner_hero' ) ) {
-	/**
-	 * Display banner hero whit featured image
-	 */
-	function willydevtheme_banner_hero() {
-		?>
-		<div class="banner-hero">
-			<picture>
-				<?php willydevtheme_post_thumbnail(); ?>
-			</picture>
-			<div class="overlay"></div>
-			<h2>Lorem Ipsum</h2>
-			<h3>Subtitle lorem ipsum</h3>
-			<a href="#" class="link button">Button now</a>
-		</div>
-		<?php
-	}
-} 
 
 if ( ! function_exists( 'willydevtheme_post_meta' ) ) {
 	/**
@@ -446,13 +425,12 @@ if ( ! function_exists( 'willydevtheme_post_header' ) ) {
 		 * Functions hooked in to willydevtheme_post_header_bottom action.
 		 *
 		 * @hooked willydevtheme_post_taxonomy - 10
-		 * 
+		 *
 		 * @hooked willydevtheme_post_thumbnail - 10
-		 * 
+		 *
 		 * @hooked the_excerpt - 10
-		 * 
+		 *
 		 * @hooked willydevtheme_post_meta - 10
-		 * 
 		 */
 		do_action( 'willydevtheme_post_header_bottom' );
 		?>
@@ -475,7 +453,6 @@ if ( ! function_exists( 'willydevtheme_post_content' ) ) {
 
 		/**
 		 * Functions hooked in to willydevtheme_post_content_before action.
-		 *
 		 */
 		do_action( 'willydevtheme_post_content_top' );
 
@@ -531,7 +508,7 @@ if ( ! function_exists( 'willydevtheme_frontpage_header' ) ) {
 			
 			<?php
 			/**
-			 * @hooked willydevtheme_banner_hero - 10 
+			 * @hooked  - 10 
 			 */
 			do_action( 'willydevtheme_frontpage_header_top' );
 			?>

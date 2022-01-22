@@ -412,13 +412,13 @@ add_action('wp_head', 'remove_breadcrumb_woocommerce_tematicas');
 if ( !function_exists('remove_breadcrumb_woocommerc_tematicas') ) {
     function remove_breadcrumb_woocommerce_tematicas() {
         if ( is_tax('tematicas') ) {
-            remove_action('storefront_before_content', 'woocommerce_breadcrumb', 10);
+            remove_action('willydevtheme_before_content', 'woocommerce_breadcrumb', 10);
         }
     }
 }
 //add custom breadcrumb
 
-add_action('storefront_before_content', 'custom_breadcrumb_tematicas',15); 
+add_action('willydevtheme_before_content', 'custom_breadcrumb_tematicas',15); 
 
 if ( !function_exists('custom_breadcrumb_tematicas') ) {
     function custom_breadcrumb_tematicas() {
@@ -451,7 +451,7 @@ if ( !function_exists('custom_breadcrumb_tematicas') ) {
     }
 }
 // breadcrumb back
-// add_action('storefront_before_content', 'custom_breadcrumb_back'); 
+// add_action('willydevtheme_before_content', 'custom_breadcrumb_back'); 
 
 if ( !function_exists('custom_breadcrumb_back') ) {
     function custom_breadcrumb_back() {

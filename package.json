@@ -13,7 +13,8 @@
     "preclean": "rm ./*.css ./*.map ./*.rtl || true",
     "clean": "rm -rf ./assets/",
     "check:webpack": "webpack configtest ./webpack-config/webpack.config.js",
-    "format": "prettier --end-of-line lf --write"
+    "format": "prettier --end-of-line lf --write",
+    "serve": "node ./serve.js"
   },
   "author": "",
   "license": "ISC",

@@ -29,7 +29,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 			add_action( 'init', array( $this, 'register_post_types') );
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 10 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'child_scripts' ), 30 ); // After WooCommerce.
-			add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
+			// add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 			add_filter( 'body_class', array( $this, 'body_classes' ) );
 			add_filter( 'wp_page_menu_args', array( $this, 'page_menu_args' ) );
 			add_filter( 'navigation_markup_template', array( $this, 'navigation_markup_template' ) );
@@ -471,6 +471,8 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 
 		/**
 		 * Custom navigation markup template hooked into `navigation_markup_template` filter hook.
+		 * 
+		 * Se le agergó un id a la etiqueta nav, y el aria-label se agrego uno personalizado.
 		 */
 		public function navigation_markup_template() {
 			$template  = '<nav id="post-navigation" class="navigation %1$s" role="navigation" aria-label="' . esc_html__( 'Post Navigation', 'willydevtheme' ) . '">';
@@ -480,7 +482,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 
 			return apply_filters( 'willydevtheme_navigation_markup_template', $template );
 		}
-
+	
 		/**
 		 * Add styles for embeds
 		 */

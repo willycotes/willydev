@@ -23,7 +23,7 @@ if ( !function_exists('register_scripts_cluster_categories') ) {
     }
 }
 
-add_action('storefront_loop_before', 'cluster_categories_front_page', 20);
+add_action('willydevtheme_loop_before', 'cluster_categories_front_page', 20);
 
 if ( !function_exists('cluster_categories_front_page')) {
     function cluster_categories_front_page() {

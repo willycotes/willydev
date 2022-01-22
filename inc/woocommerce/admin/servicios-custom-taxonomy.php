@@ -398,13 +398,13 @@ add_action('wp_head', 'remove_breadcrumb_woocommerce_servicios');
 if ( !function_exists('remove_breadcrumb_woocommerc_servicios') ) {
     function remove_breadcrumb_woocommerce_servicios() {
         if ( is_tax('servicios') ) {
-            remove_action('storefront_before_content', 'woocommerce_breadcrumb', 10);
+            remove_action('willydevtheme_before_content', 'woocommerce_breadcrumb', 10);
         }
     }
 }
 //add custom breadcrumb
 
-add_action('storefront_before_content', 'custom_breadcrumb_servicios',15); 
+add_action('willydevtheme_before_content', 'custom_breadcrumb_servicios',15); 
 
 if ( !function_exists('custom_breadcrumb_servicios') ) {
     function custom_breadcrumb_servicios() {
@@ -437,7 +437,7 @@ if ( !function_exists('custom_breadcrumb_servicios') ) {
     }
 }
 // breadcrumb back
-// add_action('storefront_before_content', 'custom_breadcrumb_back'); 
+// add_action('willydevtheme_before_content', 'custom_breadcrumb_back'); 
 
 if ( !function_exists('custom_breadcrumb_back') ) {
     function custom_breadcrumb_back() {
