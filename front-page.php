@@ -19,6 +19,9 @@ get_header(); ?>
 
 	if ( have_posts() ) :
 
+		/**
+		 * @hooked
+		 */
 		do_action( 'willydevtheme_frontpage_loop_before' );
 
 		while ( have_posts() ) :

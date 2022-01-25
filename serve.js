@@ -1,4 +1,6 @@
 const browserSync = require('browser-sync').create();
+const path = require('path');
+const root = path.resolve('../../../');
 
 browserSync.init({
   https: {
@@ -12,7 +14,16 @@ browserSync.init({
     // target: process.env.WP_SITEURL,
     target: 'https://local.brandketings.com',
   },
-  host: '127.0.0.1',
   port: 9000,
   files: ['**/*.php', '**/*.scss', '**/*.js'],
+  snippetOptions: {
+    // whitelist: [root + '/wordpress-core/wp-admin/admin-ajax.php'],
+    // ignorePaths: root + '/wordpress-core/wp-admin/**',
+    ignorePaths: [
+      'https://local.brandketings.com/wp-admin/**',
+      root + '/wordpress-core/wp-admin/**',
+      'https://local.brandketings.com/wp-admin/**',
+      'https://localhost:9000/wp-admin/**',
+    ],
+  },
 });

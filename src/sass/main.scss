@@ -19,3 +19,10 @@ Willydevtheme is based on Underscores https://underscores.me/ (C) 2012-2017 Auto
 // base.
 @import "./base/reset";
 @import "./base/layout";
+
+// estilos de prueba(temporales).
+article {
+  border: 2px solid #ddd;
+  margin: 1rem;
+  padding: 1rem;
+}

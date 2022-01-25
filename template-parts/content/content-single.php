@@ -8,25 +8,16 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-
 	<?php
-	do_action( 'willydevtheme_single_post_top' );
 
 	/**
-	 * Functions hooked into willydevtheme_single_post add_action
-	 *
 	 * @hooked willydevtheme_post_header          - 10
-	 * @hooked willydevtheme_post_content         - 30
+	 * @hooked willydevtheme_post_content         - 20
+	 * @hooked willydevtheme_edit_post_link				- 30
+	 * @hooked willydevtheme_post_nav             - 40
+	 * @hooked willydevtheme_display_comments     - 50
 	 */
 	do_action( 'willydevtheme_single_post' );
 
-	/**
-	 * Functions hooked in to willydevtheme_single_post_bottom action
-	 *
-	 * @hooked willydevtheme_post_nav         - 10
-	 * @hooked willydevtheme_display_comments - 20
-	 */
-	do_action( 'willydevtheme_single_post_bottom' );
 	?>
-
 </article><!-- #post-## -->

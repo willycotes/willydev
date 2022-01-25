@@ -251,7 +251,7 @@ function willydevtheme_can_show_post_thumbnail() {
  *
  * @return bool Returns true if a block was located & printed, otherwise false.
  */
-function twenty_twenty_one_print_first_instance_of_block( $block_name, $content = null, $instances = 1 ) {
+function willydevtheme_print_first_instance_of_block( $block_name, $content = null, $instances = 1 ) {
 	$instances_count = 0;
 	$blocks_content  = '';
 

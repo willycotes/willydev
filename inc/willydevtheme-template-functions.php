@@ -244,7 +244,11 @@ if ( ! function_exists( 'willydevtheme_post_thumbnail' ) ) {
 	 */
 	function willydevtheme_post_thumbnail( $size = 'full' ) {
 		if ( has_post_thumbnail() ) {
-			the_post_thumbnail( $size );
+			if ( ! is_singular() ) {
+				printf( '<a href="%1$s">%2$s</a>', esc_url( get_the_permalink() ), get_the_post_thumbnail( $size ) );
+			} else {
+				the_post_thumbnail( $size );
+			}
 		}
 	}
 }
@@ -407,89 +411,45 @@ if ( ! function_exists( 'willydevtheme_post_header' ) ) {
 	 * @since 1.0.0
 	 */
 	function willydevtheme_post_header() {
-		?>
-		<header class="entry-header">
-		<?php
-		/**
-		 * Functions hooked in to willydevtheme_post_header_top action.
-		 */
-		do_action( 'willydevtheme_post_header_top' );
 
-		if ( is_single() ) {
-			the_title( '<h1 class="entry-title">', '</h1>' );
-		} else {
-			the_title( sprintf( '<h2 class="alpha entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
-		}
+			if ( is_single() ) {
+				willydevtheme_single_post_header();
+			} elseif ( is_page() ) {
+				willydevtheme_page_header();
+			} else {
+				willydevtheme_post_excerpt_header();
+			}
 
-		/**
-		 * Functions hooked in to willydevtheme_post_header_bottom action.
-		 *
-		 * @hooked willydevtheme_post_taxonomy - 10
-		 *
-		 * @hooked willydevtheme_post_thumbnail - 10
-		 *
-		 * @hooked the_excerpt - 10
-		 *
-		 * @hooked willydevtheme_post_meta - 10
-		 */
-		do_action( 'willydevtheme_post_header_bottom' );
-		?>
-		</header><!-- .entry-header -->
-		<?php
 	}
 }
 
 if ( ! function_exists( 'willydevtheme_post_content' ) ) {
+
 	/**
 	 * Display the post content with a link to the single post
 	 *
 	 * @since 1.0.0
 	 */
 	function willydevtheme_post_content() {
-		?>
-		<div class="entry-content">
-
-		<?php
-
-		/**
-		 * Functions hooked in to willydevtheme_post_content_before action.
-		 */
-		do_action( 'willydevtheme_post_content_top' );
 
 		if ( is_single() ) {
-
-			the_content();
-
-			wp_link_pages(
-				array(
-					'before' => '<div class="page-links">' . __( 'Pages:', 'willydevtheme' ),
-					'after'  => '</div>',
-				)
-			);
-
+			willydevtheme_single_post_content();
+		} elseif ( is_page() ) {
+			willydevtheme_page_content();
 		} else {
-
-			the_excerpt();
-			echo '<span class="screen-reader-text">' . get_the_title() . '</span>';
-
+			willydevtheme_post_excerpt_content();
 		}
-		
-		/**
-		 * @hooked
-		 */
-		do_action( 'willydevtheme_post_content_bottom' );
-		?>
 
-		</div><!-- .entry-content -->
-		<?php
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_post_excerpt' ) ) {
+if ( ! function_exists( 'willydevtheme_the_excerpt' ) ) {
 	/**
 	 * Display the excerpt if exist
+	 *
+	 * Muestra el extracto personalizado solo si este existe, esto evita que se muestre el contenido recortado en caso de que no exista el extracto por la funcionalidad por defecto de la función the_excerpt.
 	 */
-	function willydevtheme_post_excerpt() {
+	function willydevtheme_the_excerpt() {
 		if ( has_excerpt() ) {
 			the_excerpt();
 		}
@@ -513,22 +473,11 @@ if ( ! function_exists( 'willydevtheme_frontpage_header' ) ) {
 			do_action( 'willydevtheme_frontpage_header_top' );
 			?>
 
-			<div class="content-header">
-
-				<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-			
-				<?php 
-				/**
-				 * @hooked willydevtheme_post_excerpt - 10
-				 */
-				do_action('willydevtheme_frontpage_content_header'); 
-				?>
-			
-			</div>
+			<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
 			<?php
 			/**
-			 * @hook 
+			 * @hook willydevtheme_the_excerpt
 			 */
 			do_action( 'willydevtheme_frontpage_header_bottom' );
 			?>
@@ -551,14 +500,16 @@ if ( ! function_exists( 'willydevtheme_frontpage_content' ) ) {
 
 			<?php
 			/**
-			 * @hook 
+			 * @hooked  
 			 */
 			do_action( 'willydevtheme_frontpage_content_top' );
-		
- 			the_content(); 
+			?>
 
+ 			<?php the_content(); ?>
+
+			 <?php
 			/**
-			 * @hook 
+			 * @hooked 
 			 */
 			do_action( 'willydevtheme_frontpage_content_bottom' );
 			?>
@@ -577,54 +528,90 @@ if ( ! function_exists( 'willydevtheme_homepage_header' ) ) {
 	function willydevtheme_homepage_header() {
 		$page_id = get_queried_object_id();
 		$title = get_the_title( $page_id );
-		$page =  get_query_var( 'paged' );
-		?>
-		<header class="homepage-header">
+		$page = get_query_var( 'paged' );
 
-			<?php 
-			if ( ! $page ) {
-				?>
-				<div class="site-banner">
+		echo '<header class="homepage-header">';
 
-					<?php echo get_the_post_thumbnail( $page_id, 'full' ); ?>
+		/**
+		 * @hooked 
+		 */
+		do_action( 'willydevtheme_homepage_header_top' );
 
-				</div>
-
-				<h1 class="homepage-title"><?php echo esc_html( $title ); ?></h1>
-
-				<div class="homepage-excerpt">
-
-					<?php echo esc_html( get_the_excerpt( $page_id ) ); ?>
-
-				</div>
-				<?php 
-			} else {
-				echo sprintf( '<h1 class="homepage-title">%1$s: %2$s %3$s</h1>', esc_html( $title ), __( 'Page', 'willydevtheme' ), $page );
+		if ( ! $page ) {
+			$header_content = sprintf( '<h1 class="homepage-title">%s</h1>', esc_html( $title ) );
+		} else {
+				$header_content = sprintf( '<h1 class="homepage-title">%1$s: %2$s %3$s</h1>', esc_html( $title ), __( 'Page', 'willydevtheme' ), $page );
 			}
-			?>
-		</header>
-		<?php
+
+			echo wp_kses_post( $header_content );
+
+		/**
+		 * @hooked 
+		 */
+		do_action( 'willydevtheme_homepage_header_bottom' );
+
+		echo '</header>';
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_homepage_content' ) ) {
+if ( ! function_exists( 'willydevtheme_homepage_header_hero' ) ) {
 	/**
-	 * Display homepage content
-	 * Hooked into the `homepage` action in the homepage template
-	 *
-	 * @since  1.0.0
-	 * @return  void
+	 * Display header hero if image featured that defined
 	 */
-	function willydevtheme_homepage_content() {
-		?>
-		<div class="homepage-content">
+	function willydevtheme_homepage_header_hero() {
+		if ( ! is_home() ) {
+			return;
+		}
+		$page_id = get_queried_object_id();
+		$title = get_the_title( $page_id );
+		$page =  get_query_var( 'paged' );
+		$url_image_featured = get_the_post_thumbnail_url( $page_id, 'full' ) ?? '';
+		$class_header_hero = $url_image_featured ? 'header-hero' : '';
+		$class_header_hero_title = $url_image_featured ? 'header-hero__title' : 'header-title';
+
+		echo '<header class="homepage-header">';
+
+		/**
+		 * 
+		 */
+		do_action( 'willydevtheme_homepage_header_hero_top' );
+
+		if ( ! $page ) {
+			$header_content = sprintf( '<div class="%1$s" style="background-image: url(%2$s)">', esc_attr( $class_header_hero ), esc_url( $url_image_featured ) );
+			if ( $url_image_featured ) {
+				$header_content .= '<div class="header-hero__overlay"></div>';
+			}
+			$header_content .= sprintf( '<h1 class="%1$s">%2$s</h1>', esc_attr( $class_header_hero_title ), esc_html( $title ) );
+			$header_content .= '</div>';
+		} else {
+				$header_content = sprintf( '<h1 class="homepage-title">%1$s: %2$s %3$s</h1>', esc_html( $title ), __( 'Page', 'willydevtheme' ), $page );
+			}
+
+		echo wp_kses_post( $header_content );
+
+		/**
+			* 
+			*/
+		do_action( 'willydevtheme_homepage_header_hero_bottom' );
 			
-			<?php 
-			echo wp_kses_post( get_the_content( null, false, get_queried_object_id() ), );  
-			?>
-			
-		</div>
-		<?php
+		echo '</header>';
+	}
+}
+
+if ( ! function_exists( 'willydevtheme_homepage_description' ) ) {
+	/**
+	 * Muestra el extracto como una descripción en la pagina del blog
+	 */
+	function willydevtheme_homepage_description() {
+		if ( ! is_home() ) {
+			return;
+		}
+		$page = get_query_var( 'paged' );
+		$page_id = get_queried_object_id();
+
+		if ( has_excerpt( $page_id ) && ! $page) {
+			echo sprintf( '<div class="homepage-description">%s</div>', esc_html( get_the_excerpt( $page_id ) ) );
+		}
 	}
 }
 
@@ -635,32 +622,26 @@ if ( ! function_exists( 'willydevtheme_single_post_header' ) ) {
 	 * @since 1.0.0
 	 */
 	function willydevtheme_single_post_header() {
-		?>
-		<header class="entry-header">
 
-			<?php
-			/**
-		 	* @hooked 
-		 	*/
-			do_action( 'willydevtheme_single_post_header_top' );
+		echo '<header class="entry-header">';
 
-			the_title( '<h1 class="entry-title">', '</h1>' );
+		/**
+		 * @hooked 
+		 */
+		do_action( 'willydevtheme_single_post_header_top' );
 
-			/**
-			* @hooked willydevtheme_post_taxonomy - 10
-			* @hooked willydevtheme_post_share (pendiente)
-			* @hooked willydevtheme_post_thumbnail - 10
-			* @hooked willydevtheme_post_excerpt - 10
-			* @hooked willydevtheme_post_meta - 10
-			*/
-			do_action( 'willydevtheme_single_post_header_bottom' );
-			?>
+		the_title( '<h1 class="entry-title">', '</h1>' );
 
-		</header><!-- .entry-header -->
-		<?php
-
-		
-
+		/**
+		 * @hooked willydevtheme_post_taxonomy - 10
+		 * @hooked willydevtheme_post_share (pendiente)
+		 * @hooked willydevtheme_post_thumbnail - 10
+		 * @hooked willydevtheme_post_excerpt - 10
+		 * @hooked willydevtheme_post_meta - 10
+		 */
+		do_action( 'willydevtheme_single_post_header_bottom' );
+	
+		echo '</header>';
 	}
 }
 
@@ -702,23 +683,20 @@ if ( ! function_exists( 'willydevtheme_page_header' ) ) {
 	 * @since 1.0.0
 	 */
 	function willydevtheme_page_header() {
+
+		echo '<header class="entry-header">';
+
+		/**
+		 * @hooked willydevtheme_post_thumbnail() - 10
+		 */
+		do_action( 'willydevtheme_page_header_top' );
+		
+		the_title( '<h1 class="entry-title">', '</h1>' );
+		
+		/**
+		 */
+		do_action( 'willydevtheme_page_header_bottom' );
 		?>
-		<header class="entry-header">
-
-			<?php
-			/**
-			 * @hooked willydevtheme_post_thumbnail() - 10
-			 */
-			do_action( 'willydevtheme_page_header_top' );
-		
-			the_title( '<h1 class="entry-title">', '</h1>' ); 
-		
-			/**
-			 * 
-			 */
-			do_action( 'willydevtheme_page_header_bottom' );
-			?>
-
 		</header><!-- .entry-header -->
 		<?php
 	}
@@ -746,39 +724,31 @@ if ( ! function_exists( 'willydevtheme_post_excerpt_header' ) ) {
 	 * @since 1.0.0
 	 */
 	function willydevtheme_post_excerpt_header() {
-		?>
 
-		<header class="entry-header">
-
-		<?php
+		echo '<header class="entry-header">';
 		/**
 		 * Functions hooked in to willydevtheme_post_excerpt_header_top action.
 		 *
 		 * @hooked willydevtheme_post_thumbnail - 10
-		 *
-		 * @hooked willydevtheme_post_taxonomy - 10
-		 * 
 		 */
 		do_action( 'willydevtheme_post_excerpt_header_top' );
 
 		the_title( sprintf( '<h2 class="alpha entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
 
 		/**
-		 * Functions hooked in to willydevtheme_post_excerpt_header_bottom
-		 * 
-		 * 
-		 * @hooked willydevtheme_post_meta - 10
+		 * Functions hooked in to willydevtheme_post_excerpt_header_bottom action.
+		 *
+		 * @hooked willydevtheme_post_taxonomy - 10
 		 */
 		do_action( 'willydevtheme_post_excerpt_header_bottom' );
-		?>
-		</header><!-- .entry-header -->
-		<?php
+
+		echo '</header>';
 	}
 }
 
 if ( ! function_exists( 'willydevtheme_post_excerpt_content' ) ) {
 	/**
-	 * Display the post content with a link to the single post
+	 * Display the post excerpt content
 	 *
 	 * @since 1.0.0
 	 */
@@ -793,24 +763,12 @@ if ( ! function_exists( 'willydevtheme_post_excerpt_content' ) ) {
 		 */
 		do_action( 'willydevtheme_post_excerpt_content_top' );
 
-		if ( is_single() ) {
-			the_content();
-		} else {
-			the_excerpt();
-			echo '<span class="screen-reader-text">' . get_the_title() . '</span>';
-		}
-		
+		the_excerpt();
+
 		/**
-		 * @hooked willydevtheme_post_meta - 10
+		 * @hooked
 		 */
 		do_action( 'willydevtheme_post_excerpt_content_bottom' );
-		
-		wp_link_pages(
-			array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'willydevtheme' ),
-				'after'  => '</div>',
-			)
-		);
 		?>
 		</div><!-- .entry-content -->
 		<?php
@@ -818,29 +776,37 @@ if ( ! function_exists( 'willydevtheme_post_excerpt_content' ) ) {
 }
 
 if ( ! function_exists( 'willydevtheme_archive_header' ) ) {
+
+	/**
+	 * Header archive page
+	 */
 	function willydevtheme_archive_header() {
 		if ( ! is_archive() ) {
 			return;
 		}
 		?>
+		<header class="archive-header">
+			<?php
+			/**
+			 * @hooked
+			 */
+			do_action( 'willydevtheme_archive_header_top' );
 
-			<header class="archive-header">
-				<?php
-				/**
-				 * @hooked
-				 */
-				do_action( 'willydevtheme_archive_header_top' );
+			the_archive_title( '<h1 class="page-title">', '</h1>' );
 
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="taxonomy-description">', '</div>' );
+			/**
+			 * @hooked
+			 */
+			do_action( 'willydevtheme_archive_header_after_title' );
 
-				/**
-				 * @hooked
-				 */
-				do_action( 'willydevtheme_archive_header_bottom' );
-				?>
-			</header>
+			the_archive_description( '<div class="taxonomy-description">', '</div>' );
 
+			/**
+			 * @hooked
+			 */
+			do_action( 'willydevtheme_archive_header_bottom' );
+			?>
+		</header>
 		<?php
 	}
 }

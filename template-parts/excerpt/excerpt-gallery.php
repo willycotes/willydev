@@ -5,14 +5,29 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package WordPress
- * @subpackage Twenty_Twenty_One
- * @since Twenty Twenty-One 1.0
+ * @subpackage willydevtheme
  */
+?>
 
-// Print the 1st gallery found.
-if ( has_block( 'core/gallery', get_the_content() ) ) {
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<?php
 
-	twenty_twenty_one_print_first_instance_of_block( 'core/gallery', get_the_content() );
-}
+	/**
+	 * @hooked
+	 */
+	do_action( 'willydevtheme_post_excerpt_gallery_top' );
 
-the_excerpt();
+	// Print the 1st gallery found.
+	if ( has_block( 'core/gallery', get_the_content() ) ) {
+
+		willydevtheme_print_first_instance_of_block( 'core/gallery', get_the_content() );
+	}
+
+	the_title( sprintf( '<h2 class="entry-title"><a href="%s" class="entry-title__link">', esc_url( get_permalink() ) ), '</a></h2>' );
+
+	/**
+	 * @hooked
+	 */
+	do_action( 'willydevtheme_post_excerpt_gallery_bottom' );
+	?>
+</article>

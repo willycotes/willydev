@@ -628,8 +628,9 @@ if ( ! class_exists( 'willydevtheme_Customizer' ) ) :
 						'label'    => __( 'General Layout', 'willydevtheme' ),
 						'priority' => 1,
 						'choices'  => array(
-							'right' => get_template_directory_uri() . '/assets/images/customizer/controls/2cr.png',
-							'left'  => get_template_directory_uri() . '/assets/images/customizer/controls/2cl.png',
+							'right' => get_template_directory_uri() . '/assets/images/customizer/controls/layout-cp.png',
+							'left'  => get_template_directory_uri() . '/assets/images/customizer/controls/layout-pc.png',
+							'full-width'  => get_template_directory_uri() . '/assets/images/customizer/controls/layout-full-width.png',
 						),
 					)
 				)
@@ -1113,6 +1114,7 @@ if ( ! class_exists( 'willydevtheme_Customizer' ) ) :
 			$left_or_right = get_theme_mod( 'willydevtheme_layout' );
 
 			$classes[] = $left_or_right . '-sidebar';
+			// $classes[] = 'full-width' . '-sidebar';
 
 			return $classes;
 		}

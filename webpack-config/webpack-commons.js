@@ -3,13 +3,13 @@ const root = process.cwd();
 const eslintWebpackPlugin = require('eslint-webpack-plugin');
 const StylelintPlugin = require('stylelint-webpack-plugin');
 const copyWebpackPlugin = require('copy-webpack-plugin');
-
+console.log(path.dirname(__dirname));
 /** @type {import('webpack').Configuration} */
 
 module.exports = {
   context: path.resolve(root, 'src'),
   output: {
-    // publicPath: 'assets/dist/',
+    publicPath: path.dirname(__dirname),
     assetModuleFilename: 'images/[name][ext]',
   },
   resolve: {

@@ -133,6 +133,10 @@
 .willydevtheme-handheld-footer-bar ul li.search form {
   margin-bottom: 0;
 }
+.willydevtheme-handheld-footer-bar ul li.search form {
+  display: flex;
+  justify-content: space-around;
+}
 
 .willydevtheme-handheld-footer-bar ul li.search .search-field {
   border: 2px solid #ddd;

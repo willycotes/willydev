@@ -5,9 +5,9 @@
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package WordPress
- * @subpackage Twenty_Twenty_One
+ * @subpackage willydevtheme
  * @since Twenty Twenty-One 1.0
  */
 
-// Print the full content.
-the_content();
+the_title();
+the_excerpt();
