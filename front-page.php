@@ -38,8 +38,7 @@ get_header(); ?>
 		 * @hooked willydevtheme_paging_nav - 10
 		 */
 		do_action( 'willydevtheme_frontpage_loop_after' );
-
-
+		
 	else :
 
 		get_template_part( 'template-parts/content/content', 'none' );
@@ -50,7 +49,4 @@ get_header(); ?>
 </div><!-- #primary -->
 
 <?php
-
-get_sidebar();
-
 get_footer();
