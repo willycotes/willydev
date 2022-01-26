@@ -26,7 +26,7 @@ get_header(); ?>
 		while ( have_posts() ) :
 			the_post();
 
-			get_template_part( 'template-parts/content/content' );
+			get_template_part( 'template-parts/content', 'content' );
 
 		endwhile;
 
@@ -43,6 +43,8 @@ get_header(); ?>
 </div><!-- #primary -->    
 <?php
 
-get_sidebar();
-
+/**
+ * @hooked
+ */
+do_action( 'willydevtheme_sidebar' );
 get_footer();

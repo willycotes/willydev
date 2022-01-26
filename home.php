@@ -52,5 +52,9 @@
 </div><!-- #primary -->
 
 <?php
-get_sidebar();
+
+/**
+ * @hooked
+ */
+do_action( 'willydevtheme_homepage_sidebar' );
 get_footer();

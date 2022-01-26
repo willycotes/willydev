@@ -45,6 +45,8 @@ do_action( 'willydevtheme_loop_after' );
 </div><!-- #primary -->    
 <?php
 
-get_sidebar();
-
+/**
+ * @hooked
+ */
+do_action( 'willydevtheme_sidebar' );
 get_footer();

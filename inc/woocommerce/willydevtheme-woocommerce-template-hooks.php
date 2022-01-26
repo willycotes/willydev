@@ -15,12 +15,12 @@
  * @see  willydevtheme_on_sale_products()
  * @see  willydevtheme_best_selling_products()
  */
-add_action( 'homepage', 'willydevtheme_product_categories', 20 );
-add_action( 'homepage', 'willydevtheme_recent_products', 30 );
-add_action( 'homepage', 'willydevtheme_featured_products', 40 );
-add_action( 'homepage', 'willydevtheme_popular_products', 50 );
-add_action( 'homepage', 'willydevtheme_on_sale_products', 60 );
-add_action( 'homepage', 'willydevtheme_best_selling_products', 70 );
+add_action( 'willydevtheme_shop', 'willydevtheme_product_categories', 20 );
+add_action( 'willydevtheme_shop', 'willydevtheme_recent_products', 30 );
+add_action( 'willydevtheme_shop', 'willydevtheme_featured_products', 40 );
+add_action( 'willydevtheme_shop', 'willydevtheme_popular_products', 50 );
+add_action( 'willydevtheme_shop', 'willydevtheme_on_sale_products', 60 );
+add_action( 'willydevtheme_shop', 'willydevtheme_best_selling_products', 70 );
 
 /**
  * Layout
@@ -101,5 +101,5 @@ add_filter( 'woocommerce_add_to_cart_fragments', 'willydevtheme_cart_link_fragme
 if ( class_exists( 'WC_Brands' ) ) {
 	add_action( 'woocommerce_archive_description', 'willydevtheme_woocommerce_brands_archive', 5 );
 	add_action( 'woocommerce_single_product_summary', 'willydevtheme_woocommerce_brands_single', 4 );
-	add_action( 'homepage', 'willydevtheme_woocommerce_brands_homepage_section', 80 );
+	add_action( 'willydevtheme_shop', 'willydevtheme_woocommerce_brands_homepage_section', 80 );
 }

@@ -109,4 +109,8 @@ while ( have_posts() ) {
 	}
 } // End the loop.
 
+/**
+ * @hooked
+ */
+do_action( 'willydevtheme_image_sidebar' );
 get_footer();

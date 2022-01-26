@@ -197,7 +197,7 @@ if ( ! class_exists( 'willydevtheme_WooCommerce' ) ) :
 		public function thumbnail_columns() {
 			$columns = 4;
 
-			if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+			if ( ! is_active_sidebar( 'sidebar' ) ) {
 				$columns = 5;
 			}
 

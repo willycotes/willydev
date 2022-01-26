@@ -35,6 +35,8 @@ get_header(); ?>
 </div><!-- #primary -->    
 <?php
 
-get_sidebar();
-
+/**
+ * @hooked
+ */
+do_action( 'willydevtheme_sidebar' );
 get_footer();

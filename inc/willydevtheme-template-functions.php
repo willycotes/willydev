@@ -140,6 +140,22 @@ if ( ! function_exists( 'willydevtheme_secondary_navigation' ) ) {
 	}
 }
 
+if ( ! function_exists( 'willydevtheme_sidebar_widgets' ) ) {
+	/**
+	 * Display main sidebar
+	 */
+	function willydevtheme_sidebar_widgets() {
+		if ( ! is_active_sidebar( 'sidebar' ) ) {
+			return;
+		}
+		?>
+		<div id="secondary" class="widget-area" role="complementary">
+			<?php dynamic_sidebar( 'sidebar' ); ?>
+		</div><!-- #secondary -->
+		<?php
+	}
+}
+
 if ( ! function_exists( 'willydevtheme_header_widget_region' ) ) {
 	/**
 	 * Display header widget region
@@ -711,7 +727,19 @@ if ( ! function_exists( 'willydevtheme_page_content' ) ) {
 	function willydevtheme_page_content() {
 		?>
 		<div class="entry-content">
-			<?php the_content(); ?>
+			<?php
+			/**
+		 	* @hooked
+		 	*/
+			do_action( 'willydevtheme_page_content_top' );
+
+			the_content();
+
+			/**
+			 * @hooked
+			 */
+			do_action( 'willydevtheme_page_content_bottom' );
+			?>
 		</div><!-- .entry-content -->
 		<?php
 	}
@@ -776,9 +804,8 @@ if ( ! function_exists( 'willydevtheme_post_excerpt_content' ) ) {
 }
 
 if ( ! function_exists( 'willydevtheme_archive_header' ) ) {
-
 	/**
-	 * Header archive page
+	 * Display the header and description of archive pages
 	 */
 	function willydevtheme_archive_header() {
 		if ( ! is_archive() ) {

@@ -230,7 +230,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		public function widgets_init() {
 			$sidebar_args['sidebar'] = array(
 				'name'        => __( 'Sidebar', 'willydevtheme' ),
-				'id'          => 'sidebar-1',
+				'id'          => 'sidebar',
 				'description' => '',
 			);
 
@@ -447,7 +447,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 			}
 
 			// If our main sidebar doesn't contain widgets, adjust the layout to be full-width.
-			if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+			if ( ! is_active_sidebar( 'sidebar' ) ) {
 				$classes[] = 'willydevtheme-full-width-content';
 			}
 

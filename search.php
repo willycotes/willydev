@@ -55,5 +55,9 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-do_action( 'willydevtheme_sidebar' );
+
+/**
+ * @hooked
+ */
+do_action( 'willydevtheme_search_sidebar' );
 get_footer();

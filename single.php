@@ -27,5 +27,9 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-do_action( 'willydevtheme_sidebar' );
+
+/**
+ * @hooked
+ */
+do_action( 'willydevtheme_single_sidebar' );
 get_footer();

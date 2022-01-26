@@ -43,6 +43,8 @@ add_action( 'willydevtheme_content', 'willydevtheme_post_nav', 10 );
 
 add_action( 'willydevtheme_loop_after', 'willydevtheme_paging_nav', 10 );
 
+add_action( 'willydevtheme_sidebar', 'willydevtheme_sidebar_widgets', 10 );
+
 /**
  * Homepage blog
  * 
@@ -62,6 +64,8 @@ add_action( 'willydevtheme_homepage_header_hero_bottom', 'willydevtheme_homepage
 
 add_action( 'willydevtheme_homepage_loop_after', 'willydevtheme_paging_nav', 10 );
 
+add_action( 'willydevtheme_homepage_sidebar', 'willydevtheme_sidebar_widgets', 10 );
+
 /**
  * Archive pages
  * 
@@ -70,6 +74,7 @@ add_action( 'willydevtheme_homepage_loop_after', 'willydevtheme_paging_nav', 10 
 add_action( 'willydevtheme_archive_loop_before', 'willydevtheme_archive_header', 10 );
 add_action( 'willydevtheme_archive_loop_after', 'willydevtheme_paging_nav', 10 );
 
+add_action( 'willydevtheme_archive_sidebar', 'willydevtheme_sidebar_widgets', 10 );
 /**
  * Post excerpt is default post format standard.
  * 
@@ -83,12 +88,16 @@ add_action( 'willydevtheme_post_excerpt', 'willydevtheme_post_excerpt_content', 
 add_action( 'willydevtheme_post_excerpt_header_top', 'willydevtheme_post_thumbnail', 10 );
 add_action( 'willydevtheme_post_excerpt_header_bottom', 'willydevtheme_post_taxonomy', 10 );
 
+
+
 /**
  * Search page
  * 
  * @source /search.php
  */
 add_action( 'willydevtheme_search_loop_after', 'willydevtheme_paging_nav', 10 );
+
+add_action( 'willydevtheme_search_sidebar', 'willydevtheme_sidebar_widgets', 10 );
 
 /**
  * Single post
@@ -107,6 +116,8 @@ add_action( 'willydevtheme_single_post_header_bottom', 'willydevtheme_post_taxon
 add_action( 'willydevtheme_single_post_header_bottom', 'willydevtheme_post_thumbnail', 10 );
 add_action( 'willydevtheme_single_post_header_bottom', 'willydevtheme_the_excerpt', 10 );
 add_action( 'willydevtheme_single_post_header_bottom', 'willydevtheme_post_meta', 10 );
+
+add_action( 'willydevtheme_single_sidebar', 'willydevtheme_sidebar_widgets', 10 );
 
 /**
  * Pages

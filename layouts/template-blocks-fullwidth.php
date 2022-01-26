@@ -37,5 +37,4 @@ do_action( 'willydevtheme_loop_after' );
 	</main><!-- #main -->
 </div><!-- #primary -->    
 <?php
-
 get_footer();
