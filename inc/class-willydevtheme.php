@@ -5,7 +5,7 @@
  * @package  willydevtheme
  */
 
-use Classes\WdvpPostType; 
+use Classes\WdvpPostType;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -26,10 +26,11 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		public function __construct() {
 			add_action( 'after_setup_theme', array( $this, 'setup' ) );
 			add_action( 'widgets_init', array( $this, 'widgets_init' ) );
-			add_action( 'init', array( $this, 'register_post_types') );
+			// add_filter( 'is_active_sidebar', array( $this, 'deactivate_sidebar_willydevtheme'), 10, 2 );
+			add_action( 'init', array( $this, 'register_post_types' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 10 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'child_scripts' ), 30 ); // After WooCommerce.
-			// add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
+			add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 			add_filter( 'body_class', array( $this, 'body_classes' ) );
 			add_filter( 'wp_page_menu_args', array( $this, 'page_menu_args' ) );
 			add_filter( 'navigation_markup_template', array( $this, 'navigation_markup_template' ) );
@@ -45,7 +46,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		 */
 		public function setup() {
 			/*
-			 * Load Localisation files.
+			 * Load Localization files.
 			 *
 			 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
 			 */
@@ -74,13 +75,16 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 			/**
 			 * Enable support post formats
 			 */
-			add_theme_support( 'post-formats', array(
-				'aside',
-				'image',
-				'gallery',
-				'video',
-				'chat'
-			) );
+			add_theme_support( 
+				'post-formats', 
+				array(
+					'aside',
+					'image',
+					'gallery',
+					'video',
+					'chat'
+					) 
+				);
 
 			/**
 			 * Enable support for site logo.
@@ -94,6 +98,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 						'width'       => 470,
 						'flex-width'  => true,
 						'flex-height' => true,
+						'unlink-homepage-logo' => false
 					)
 				)
 			);
@@ -134,20 +139,6 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 						'widgets',
 						'style',
 						'script',
-					)
-				)
-			);
-
-			/**
-			 * Setup the WordPress core custom background feature.
-			 */
-			add_theme_support(
-				'custom-background',
-				apply_filters(
-					'willydevtheme_custom_background_args',
-					array(
-						'default-color' => apply_filters( 'willydevtheme_default_background_color', 'ffffff' ),
-						'default-image' => '',
 					)
 				)
 			);
@@ -214,7 +205,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 			/**
 			 * Enqueue editor styles.
 			 */
-			add_editor_style( array( 'assets/css/base/gutenberg-editor.css', $this->google_fonts() ) );
+			add_editor_style( 'assets/css/base/gutenberg-editor.css' );
 
 			/**
 			 * Add support for responsive embedded content.
@@ -301,6 +292,17 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		}
 
 		/**
+		 * Deactivate sidebar in pages
+		 */
+		// public function deactivate_sidebar_willydevtheme( $is_active_sidebar, $index ) {
+		// 	if ( is_page() && 'sidebar' === $index ) {
+		// 		return false;
+		// 	}
+
+		// 	return $is_active_sidebar;
+		// }
+
+		/**
 		 * Register Custom Post Type
 		 */
 		public function register_post_types() {
@@ -315,25 +317,18 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		public function scripts() {
 			global $willydevtheme_version;
 
+			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+
 			/**
 			 * Styles
 			 */
-			wp_enqueue_style( 'willydevtheme-style', get_template_directory_uri() . '/style.css', '', $willydevtheme_version );
-			wp_style_add_data( 'willydevtheme-style', 'rtl', 'replace' );
+			wp_enqueue_style( 'willydevtheme-style', get_template_directory_uri() . '/style' . $suffix . '.css', array(), $willydevtheme_version );
 
-			wp_enqueue_style( 'willydevtheme-icons', get_template_directory_uri() . '/assets/css/base/icons.css', '', $willydevtheme_version );
-			wp_style_add_data( 'willydevtheme-icons', 'rtl', 'replace' );
-
-			/**
-			 * Fonts
-			 */
-			wp_enqueue_style( 'willydevtheme-fonts', $this->google_fonts(), array(), $willydevtheme_version );
+			wp_enqueue_style( 'willydevtheme-icons', get_template_directory_uri() . '/assets/css/base/icons' . $suffix . '.css', array(), $willydevtheme_version );
 
 			/**
 			 * Scripts
 			 */
-			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
-
 			wp_enqueue_script( 'willydevtheme-navigation', get_template_directory_uri() . '/assets/js/navigation' . $suffix . '.js', array(), $willydevtheme_version, true );
 
 			if ( has_nav_menu( 'handheld' ) ) {
@@ -345,37 +340,9 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 				wp_localize_script( 'willydevtheme-navigation', 'willydevthemeScreenReaderText', $willydevtheme_l10n );
 			}
 
-			if ( is_page_template( 'template-homepage.php' ) && has_post_thumbnail() ) {
-				wp_enqueue_script( 'willydevtheme-homepage', get_template_directory_uri() . '/assets/js/homepage' . $suffix . '.js', array(), $willydevtheme_version, true );
-			}
-
 			if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 				wp_enqueue_script( 'comment-reply' );
 			}
-		}
-
-		/**
-		 * Register Google fonts.
-		 *
-		 * @since 2.4.0
-		 * @return string Google fonts URL for the theme.
-		 */
-		public function google_fonts() {
-			$google_fonts = apply_filters(
-				'willydevtheme_google_font_families',
-				array(
-					'source-sans-pro' => 'Source+Sans+Pro:400,300,300italic,400italic,600,700,900',
-				)
-			);
-
-			$query_args = array(
-				'family' => implode( '|', $google_fonts ),
-				'subset' => rawurlencode( 'latin,latin-ext' ),
-			);
-
-			$fonts_url = add_query_arg( $query_args, 'https://fonts.googleapis.com/css' );
-
-			return $fonts_url;
 		}
 
 		/**
@@ -387,8 +354,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 			global $willydevtheme_version;
 
 			// Styles.
-			wp_enqueue_style( 'willydevtheme-gutenberg-blocks', get_template_directory_uri() . '/assets/css/base/gutenberg-blocks.css', '', $willydevtheme_version );
-			wp_style_add_data( 'willydevtheme-gutenberg-blocks', 'rtl', 'replace' );
+			wp_enqueue_style( 'willydevtheme-gutenberg-blocks', get_template_directory_uri() . '/assets/css/base/gutenberg-blocks.css', array(), $willydevtheme_version );
 		}
 
 		/**
@@ -423,27 +389,9 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		 * @return array
 		 */
 		public function body_classes( $classes ) {
-			// Adds a class to blogs with more than 1 published author.
-			if ( is_multi_author() ) {
-				$classes[] = 'group-blog';
-			}
-
-			/**
-			 * Adds a class when WooCommerce is not active.
-			 *
-			 * @todo Refactor child themes to remove dependency on this class.
-			 */
-			$classes[] = 'no-wc-breadcrumb';
-
-			/**
-			 * What is this?!
-			 * Take the blue pill, close this file and forget you saw the following code.
-			 * Or take the red pill, filter willydevtheme_make_me_cute and see how deep the rabbit hole goes...
-			 */
-			$cute = apply_filters( 'willydevtheme_make_me_cute', false );
-
-			if ( true === $cute ) {
-				$classes[] = 'willydevtheme-cute';
+			// add class sidebar activate
+			if ( is_active_sidebar( 'sidebar' ) ) {
+				$classes[] = 'willydevtheme-sidebar';
 			}
 
 			// If our main sidebar doesn't contain widgets, adjust the layout to be full-width.
@@ -451,9 +399,18 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 				$classes[] = 'willydevtheme-full-width-content';
 			}
 
-			// Add class when using homepage template + featured image.
-			if ( is_page_template( 'template-homepage.php' ) && has_post_thumbnail() ) {
-				$classes[] = 'has-post-thumbnail';
+			// Remove sidebar body class in templates full width.
+			if ( is_page_template( 'layouts/fullwidth.php' ) || is_page_template( 'layouts/clean-fullwidth.php' ) ) {
+				// Remove `willydevtheme-sidebar` body class.
+				$key = array_search( 'willydevtheme-sidebar', $classes, true );
+				if ( false !== $key ) {
+					unset( $classes[ $key ] );
+				}
+			}
+
+			// Adds a class to blogs with more than 1 published author.
+			if ( is_multi_author() ) {
+				$classes[] = 'group-blog';
 			}
 
 			// Add class when Secondary Navigation is in use.

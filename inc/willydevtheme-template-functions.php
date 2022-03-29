@@ -102,13 +102,6 @@ if ( ! function_exists( 'willydevtheme_primary_navigation' ) ) {
 						'container_class' => 'primary-navigation',
 					)
 				);
-
-				wp_nav_menu(
-					array(
-						'theme_location'  => 'handheld',
-						'container_class' => 'handheld-navigation',
-					)	
-				);
 			?>
 		</nav><!-- #site-navigation -->
 		<?php
@@ -137,22 +130,6 @@ if ( ! function_exists( 'willydevtheme_secondary_navigation' ) ) {
 			</nav><!-- #site-navigation -->
 			<?php
 		}
-	}
-}
-
-if ( ! function_exists( 'willydevtheme_sidebar_widgets' ) ) {
-	/**
-	 * Display main sidebar
-	 */
-	function willydevtheme_sidebar_widgets() {
-		if ( ! is_active_sidebar( 'sidebar' ) ) {
-			return;
-		}
-		?>
-		<div id="secondary" class="widget-area" role="complementary">
-			<?php dynamic_sidebar( 'sidebar' ); ?>
-		</div><!-- #secondary -->
-		<?php
 	}
 }
 
@@ -223,28 +200,21 @@ if ( ! function_exists( 'willydevtheme_footer_widgets' ) ) {
 if ( ! function_exists( 'willydevtheme_site_title_or_logo' ) ) {
 	/**
 	 * Display the site title or logo
-	 *
-	 * @since 2.1.0
-	 * @param bool $echo Echo the string or return it.
-	 * @return string
 	 */
-	function willydevtheme_site_title_or_logo( $echo = true ) {
+	function willydevtheme_site_title_or_logo() {
+		$html = '<div class="site-branding>';
 		if ( function_exists( 'the_custom_logo' ) && has_custom_logo() ) {
-			$logo = get_custom_logo();
-			$html = is_home() ? '<div class="logo">' . $logo . '</div>' : $logo;
+			// Retrieve logo link home.
+			$html .= get_custom_logo();
 		} else {
-				$html = '<div class="beta site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a></div>';
+				$html .= '<div class="beta site-title"><a href="' . esc_url( home_url( '/' ) ) . '" rel="home">' . esc_html( get_bloginfo( 'name' ) ) . '</a></div>';
 
 			if ( '' !== get_bloginfo( 'description' ) ) {
 				$html .= '<p class="site-description">' . esc_html( get_bloginfo( 'description', 'display' ) ) . '</p>';
 			}
 		}
-
-		if ( ! $echo ) {
-			return $html;
-		}
-
-		echo $html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		$html .= '</div>';
+		echo wp_kses_post( $html );
 	}
 }
 
@@ -919,5 +889,13 @@ if ( ! function_exists( 'willydevtheme_credit' ) ) {
 			<?php } ?>
 		</div><!-- .site-info -->
 		<?php
+	}
+}
+
+if ( ! function_exists( 'willydevtheme_breadcrumb' ) ) {
+	function willydevtheme_yoast_breadcrumb() {
+		if ( function_exists( 'yoast_breadcrumb' ) && ! function_exists( 'woocommerce_breadcrumb' ) ) {
+			yoast_breadcrumb( '<p class="breadcrumb">', '</p>' );
+		}
 	}
 }

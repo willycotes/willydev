@@ -28,7 +28,7 @@ $willydevtheme = (object) array(
 	 * Initialize all the things.
 	 */
 	'main'       => require 'inc/class-willydevtheme.php',
-	'customizer' => require 'inc/customizer/class-willydevtheme-customizer.php',
+	// 'customizer' => require 'inc/customizer/class-willydevtheme-customizer.php',
 );
 
 require 'inc/willydevtheme-functions.php';
@@ -36,37 +36,27 @@ require 'inc/willydevtheme-template-hooks.php';
 require 'inc/willydevtheme-template-functions.php';
 require 'inc/wordpress-shims.php';
 
-if ( class_exists( 'Jetpack' ) ) {
-	$willydevtheme->jetpack = require 'inc/jetpack/class-willydevtheme-jetpack.php';
-}
+// if ( is_admin() ) {
+	// $willydevtheme->admin = require 'inc/admin/class-willydevtheme-admin.php';
+// }
 
 if ( willydevtheme_is_woocommerce_activated() ) {
-	$willydevtheme->woocommerce            = require 'inc/woocommerce/class-willydevtheme-woocommerce.php';
-	$willydevtheme->woocommerce_customizer = require 'inc/woocommerce/class-willydevtheme-woocommerce-customizer.php';
-
-	require 'inc/woocommerce/class-willydevtheme-woocommerce-adjacent-products.php';
-
-	require 'inc/woocommerce/willydevtheme-woocommerce-template-hooks.php';
-	require 'inc/woocommerce/willydevtheme-woocommerce-template-functions.php';
-	require 'inc/woocommerce/willydevtheme-woocommerce-functions.php';
+	$willydevtheme->woocommerce = require_once 'inc/test-woocommerce/test-class-willydevtheme-woocommerce.php';
+	require_once 'inc/test-woocommerce/test-willydevtheme-woocommerce-functions.php';
+	require_once 'inc/test-woocommerce/test-willydevtheme-woocommerce-template-functions.php';
+	require_once 'inc/test-woocommerce/test-willydevtheme-woocommerce-hooks.php';
 }
 
-if ( is_admin() ) {
-	$willydevtheme->admin = require 'inc/admin/class-willydevtheme-admin.php';
+// if ( willydevtheme_is_woocommerce_activated() ) {
+// 	$willydevtheme->woocommerce            = require 'inc/woocommerce/class-willydevtheme-woocommerce.php';
+// 	// $willydevtheme->woocommerce_customizer = require 'inc/woocommerce/class-willydevtheme-woocommerce-customizer.php';
 
-	require 'inc/admin/class-willydevtheme-plugin-install.php';
-}
+// 	require 'inc/woocommerce/class-willydevtheme-woocommerce-adjacent-products.php';
 
-/**
- * NUX
- * Only load if wp version is 4.7.3 or above because of this issue;
- * https://core.trac.wordpress.org/ticket/39610?cversion=1&cnum_hist=2
- */
-if ( version_compare( get_bloginfo( 'version' ), '4.7.3', '>=' ) && ( is_admin() || is_customize_preview() ) ) {
-	require 'inc/nux/class-willydevtheme-nux-admin.php';
-	require 'inc/nux/class-willydevtheme-nux-guided-tour.php';
-	require 'inc/nux/class-willydevtheme-nux-starter-content.php';
-}
+// 	require 'inc/woocommerce/willydevtheme-woocommerce-template-hooks.php';
+// 	require 'inc/woocommerce/willydevtheme-woocommerce-template-functions.php';
+// 	require 'inc/woocommerce/willydevtheme-woocommerce-functions.php';
+// }
 
  /**
 	* desactivate emojis
@@ -118,3 +108,12 @@ function disable_emojis() {
  
  return $urls;
  }
+
+ /**
+	* Deactivate widgets block editor. Block editor fixed no resolve
+  */
+ function wdvp_deactivate_widgets_block_editor() {
+	 remove_theme_support( 'widgets-block-editor' );
+ }
+
+ add_action( 'after_setup_theme', 'wdvp_deactivate_widgets_block_editor' );

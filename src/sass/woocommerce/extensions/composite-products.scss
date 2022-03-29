@@ -143,15 +143,12 @@ table.shop_table_responsive tr.component_table_item {
     div.product
     .component
     .composited_product_images,
-  .page-template-template-fullwidth-php
+  .page-template-fullwidth
     #content
     div.product
     .component
     .composited_product_images,
-  .page-template-template-fullwidth-php
-    div.product
-    .component
-    .composited_product_images {
+  .page-template-fullwidth div.product .component .composited_product_images {
     width: 20%;
     float: left;
     margin-right: 6.6666666667%;
@@ -168,7 +165,7 @@ table.shop_table_responsive tr.component_table_item {
     .component_summary
     .composited_product_details_wrapper
     > .details,
-  .page-template-template-fullwidth-php
+  .page-template-fullwidth
     .composite_form
     .component:not(.selection_thumbnail_hidden)
     .component_summary

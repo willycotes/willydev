@@ -82,6 +82,5 @@ get_header(); ?>
 	</div><!-- #primary -->
 
 <?php
-
-add_action( 'willydevtheme_404_sidebar', 'willydevtheme_sidebar_widgets', 10 );
+get_sidebar();
 get_footer();

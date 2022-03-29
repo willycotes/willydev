@@ -6006,8 +6006,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url(../../images/fa-brands-400.eot);
-  src: url(../../images/fa-brands-400.eot?#iefix) format("embedded-opentype"), url(../../fonts/fa-brands-400.woff2) format("woff2"), url(../../fonts/fa-brands-400.woff) format("woff"), url(../../images/fa-brands-400.ttf) format("truetype"), url(../../images/fa-brands-400.svg#fontawesome) format("svg");
+  src: url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-brands-400.eot");
+  src: url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemefonts/fa-brands-400.woff2") format("woff2"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemefonts/fa-brands-400.woff") format("woff"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-brands-400.ttf") format("truetype"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-brands-400.svg#fontawesome") format("svg");
 }
 .fab {
   font-family: "Font Awesome 5 Brands";
@@ -6023,8 +6023,8 @@
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url(../../images/fa-solid-900.eot);
-  src: url(../../images/fa-solid-900.eot?#iefix) format("embedded-opentype"), url(../../fonts/fa-solid-900.woff2) format("woff2"), url(../../fonts/fa-solid-900.woff) format("woff"), url(../../images/fa-solid-900.ttf) format("truetype"), url(../../images/fa-solid-900.svg#fontawesome) format("svg");
+  src: url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-solid-900.eot");
+  src: url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemefonts/fa-solid-900.woff2") format("woff2"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemefonts/fa-solid-900.woff") format("woff"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-solid-900.ttf") format("truetype"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-solid-900.svg#fontawesome") format("svg");
 }
 .fa,
 .fas {

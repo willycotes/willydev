@@ -301,3 +301,25 @@ function willydevtheme_print_first_instance_of_block( $block_name, $content = nu
 
 	return false;
 }
+
+	/**
+ * Debug logs with var_dump php
+ */
+function willydevtheme_dump_log( $var ) {
+	$output = WP_CONTENT_DIR . '/debug.log';
+	ob_start();
+	var_dump( $var );
+	$content = ob_get_contents();
+	$content .= "\n";
+	ob_get_clean();
+	error_log( $content, 0, $output );
+}
+
+/**
+ * Debug log with print_r php
+ */
+function willydevtheme_print_log( $var ) {
+	$output = WP_CONTENT_DIR . '/debug.log';
+	$content = print_r( $var, true );
+	error_log( $content, 0, $output );
+}	

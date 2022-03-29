@@ -14,31 +14,27 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-
 			<?php
+
+			/**
+			 * @hooked
+			 */
+			do_action( 'willydevtheme_page_loop_before' );
+
 			while ( have_posts() ) :
 				the_post();
 
-				do_action( 'willydevtheme_page_loop_before' );
-
 				get_template_part( 'template-parts/content/content', 'page' );
 
-				/**
-				 * Functions hooked in to willydevtheme_page_after action
-				 *
-				 */
-				do_action( 'willydevtheme_page_loop_after' );
-
 			endwhile; // End of the loop.
-			?>
 
+			/**
+			 * Functions hooked in to willydevtheme_page_after action
+			 */
+				do_action( 'willydevtheme_page_loop_after' );
+			?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
-
 <?php
-
-/**
- * @hooked
- */
-do_action( 'willydevtheme_page_sidebar' );
+get_sidebar();
 get_footer();

@@ -52,12 +52,13 @@ module.exports = (env, argv) => {
     },
   });
 
+  // JS
+
   const public = {
     entry: {
       // main entry point. includes dependencies.
       main: path.resolve(root, 'src/js/main.js'),
       navigation: path.resolve(root, 'src/js/navigation.js'),
-      homepage: path.resolve(root, 'src/js/homepage.js'),
     },
     output: {
       path: path.resolve(root, 'assets/'),
@@ -68,8 +69,6 @@ module.exports = (env, argv) => {
   const admin = {
     entry: {
       admin: path.resolve(root, 'src/js/admin/admin.js'),
-      customizer: path.resolve(root, 'src/js/admin/customizer.js'),
-      'plugin-install': path.resolve(root, 'src/js/admin/plugin-install.js'),
     },
     output: {
       path: path.resolve(root, 'assets/'),
