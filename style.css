@@ -2,21 +2,21 @@
   !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[3]!./sass/main.scss ***!
   \**************************************************************************************************************************************************************************************************************/
 /*!
-Theme Name:   Willydevtheme
-Theme URI:    https://github.com/willycotes/willydevtheme.git
+Theme Name:   WPCotesTheme
+Theme URI:    https://github.com/willycotes/wpcotestheme.git
 Author:       Willy Cotes
 Author URI:   https://willycotes.github.io/willydev.com/
-Description:  Willydevtheme is a custom theme starter compatibility woocommerce.
+Description:  WPCotesTheme is a custom theme starter compatibility woocommerce.
 Version:      1.0.0
 License:      GNU General Public License v3 or later
 License URI:  https://www.gnu.org/licenses/gpl-3.0.html
-Text Domain:  willydevtheme
+Text Domain:  wpcotestheme
 Tags:         e-commerce, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, featured-images, full-width-template, threaded-comments, accessibility-ready, rtl-language-support, footer-widgets, sticky-post, theme-options, editor-style
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 
-Willydevtheme is based on Underscores https://underscores.me/ (C) 2012-2017 Automattic, Inc, and willydevtheme https://woocommerce.com/es-es/willydevtheme/.
+WPCotesTheme is based on Underscores https://underscores.me/ (C) 2012-2017 Automattic, Inc, and wpcotestheme https://woocommerce.com/es-es/wpcotestheme/.
 */
 *,
 *::after,
@@ -5156,22 +5156,22 @@ svg {
 }
 /* stylelint-disable max-nesting-depth */
 /* stylelint-enable max-nesting-depth */
-.willydevtheme-full-width-content .site-content,
+.wpcotestheme-full-width-content .site-content,
 .page-template-fullwidth .site-content,
 .page-template-clean-fullwidth .site-content {
   display: block;
   width: 100%;
 }
 
-.single .willydevtheme-sidebar .site-content {
+.single .wpcotestheme-sidebar .site-content {
   max-width: 1200px;
 }
 
-.willydevtheme-sidebar .site-content {
+.wpcotestheme-sidebar .site-content {
   display: block;
 }
 @media (min-width: 64rem) {
-  .willydevtheme-sidebar .site-content {
+  .wpcotestheme-sidebar .site-content {
     display: grid;
     grid-template-columns: 1fr 300px;
     gap: 2rem;
@@ -5181,14 +5181,14 @@ svg {
   }
 }
 
-.willydevtheme-sidebar .content-area {
+.wpcotestheme-sidebar .content-area {
   background-color: #fff;
 }
 .widget-area {
   padding: var(--padding-component);
   background-color: #fff;
 }
-.willydevtheme-sidebar .site-main {
+.wpcotestheme-sidebar .site-main {
   max-width: var(--max-width-content);
   margin-left: auto;
   margin-right: auto;

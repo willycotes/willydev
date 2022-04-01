@@ -2,7 +2,7 @@
 /**
  * Template used to display post content on single pages.
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
 ?>
@@ -11,13 +11,13 @@
 	<?php
 
 	/**
-	 * @hooked willydevtheme_post_header          - 10
-	 * @hooked willydevtheme_post_content         - 20
-	 * @hooked willydevtheme_edit_post_link				- 30
-	 * @hooked willydevtheme_post_nav             - 40
-	 * @hooked willydevtheme_display_comments     - 50
+	 * @hooked wpcotestheme_post_header          - 10
+	 * @hooked wpcotestheme_post_content         - 20
+	 * @hooked wpcotestheme_edit_post_link				- 30
+	 * @hooked wpcotestheme_post_nav             - 40
+	 * @hooked wpcotestheme_display_comments     - 50
 	 */
-	do_action( 'willydevtheme_single_post' );
+	do_action( 'wpcotestheme_single_post' );
 
 	?>
 </article><!-- #post-## -->

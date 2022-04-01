@@ -33,4 +33,4 @@ Esta sección brindará información sobre ganchos y filtros específicos del te
 
     	add_filter( 'is_active_sidebar', 'deactivate_sidebar_in_single_pages', 10, 1 );
 
-Esta función permitirá que cuando la función "is_active_sidebar" se ejecute en la single page, esta retorne un false, por lo tanto, se le agregará la clase "willydevtheme-full-width-content" en el body automáticamente. La inclusion de estas clases css se definen en el tema padre "willydevtheme" en su clase principal.
+Esta función permitirá que cuando la función "is_active_sidebar" se ejecute en la single page, esta retorne un false, por lo tanto, se le agregará la clase "wpcotestheme-full-width-content" en el body automáticamente. La inclusion de estas clases css se definen en el tema padre "wpcotestheme" en su clase principal.

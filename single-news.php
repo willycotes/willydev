@@ -11,9 +11,9 @@ get_header(); ?>
 	if ( have_posts() ) :
 
 		/**
-		 * @hooked willydevtheme_archive_header - 10
+		 * @hooked wpcotestheme_archive_header - 10
 		 */
-		do_action( 'willydevtheme_loop_before' );
+		do_action( 'wpcotestheme_loop_before' );
 
 		while ( have_posts() ) :
 			the_post();
@@ -23,9 +23,9 @@ get_header(); ?>
 		endwhile;
 
 		/**
-		 * @hooked willydevtheme_paging_nav - 10
+		 * @hooked wpcotestheme_paging_nav - 10
 		 */
-		do_action( 'willydevtheme_loop_after' );
+		do_action( 'wpcotestheme_loop_after' );
 
 	else :
 		get_template_part( 'template-parts/content/content', 'none' );

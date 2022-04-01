@@ -2,7 +2,7 @@
 /**
  * The template for displaying search results pages.
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
 get_header(); ?>
@@ -14,7 +14,7 @@ get_header(); ?>
 		/**
 		 * @hooked
 		 */
-		do_action( 'willydevtheme_search_main_top' );
+		do_action( 'wpcotestheme_search_main_top' );
 		?>
 
 		<?php if ( have_posts() ) : ?>
@@ -23,7 +23,7 @@ get_header(); ?>
 				<h1 class="page-title">
 					<?php
 						/* translators: %s: search term */
-						printf( esc_attr__( 'Search Results for: %s', 'willydevtheme' ), '<span>' . get_search_query() . '</span>' );
+						printf( esc_attr__( 'Search Results for: %s', 'wpcotestheme' ), '<span>' . get_search_query() . '</span>' );
 					?>
 				</h1>
 			</header><!-- .page-header -->
@@ -32,7 +32,7 @@ get_header(); ?>
 			/**
 			 *
 			 */
-			do_action( 'willydevtheme_search_loop_before' );
+			do_action( 'wpcotestheme_search_loop_before' );
 			?>
 
 			<div class="grid-container">
@@ -53,9 +53,9 @@ get_header(); ?>
 			<?php
 			/**
 			 *
-			 * @hooked willydevtheme_paging_nav - 10
+			 * @hooked wpcotestheme_paging_nav - 10
 			 */
-			do_action( 'willydevtheme_search_loop_after' );
+			do_action( 'wpcotestheme_search_loop_after' );
 
 		else :
 

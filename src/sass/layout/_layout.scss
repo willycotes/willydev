@@ -1,5 +1,5 @@
 // mobile first
-.willydevtheme-full-width-content .site-content,
+.wpcotestheme-full-width-content .site-content,
 .page-template-fullwidth .site-content,
 .page-template-clean-fullwidth .site-content {
   display: block;
@@ -11,12 +11,12 @@
 // }
 
 // single post
-.single .willydevtheme-sidebar .site-content {
+.single .wpcotestheme-sidebar .site-content {
   max-width: 1200px;
 }
 
 // site-content
-.willydevtheme-sidebar .site-content {
+.wpcotestheme-sidebar .site-content {
   display: block;
 
   @include respond-to("lg") {
@@ -29,7 +29,7 @@
   }
 }
 
-.willydevtheme-sidebar .content-area {
+.wpcotestheme-sidebar .content-area {
   background-color: #fff;
   @include respond-to("lg") {
     // padding: var(--padding-component);
@@ -45,7 +45,7 @@
   }
 }
 
-.willydevtheme-sidebar .site-main {
+.wpcotestheme-sidebar .site-main {
   max-width: var(--max-width-content);
   margin-left: auto;
   margin-right: auto;

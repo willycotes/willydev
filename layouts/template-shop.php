@@ -4,7 +4,7 @@
  *
  * Template name: Shop page
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
 get_header(); ?>
@@ -16,15 +16,15 @@ get_header(); ?>
 			/**
 			 * Functions hooked in to homepage action
 			 *
-			 * @hooked willydevtheme_homepage_content      - 10
-			 * @hooked willydevtheme_product_categories    - 20
-			 * @hooked willydevtheme_recent_products       - 30
-			 * @hooked willydevtheme_featured_products     - 40
-			 * @hooked willydevtheme_popular_products      - 50
-			 * @hooked willydevtheme_on_sale_products      - 60
-			 * @hooked willydevtheme_best_selling_products - 70
+			 * @hooked wpcotestheme_homepage_content      - 10
+			 * @hooked wpcotestheme_product_categories    - 20
+			 * @hooked wpcotestheme_recent_products       - 30
+			 * @hooked wpcotestheme_featured_products     - 40
+			 * @hooked wpcotestheme_popular_products      - 50
+			 * @hooked wpcotestheme_on_sale_products      - 60
+			 * @hooked wpcotestheme_best_selling_products - 70
 			 */
-			do_action( 'willydevtheme_shop' );
+			do_action( 'wpcotestheme_shop' );
 			?>
 
 		</main><!-- #main -->
@@ -34,5 +34,5 @@ get_header(); ?>
 /**
  * @hooked
  */
-do_action( 'willydevtheme_shop_sidebar' );
+do_action( 'wpcotestheme_shop_sidebar' );
 get_footer();

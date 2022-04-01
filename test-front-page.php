@@ -8,7 +8,7 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
 get_header(); ?>
@@ -20,14 +20,14 @@ get_header(); ?>
 	/**
 	 * @hooked
 	 */
-	do_action( 'willydevtheme_main_top' );
+	do_action( 'wpcotestheme_main_top' );
 
 	if ( have_posts() ) :
 
 		/**
 		 * @hooked
 		 */
-		do_action( 'willydevtheme_frontpage_loop_before' );
+		do_action( 'wpcotestheme_frontpage_loop_before' );
 
 		while ( have_posts() ) :
 
@@ -38,11 +38,11 @@ get_header(); ?>
 		endwhile;
 
 		/**
-		 * Functions hooked in to willydevtheme_paging_nav action
+		 * Functions hooked in to wpcotestheme_paging_nav action
 		 *
-		 * @hooked willydevtheme_paging_nav - 10
+		 * @hooked wpcotestheme_paging_nav - 10
 		 */
-		do_action( 'willydevtheme_frontpage_loop_after' );
+		do_action( 'wpcotestheme_frontpage_loop_after' );
 
 	else :
 

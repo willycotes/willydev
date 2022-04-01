@@ -21,10 +21,10 @@ if ( !function_exists('register_scripts_carousel_tematicas')) {
 	}
 }
 
-//add action hook of carousel thematic in willydevtheme_before_content
+//add action hook of carousel thematic in wpcotestheme_before_content
 //get terms and add hook slide tematicas
 
-add_action('willydevtheme_before_content', 'carousel_tematicas', 2);
+add_action('wpcotestheme_before_content', 'carousel_tematicas', 2);
 
 if ( !function_exists('carousel_tematicas')) {
     function carousel_tematicas() {

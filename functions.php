@@ -1,15 +1,15 @@
 <?php
 /**
- * willydevtheme engine room.
+ * wpcotestheme engine room.
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
 /**
- * Assign the willydevtheme version to a var
+ * Assign the wpcotestheme version to a var
  */
-$theme              = wp_get_theme( 'willydevtheme' );
-$willydevtheme_version = $theme['Version'];
+$theme              = wp_get_theme( 'wpcotestheme' );
+$wpcotestheme_version = $theme['Version'];
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -21,41 +21,43 @@ if ( ! isset( $content_width ) ) {
 /**
  * Creating Object theme config
  */
-$willydevtheme = (object) array(
-	'version'    => $willydevtheme_version,
+$wpcotestheme = (object) array(
+	'version'    => $wpcotestheme_version,
 
 	/**
 	 * Initialize all the things.
 	 */
-	'main'       => require 'inc/class-willydevtheme.php',
-	// 'customizer' => require 'inc/customizer/class-willydevtheme-customizer.php',
+	'main'       => require 'inc/class-wpcotestheme.php',
+	// 'customizer' => require 'inc/customizer/class-wpcotestheme-customizer.php',
 );
 
-require 'inc/willydevtheme-functions.php';
-require 'inc/willydevtheme-template-hooks.php';
-require 'inc/willydevtheme-template-functions.php';
+require 'inc/wpcotestheme-functions.php';
+require 'inc/wpcotestheme-template-hooks.php';
+require 'inc/wpcotestheme-template-functions.php';
 require 'inc/wordpress-shims.php';
 
+require_once 'inc/base/class-wpcotestheme-post-type.php';
+
 // if ( is_admin() ) {
-	// $willydevtheme->admin = require 'inc/admin/class-willydevtheme-admin.php';
+	// $wpcotestheme->admin = require 'inc/admin/class-wpcotestheme-admin.php';
 // }
 
-if ( willydevtheme_is_woocommerce_activated() ) {
-	$willydevtheme->woocommerce = require_once 'inc/test-woocommerce/test-class-willydevtheme-woocommerce.php';
-	require_once 'inc/test-woocommerce/test-willydevtheme-woocommerce-functions.php';
-	require_once 'inc/test-woocommerce/test-willydevtheme-woocommerce-template-functions.php';
-	require_once 'inc/test-woocommerce/test-willydevtheme-woocommerce-hooks.php';
+if ( wpcotestheme_is_woocommerce_activated() ) {
+	$wpcotestheme->woocommerce = require_once 'inc/test-woocommerce/test-class-wpcotestheme-woocommerce.php';
+	require_once 'inc/test-woocommerce/test-wpcotestheme-woocommerce-functions.php';
+	require_once 'inc/test-woocommerce/test-wpcotestheme-woocommerce-template-functions.php';
+	require_once 'inc/test-woocommerce/test-wpcotestheme-woocommerce-hooks.php';
 }
 
-// if ( willydevtheme_is_woocommerce_activated() ) {
-// 	$willydevtheme->woocommerce            = require 'inc/woocommerce/class-willydevtheme-woocommerce.php';
-// 	// $willydevtheme->woocommerce_customizer = require 'inc/woocommerce/class-willydevtheme-woocommerce-customizer.php';
+// if ( wpcotestheme_is_woocommerce_activated() ) {
+// 	$wpcotestheme->woocommerce            = require 'inc/woocommerce/class-wpcotestheme-woocommerce.php';
+// 	// $wpcotestheme->woocommerce_customizer = require 'inc/woocommerce/class-wpcotestheme-woocommerce-customizer.php';
 
-// 	require 'inc/woocommerce/class-willydevtheme-woocommerce-adjacent-products.php';
+// 	require 'inc/woocommerce/class-wpcotestheme-woocommerce-adjacent-products.php';
 
-// 	require 'inc/woocommerce/willydevtheme-woocommerce-template-hooks.php';
-// 	require 'inc/woocommerce/willydevtheme-woocommerce-template-functions.php';
-// 	require 'inc/woocommerce/willydevtheme-woocommerce-functions.php';
+// 	require 'inc/woocommerce/wpcotestheme-woocommerce-template-hooks.php';
+// 	require 'inc/woocommerce/wpcotestheme-woocommerce-template-functions.php';
+// 	require 'inc/woocommerce/wpcotestheme-woocommerce-functions.php';
 // }
 
  /**

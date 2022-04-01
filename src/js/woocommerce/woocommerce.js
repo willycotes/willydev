@@ -1,1 +1,1 @@
-console.log('woocommerce.js empty in "willydevtheme" executing...');
+console.log('woocommerce.js empty in "wpcotestheme" executing...');

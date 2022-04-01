@@ -12,9 +12,9 @@
 	<?php
 
 	/**
-	 * @hooked willydevtheme_post_excerpt_header - 10
-	 * @hooked willydevtheme_post_excerpt_content - 10
+	 * @hooked wpcotestheme_post_excerpt_header - 10
+	 * @hooked wpcotestheme_post_excerpt_content - 10
 	 */
-	do_action( 'willydevtheme_post_excerpt' );
+	do_action( 'wpcotestheme_post_excerpt' );
 	?>
 </article>

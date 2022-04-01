@@ -2,7 +2,7 @@
 /**
  * The template for displaying all single posts.
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
 get_header(); ?>
@@ -14,7 +14,7 @@ get_header(); ?>
 		/**
 		 * @hooked
 		 */
-		do_action( 'willydevtheme_single_post_loop_before' );
+		do_action( 'wpcotestheme_single_post_loop_before' );
 
 		while ( have_posts() ) :
 			the_post();
@@ -26,7 +26,7 @@ get_header(); ?>
 		/**
 		 * @hooked
 		 */
-		do_action( 'willydevtheme_single_post_loop_after' );
+		do_action( 'wpcotestheme_single_post_loop_after' );
 		?>
 		</main><!-- #main -->
 	</div><!-- #primary -->

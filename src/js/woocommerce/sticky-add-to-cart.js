@@ -1,9 +1,9 @@
-/*global willydevtheme_sticky_add_to_cart_params */
+/*global wpcotestheme_sticky_add_to_cart_params */
 (function () {
   // eslint-disable-next-line @wordpress/no-global-event-listener
   document.addEventListener('DOMContentLoaded', function () {
     const stickyAddToCart = document.getElementsByClassName(
-      'willydevtheme-sticky-add-to-cart',
+      'wpcotestheme-sticky-add-to-cart',
     );
 
     if (!stickyAddToCart.length) {
@@ -11,12 +11,12 @@
     }
 
     // eslint-disable-next-line camelcase
-    if (typeof willydevtheme_sticky_add_to_cart_params === 'undefined') {
+    if (typeof wpcotestheme_sticky_add_to_cart_params === 'undefined') {
       return;
     }
 
     const trigger = document.getElementsByClassName(
-      willydevtheme_sticky_add_to_cart_params.trigger_class,
+      wpcotestheme_sticky_add_to_cart_params.trigger_class,
     );
 
     if (trigger.length > 0) {
@@ -26,21 +26,21 @@
           0
         ) {
           stickyAddToCart[0].classList.add(
-            'willydevtheme-sticky-add-to-cart--slideInDown',
+            'wpcotestheme-sticky-add-to-cart--slideInDown',
           );
           stickyAddToCart[0].classList.remove(
-            'willydevtheme-sticky-add-to-cart--slideOutUp',
+            'wpcotestheme-sticky-add-to-cart--slideOutUp',
           );
         } else if (
           stickyAddToCart[0].classList.contains(
-            'willydevtheme-sticky-add-to-cart--slideInDown',
+            'wpcotestheme-sticky-add-to-cart--slideInDown',
           )
         ) {
           stickyAddToCart[0].classList.add(
-            'willydevtheme-sticky-add-to-cart--slideOutUp',
+            'wpcotestheme-sticky-add-to-cart--slideOutUp',
           );
           stickyAddToCart[0].classList.remove(
-            'willydevtheme-sticky-add-to-cart--slideInDown',
+            'wpcotestheme-sticky-add-to-cart--slideInDown',
           );
         }
       };
@@ -70,7 +70,7 @@
             !product.classList.contains('product-type-external')
           ) {
             const selectOptions = document.getElementsByClassName(
-              'willydevtheme-sticky-add-to-cart__content-button',
+              'wpcotestheme-sticky-add-to-cart__content-button',
             );
 
             selectOptions[0].addEventListener('click', function (event) {

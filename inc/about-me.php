@@ -16,7 +16,7 @@ if ( !function_exists('register_scripts_about_me') ) {
     }
 }
 //add hook container
-add_action('willydevtheme_loop_before', 'about_me', 26);
+add_action('wpcotestheme_loop_before', 'about_me', 26);
 
 if ( !function_exists('about_me') ) {
     function about_me() {

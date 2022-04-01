@@ -7,7 +7,7 @@
  * and that other 'pages' on your WordPress site will use a
  * different template.
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
 get_header(); ?>
@@ -19,7 +19,7 @@ get_header(); ?>
 			/**
 			 * @hooked
 			 */
-			do_action( 'willydevtheme_page_loop_before' );
+			do_action( 'wpcotestheme_page_loop_before' );
 
 			while ( have_posts() ) :
 				the_post();
@@ -29,9 +29,9 @@ get_header(); ?>
 			endwhile; // End of the loop.
 
 			/**
-			 * Functions hooked in to willydevtheme_page_after action
+			 * Functions hooked in to wpcotestheme_page_after action
 			 */
-				do_action( 'willydevtheme_page_loop_after' );
+				do_action( 'wpcotestheme_page_loop_after' );
 			?>
 		</main><!-- #main -->
 	</div><!-- #primary -->

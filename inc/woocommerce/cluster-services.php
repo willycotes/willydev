@@ -23,7 +23,7 @@ if ( !function_exists('register_scripts_cluster_services') ) {
     }
 }
 
-add_action('willydevtheme_loop_before', 'cluster_services_front_page', 25);
+add_action('wpcotestheme_loop_before', 'cluster_services_front_page', 25);
 
 if ( !function_exists('cluster_services_front_page')) {
     function cluster_services_front_page() {

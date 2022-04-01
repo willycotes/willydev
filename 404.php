@@ -2,7 +2,7 @@
 /**
  * The template for displaying 404 pages (not found).
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
 get_header(); ?>
@@ -16,15 +16,15 @@ get_header(); ?>
 				<div class="page-content">
 
 					<header class="page-header">
-						<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'willydevtheme' ); ?></h1>
+						<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'wpcotestheme' ); ?></h1>
 					</header><!-- .page-header -->
 
-					<p><?php esc_html_e( 'Nothing was found at this location. Try searching, or check out the links below.', 'willydevtheme' ); ?></p>
+					<p><?php esc_html_e( 'Nothing was found at this location. Try searching, or check out the links below.', 'wpcotestheme' ); ?></p>
 
 					<?php
-					echo '<section aria-label="' . esc_html__( 'Search', 'willydevtheme' ) . '">';
+					echo '<section aria-label="' . esc_html__( 'Search', 'wpcotestheme' ) . '">';
 
-					if ( willydevtheme_is_woocommerce_activated() ) {
+					if ( wpcotestheme_is_woocommerce_activated() ) {
 						the_widget( 'WC_Widget_Product_Search' );
 					} else {
 						get_search_form();
@@ -32,19 +32,19 @@ get_header(); ?>
 
 					echo '</section>';
 
-					if ( willydevtheme_is_woocommerce_activated() ) {
+					if ( wpcotestheme_is_woocommerce_activated() ) {
 
 						echo '<div class="fourohfour-columns-2">';
 
-							echo '<section class="col-1" aria-label="' . esc_html__( 'Promoted Products', 'willydevtheme' ) . '">';
+							echo '<section class="col-1" aria-label="' . esc_html__( 'Promoted Products', 'wpcotestheme' ) . '">';
 
-								willydevtheme_promoted_products();
+								wpcotestheme_promoted_products();
 
 							echo '</section>';
 
-							echo '<nav class="col-2" aria-label="' . esc_html__( 'Product Categories', 'willydevtheme' ) . '">';
+							echo '<nav class="col-2" aria-label="' . esc_html__( 'Product Categories', 'wpcotestheme' ) . '">';
 
-								echo '<h2>' . esc_html__( 'Product Categories', 'willydevtheme' ) . '</h2>';
+								echo '<h2>' . esc_html__( 'Product Categories', 'wpcotestheme' ) . '</h2>';
 
 								the_widget(
 									'WC_Widget_Product_Categories',
@@ -57,11 +57,11 @@ get_header(); ?>
 
 						echo '</div>';
 
-						echo '<section aria-label="' . esc_html__( 'Popular Products', 'willydevtheme' ) . '">';
+						echo '<section aria-label="' . esc_html__( 'Popular Products', 'wpcotestheme' ) . '">';
 
-							echo '<h2>' . esc_html__( 'Popular Products', 'willydevtheme' ) . '</h2>';
+							echo '<h2>' . esc_html__( 'Popular Products', 'wpcotestheme' ) . '</h2>';
 
-							$shortcode_content = willydevtheme_do_shortcode(
+							$shortcode_content = wpcotestheme_do_shortcode(
 								'best_selling_products',
 								array(
 									'per_page' => 4,

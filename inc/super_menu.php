@@ -6,9 +6,9 @@
 // hook 
 
 	/**
-	 * Functions hooked in to willydevtheme_before_content
+	 * Functions hooked in to wpcotestheme_before_content
 	 *
-	 * @hooked willydevtheme_header_widget_region - 10
+	 * @hooked wpcotestheme_header_widget_region - 10
 	 * @hooked woocommerce_breadcrumb - 10
 	 */
     
@@ -38,7 +38,7 @@ if ( !function_exists('register_scripts_super_menu_bar')) {
 
 //add hook action super menu bar        
 
-add_action('willydevtheme_header', 'super_menu_bar_template', 15);
+add_action('wpcotestheme_header', 'super_menu_bar_template', 15);
 
 if ( !function_exists('super_menu_bar_template')) {
 function super_menu_bar_template() { 
@@ -122,7 +122,7 @@ echo $output;
 
 // add hook of super menu 
 
-add_action('willydevtheme_header', 'super_menu_template', 15);
+add_action('wpcotestheme_header', 'super_menu_template', 15);
 
 if ( !function_exists('super_menu_template')) {
 function super_menu_template() { 

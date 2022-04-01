@@ -4,13 +4,13 @@
  *
  * Displays all of the <head> section and everything up till <div id="content">
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
 ?>
 
 <!doctype html>
-<html <?php language_attributes(); ?><?php willydevtheme_the_html_classes(); ?>>
+<html <?php language_attributes(); ?><?php wpcotestheme_the_html_classes(); ?>>
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,36 +23,36 @@
 
 		<?php wp_body_open(); ?>
 
-		<?php do_action( 'willydevtheme_before_site' ); ?>
+		<?php do_action( 'wpcotestheme_before_site' ); ?>
 
 		<div id="page" class="hfeed site">
 
-			<?php do_action( 'willydevtheme_before_header' ); ?>
+			<?php do_action( 'wpcotestheme_before_header' ); ?>
 
 			<header id="masthead" class="site-header">
 
 				<?php
 				/**
-				 * @hooked willydevtheme_skip_links - 10
-				 * @hooked willydevtheme_site_title_or_logo - 20
+				 * @hooked wpcotestheme_skip_links - 10
+				 * @hooked wpcotestheme_site_title_or_logo - 20
 				 */
-				do_action( 'willydevtheme_header' );
+				do_action( 'wpcotestheme_header' );
 				?>
 
 			</header><!-- #masthead -->
 
 			<?php
 			/**
-			 * Functions hooked in to willydevtheme_before_content
+			 * Functions hooked in to wpcotestheme_before_content
 			 *
-			 * @hooked willydevtheme_primary_navigation - 10
-			 * @hooked willydevtheme_header_widget_region - 20
-			 * @hooked willydevtheme_breadcrumb or woocommerce_breadcrumb - 30
+			 * @hooked wpcotestheme_primary_navigation - 10
+			 * @hooked wpcotestheme_header_widget_region - 20
+			 * @hooked wpcotestheme_breadcrumb or woocommerce_breadcrumb - 30
 			 */
-			do_action( 'willydevtheme_before_content' );
+			do_action( 'wpcotestheme_before_content' );
 			?>
 
 			<div id="content" class="site-content" tabindex="-1">
 
-				<?php do_action( 'willydevtheme_content_top' ); ?>
+				<?php do_action( 'wpcotestheme_content_top' ); ?>
 				

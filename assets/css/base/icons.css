@@ -6006,8 +6006,8 @@
   font-style: normal;
   font-weight: 400;
   font-display: block;
-  src: url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-brands-400.eot");
-  src: url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemefonts/fa-brands-400.woff2") format("woff2"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemefonts/fa-brands-400.woff") format("woff"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-brands-400.ttf") format("truetype"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-brands-400.svg#fontawesome") format("svg");
+  src: url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\wpcotesthemeimages/fa-brands-400.eot");
+  src: url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\wpcotesthemeimages/fa-brands-400.eot?#iefix") format("embedded-opentype"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\wpcotesthemefonts/fa-brands-400.woff2") format("woff2"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\wpcotesthemefonts/fa-brands-400.woff") format("woff"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\wpcotesthemeimages/fa-brands-400.ttf") format("truetype"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\wpcotesthemeimages/fa-brands-400.svg#fontawesome") format("svg");
 }
 .fab {
   font-family: "Font Awesome 5 Brands";
@@ -6023,8 +6023,8 @@
   font-style: normal;
   font-weight: 900;
   font-display: block;
-  src: url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-solid-900.eot");
-  src: url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemefonts/fa-solid-900.woff2") format("woff2"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemefonts/fa-solid-900.woff") format("woff"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-solid-900.ttf") format("truetype"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\willydevthemeimages/fa-solid-900.svg#fontawesome") format("svg");
+  src: url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\wpcotesthemeimages/fa-solid-900.eot");
+  src: url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\wpcotesthemeimages/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\wpcotesthemefonts/fa-solid-900.woff2") format("woff2"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\wpcotesthemefonts/fa-solid-900.woff") format("woff"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\wpcotesthemeimages/fa-solid-900.ttf") format("truetype"), url("c:\Users\Usuario\Local Sites\brandketings\app\public\wp-content\themes\wpcotesthemeimages/fa-solid-900.svg#fontawesome") format("svg");
 }
 .fa,
 .fas {
@@ -6233,7 +6233,7 @@ input[type=submit].loading::after,
   padding-left: 2.617924em;
 }
 
-.willydevtheme-handheld-footer-bar ul li > a::before {
+.wpcotestheme-handheld-footer-bar ul li > a::before {
   position: absolute;
   top: 0;
   right: 0;
@@ -6258,20 +6258,20 @@ input[type=submit].loading::after,
   -moz-osx-font-smoothing: grayscale;
 }
 
-.willydevtheme-handheld-footer-bar ul li.search > a::before {
+.wpcotestheme-handheld-footer-bar ul li.search > a::before {
   content: "\f002";
 }
 
-.willydevtheme-handheld-footer-bar ul li.my-account > a::before {
+.wpcotestheme-handheld-footer-bar ul li.my-account > a::before {
   content: "\f007";
 }
 
-.willydevtheme-handheld-footer-bar ul li.cart > a::before {
+.wpcotestheme-handheld-footer-bar ul li.cart > a::before {
   content: "\f291";
 }
 
-.willydevtheme-product-pagination a[rel=prev]::after,
-.willydevtheme-product-pagination a[rel=next]::after {
+.wpcotestheme-product-pagination a[rel=prev]::after,
+.wpcotestheme-product-pagination a[rel=next]::after {
   display: inline-block;
   font-family: "Font Awesome 5 Free";
   font-style: normal;
@@ -6285,12 +6285,12 @@ input[type=submit].loading::after,
   -moz-osx-font-smoothing: grayscale;
 }
 
-.willydevtheme-product-pagination a[rel=prev]::after {
+.wpcotestheme-product-pagination a[rel=prev]::after {
   content: "\f104";
   padding-right: 1.41575em;
 }
 
-.willydevtheme-product-pagination a[rel=next]::after {
+.wpcotestheme-product-pagination a[rel=next]::after {
   content: "\f105";
   padding-left: 1.41575em;
 }

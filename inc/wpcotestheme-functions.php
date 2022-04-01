@@ -1,15 +1,15 @@
 <?php
 /**
- * willydevtheme functions.
+ * wpcotestheme functions.
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
-if ( ! function_exists( 'willydevtheme_is_woocommerce_activated' ) ) {
+if ( ! function_exists( 'wpcotestheme_is_woocommerce_activated' ) ) {
 	/**
 	 * Query WooCommerce activation
 	 */
-	function willydevtheme_is_woocommerce_activated() {
+	function wpcotestheme_is_woocommerce_activated() {
 		return class_exists( 'WooCommerce' ) ? true : false;
 	}
 }
@@ -25,7 +25,7 @@ if ( ! function_exists( 'willydevtheme_is_woocommerce_activated' ) ) {
  *
  * @return string|bool False on failure, the result of the shortcode on success.
  */
-function willydevtheme_do_shortcode( $tag, array $atts = array(), $content = null ) {
+function wpcotestheme_do_shortcode( $tag, array $atts = array(), $content = null ) {
 	global $shortcode_tags;
 
 	if ( ! isset( $shortcode_tags[ $tag ] ) ) {
@@ -37,25 +37,25 @@ function willydevtheme_do_shortcode( $tag, array $atts = array(), $content = nul
 
 /**
  * Get the content background color
- * Accounts for the willydevtheme Designer and willydevtheme Powerpack content background option.
+ * Accounts for the wpcotestheme Designer and wpcotestheme Powerpack content background option.
  *
  * @since  1.6.0
  * @return string the background color
  */
-function willydevtheme_get_content_background_color() {
-	if ( class_exists( 'willydevtheme_Designer' ) ) {
+function wpcotestheme_get_content_background_color() {
+	if ( class_exists( 'WPCotesTheme_Designer' ) ) {
 		$content_bg_color = get_theme_mod( 'sd_content_background_color' );
 		$content_frame    = get_theme_mod( 'sd_fixed_width' );
 	}
 
-	if ( class_exists( 'willydevtheme_Powerpack' ) ) {
+	if ( class_exists( 'WPCotesTheme_Powerpack' ) ) {
 		$content_bg_color = get_theme_mod( 'sp_content_frame_background' );
 		$content_frame    = get_theme_mod( 'sp_content_frame' );
 	}
 
 	$bg_color = str_replace( '#', '', get_theme_mod( 'background_color' ) );
 
-	if ( class_exists( 'willydevtheme_Powerpack' ) || class_exists( 'willydevtheme_Designer' ) ) {
+	if ( class_exists( 'WPCotesTheme_Powerpack' ) || class_exists( 'WPCotesTheme_Designer' ) ) {
 		if ( $content_bg_color && ( 'true' === $content_frame || 'frame' === $content_frame ) ) {
 			$bg_color = str_replace( '#', '', $content_bg_color );
 		}
@@ -65,12 +65,12 @@ function willydevtheme_get_content_background_color() {
 }
 
 /**
- * Apply inline style to the willydevtheme banner.
+ * Apply inline style to the wpcotestheme banner.
  *
  * @uses  get_header_image()
  * @since  2.0.0
  */
-function willydevtheme_banner_styles() {
+function wpcotestheme_banner_styles() {
 	$is_header_image = get_header_image();
 	$header_bg_image = '';
 
@@ -84,7 +84,7 @@ function willydevtheme_banner_styles() {
 		$styles['background-image'] = $header_bg_image;
 	}
 
-	$styles = apply_filters( 'willydevtheme_header_styles', $styles );
+	$styles = apply_filters( 'wpcotestheme_header_styles', $styles );
 
 	foreach ( $styles as $style => $value ) {
 		echo esc_attr( $style . ': ' . $value . '; ' );
@@ -92,12 +92,12 @@ function willydevtheme_banner_styles() {
 }
 
 /**
- * Apply inline style to the willydevtheme homepage content.
+ * Apply inline style to the wpcotestheme homepage content.
  *
  * @uses  get_the_post_thumbnail_url()
  * @since  2.2.0
  */
-function willydevtheme_homepage_content_styles() {
+function wpcotestheme_homepage_content_styles() {
 	$featured_image   = get_the_post_thumbnail_url( get_the_ID() );
 	$background_image = '';
 
@@ -111,7 +111,7 @@ function willydevtheme_homepage_content_styles() {
 		$styles['background-image'] = $background_image;
 	}
 
-	$styles = apply_filters( 'willydevtheme_homepage_content_styles', $styles );
+	$styles = apply_filters( 'wpcotestheme_homepage_content_styles', $styles );
 
 	foreach ( $styles as $style => $value ) {
 		echo esc_attr( $style . ': ' . $value . '; ' );
@@ -170,7 +170,7 @@ function is_color_light( $hex ) {
  * @return string           Brightened/darkened color (hex by default, rgba if opacity is set to a valid value below 1).
  * @since  1.0.0
  */
-function willydevtheme_adjust_color_brightness( $hex, $steps, $opacity = 1 ) {
+function wpcotestheme_adjust_color_brightness( $hex, $steps, $opacity = 1 ) {
 	// Steps should be between -255 and 255. Negative = darker, positive = lighter.
 	$steps = max( -255, min( 255, $steps ) );
 
@@ -200,7 +200,7 @@ function willydevtheme_adjust_color_brightness( $hex, $steps, $opacity = 1 ) {
  * @param array $setting the setting object.
  * @since  1.3.0
  */
-function willydevtheme_sanitize_choices( $input, $setting ) {
+function wpcotestheme_sanitize_choices( $input, $setting ) {
 	// Ensure input is a slug.
 	$input = sanitize_key( $input );
 
@@ -221,7 +221,7 @@ function willydevtheme_sanitize_choices( $input, $setting ) {
  * @return bool Whether the checkbox is checked.
  * @since  1.5.0
  */
-function willydevtheme_sanitize_checkbox( $checked ) {
+function wpcotestheme_sanitize_checkbox( $checked ) {
 	return ( ( isset( $checked ) && true === $checked ) ? true : false );
 }
 
@@ -232,9 +232,9 @@ function willydevtheme_sanitize_checkbox( $checked ) {
  *
  * @return bool
  */
-function willydevtheme_can_show_post_thumbnail() {
+function wpcotestheme_can_show_post_thumbnail() {
 	return apply_filters(
-		'willydevtheme_can_show_post_thumbnail',
+		'wpcotestheme_can_show_post_thumbnail',
 		! post_password_required() && ! is_attachment() && has_post_thumbnail()
 	);
 }
@@ -251,7 +251,7 @@ function willydevtheme_can_show_post_thumbnail() {
  *
  * @return bool Returns true if a block was located & printed, otherwise false.
  */
-function willydevtheme_print_first_instance_of_block( $block_name, $content = null, $instances = 1 ) {
+function wpcotestheme_print_first_instance_of_block( $block_name, $content = null, $instances = 1 ) {
 	$instances_count = 0;
 	$blocks_content  = '';
 
@@ -305,7 +305,7 @@ function willydevtheme_print_first_instance_of_block( $block_name, $content = nu
 	/**
  * Debug logs with var_dump php
  */
-function willydevtheme_dump_log( $var ) {
+function wpcotestheme_dump_log( $var ) {
 	$output = WP_CONTENT_DIR . '/debug.log';
 	ob_start();
 	var_dump( $var );
@@ -318,7 +318,7 @@ function willydevtheme_dump_log( $var ) {
 /**
  * Debug log with print_r php
  */
-function willydevtheme_print_log( $var ) {
+function wpcotestheme_print_log( $var ) {
 	$output = WP_CONTENT_DIR . '/debug.log';
 	$content = print_r( $var, true );
 	error_log( $content, 0, $output );

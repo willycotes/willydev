@@ -1,22 +1,20 @@
 <?php
 /**
- * willydevtheme Class
+ * wpcotestheme Class
  *
- * @package  willydevtheme
+ * @package  wpcotestheme
  */
-
-use Classes\WdvpPostType;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'willydevtheme' ) ) :
+if ( ! class_exists( 'WPCotesTheme' ) ) :
 
 	/**
-	 * The main willydevtheme class
+	 * The main wpcotestheme class
 	 */
-	class willydevtheme {
+	class WPCotesTheme {
 
 		/**
 		 * Setup class.
@@ -26,7 +24,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		public function __construct() {
 			add_action( 'after_setup_theme', array( $this, 'setup' ) );
 			add_action( 'widgets_init', array( $this, 'widgets_init' ) );
-			// add_filter( 'is_active_sidebar', array( $this, 'deactivate_sidebar_willydevtheme'), 10, 2 );
+			// add_filter( 'is_active_sidebar', array( $this, 'deactivate_sidebar_wpcotestheme'), 10, 2 );
 			add_action( 'init', array( $this, 'register_post_types' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 10 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'child_scripts' ), 30 ); // After WooCommerce.
@@ -51,14 +49,14 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 			 * Note: the first-loaded translation file overrides any following ones if the same translation is present.
 			 */
 
-			// Loads wp-content/languages/themes/willydevtheme-it_IT.mo.
-			load_theme_textdomain( 'willydevtheme', trailingslashit( WP_LANG_DIR ) . 'themes' );
+			// Loads wp-content/languages/themes/wpcotestheme-it_IT.mo.
+			load_theme_textdomain( 'wpcotestheme', trailingslashit( WP_LANG_DIR ) . 'themes' );
 
 			// Loads wp-content/themes/child-theme-name/languages/it_IT.mo.
-			load_theme_textdomain( 'willydevtheme', get_stylesheet_directory() . '/languages' );
+			load_theme_textdomain( 'wpcotestheme', get_stylesheet_directory() . '/languages' );
 
-			// Loads wp-content/themes/willydevtheme/languages/it_IT.mo.
-			load_theme_textdomain( 'willydevtheme', get_template_directory() . '/languages' );
+			// Loads wp-content/themes/wpcotestheme/languages/it_IT.mo.
+			load_theme_textdomain( 'wpcotestheme', get_template_directory() . '/languages' );
 
 			/**
 			 * Add default posts and comments RSS feed links to head.
@@ -92,7 +90,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 			add_theme_support(
 				'custom-logo',
 				apply_filters(
-					'willydevtheme_custom_logo_args',
+					'wpcotestheme_custom_logo_args',
 					array(
 						'height'      => 110,
 						'width'       => 470,
@@ -113,11 +111,11 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 			 */
 			register_nav_menus(
 				apply_filters(
-					'willydevtheme_register_nav_menus',
+					'wpcotestheme_register_nav_menus',
 					array(
-						'primary'   => __( 'Primary Menu', 'willydevtheme' ),
-						'secondary' => __( 'Secondary Menu', 'willydevtheme' ),
-						'handheld'  => __( 'Handheld Menu', 'willydevtheme' ),
+						'primary'   => __( 'Primary Menu', 'wpcotestheme' ),
+						'secondary' => __( 'Secondary Menu', 'wpcotestheme' ),
+						'handheld'  => __( 'Handheld Menu', 'wpcotestheme' ),
 					)
 				)
 			);
@@ -129,7 +127,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 			add_theme_support(
 				'html5',
 				apply_filters(
-					'willydevtheme_html5_args',
+					'wpcotestheme_html5_args',
 					array(
 						'search-form',
 						'comment-form',
@@ -175,27 +173,27 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 				'editor-font-sizes',
 				array(
 					array(
-						'name' => __( 'Small', 'willydevtheme' ),
+						'name' => __( 'Small', 'wpcotestheme' ),
 						'size' => 14,
 						'slug' => 'small',
 					),
 					array(
-						'name' => __( 'Normal', 'willydevtheme' ),
+						'name' => __( 'Normal', 'wpcotestheme' ),
 						'size' => 16,
 						'slug' => 'normal',
 					),
 					array(
-						'name' => __( 'Medium', 'willydevtheme' ),
+						'name' => __( 'Medium', 'wpcotestheme' ),
 						'size' => 23,
 						'slug' => 'medium',
 					),
 					array(
-						'name' => __( 'Large', 'willydevtheme' ),
+						'name' => __( 'Large', 'wpcotestheme' ),
 						'size' => 26,
 						'slug' => 'large',
 					),
 					array(
-						'name' => __( 'Huge', 'willydevtheme' ),
+						'name' => __( 'Huge', 'wpcotestheme' ),
 						'size' => 37,
 						'slug' => 'huge',
 					),
@@ -220,19 +218,19 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		 */
 		public function widgets_init() {
 			$sidebar_args['sidebar'] = array(
-				'name'        => __( 'Sidebar', 'willydevtheme' ),
+				'name'        => __( 'Sidebar', 'wpcotestheme' ),
 				'id'          => 'sidebar',
 				'description' => '',
 			);
 
 			$sidebar_args['header'] = array(
-				'name'        => __( 'Below Header', 'willydevtheme' ),
+				'name'        => __( 'Below Header', 'wpcotestheme' ),
 				'id'          => 'header-1',
-				'description' => __( 'Widgets added to this region will appear beneath the header and above the main content.', 'willydevtheme' ),
+				'description' => __( 'Widgets added to this region will appear beneath the header and above the main content.', 'wpcotestheme' ),
 			);
 
-			$rows    = intval( apply_filters( 'willydevtheme_footer_widget_rows', 1 ) );
-			$regions = intval( apply_filters( 'willydevtheme_footer_widget_columns', 4 ) );
+			$rows    = intval( apply_filters( 'wpcotestheme_footer_widget_rows', 1 ) );
+			$regions = intval( apply_filters( 'wpcotestheme_footer_widget_columns', 4 ) );
 
 			for ( $row = 1; $row <= $rows; $row++ ) {
 				for ( $region = 1; $region <= $regions; $region++ ) {
@@ -241,16 +239,16 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 
 					if ( 1 === $rows ) {
 						/* translators: 1: column number */
-						$footer_region_name = sprintf( __( 'Footer Column %1$d', 'willydevtheme' ), $region );
+						$footer_region_name = sprintf( __( 'Footer Column %1$d', 'wpcotestheme' ), $region );
 
 						/* translators: 1: column number */
-						$footer_region_description = sprintf( __( 'Widgets added here will appear in column %1$d of the footer.', 'willydevtheme' ), $region );
+						$footer_region_description = sprintf( __( 'Widgets added here will appear in column %1$d of the footer.', 'wpcotestheme' ), $region );
 					} else {
 						/* translators: 1: row number, 2: column number */
-						$footer_region_name = sprintf( __( 'Footer Row %1$d - Column %2$d', 'willydevtheme' ), $row, $region );
+						$footer_region_name = sprintf( __( 'Footer Row %1$d - Column %2$d', 'wpcotestheme' ), $row, $region );
 
 						/* translators: 1: column number, 2: row number */
-						$footer_region_description = sprintf( __( 'Widgets added here will appear in column %1$d of footer row %2$d.', 'willydevtheme' ), $region, $row );
+						$footer_region_description = sprintf( __( 'Widgets added here will appear in column %1$d of footer row %2$d.', 'wpcotestheme' ), $region, $row );
 					}
 
 					$sidebar_args[ $footer ] = array(
@@ -261,7 +259,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 				}
 			}
 
-			$sidebar_args = apply_filters( 'willydevtheme_sidebar_args', $sidebar_args );
+			$sidebar_args = apply_filters( 'wpcotestheme_sidebar_args', $sidebar_args );
 
 			foreach ( $sidebar_args as $sidebar => $args ) {
 				$widget_tags = array(
@@ -274,15 +272,15 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 				/**
 				 * Dynamically generated filter hooks. Allow changing widget wrapper and title tags. See the list below.
 				 *
-				 * 'willydevtheme_header_widget_tags'
-				 * 'willydevtheme_sidebar_widget_tags'
+				 * 'wpcotestheme_header_widget_tags'
+				 * 'wpcotestheme_sidebar_widget_tags'
 				 *
-				 * 'willydevtheme_footer_1_widget_tags'
-				 * 'willydevtheme_footer_2_widget_tags'
-				 * 'willydevtheme_footer_3_widget_tags'
-				 * 'willydevtheme_footer_4_widget_tags'
+				 * 'wpcotestheme_footer_1_widget_tags'
+				 * 'wpcotestheme_footer_2_widget_tags'
+				 * 'wpcotestheme_footer_3_widget_tags'
+				 * 'wpcotestheme_footer_4_widget_tags'
 				 */
-				$filter_hook = sprintf( 'willydevtheme_%s_widget_tags', $sidebar );
+				$filter_hook = sprintf( 'wpcotestheme_%s_widget_tags', $sidebar );
 				$widget_tags = apply_filters( $filter_hook, $widget_tags );
 
 				if ( is_array( $widget_tags ) ) {
@@ -294,7 +292,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		/**
 		 * Deactivate sidebar in pages
 		 */
-		// public function deactivate_sidebar_willydevtheme( $is_active_sidebar, $index ) {
+		// public function deactivate_sidebar_wpcotestheme( $is_active_sidebar, $index ) {
 		// 	if ( is_page() && 'sidebar' === $index ) {
 		// 		return false;
 		// 	}
@@ -306,7 +304,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		 * Register Custom Post Type
 		 */
 		public function register_post_types() {
-			WdvpPostType::register_post_type( 'new', 'news', array( 'menu_icon' => 'dashicons-admin-site-alt3' ) );
+			WPCotesTheme_Post_Type::register_post_type( 'new', 'news', array( 'menu_icon' => 'dashicons-admin-site-alt3' ) );
 		}
 
 		/**
@@ -315,29 +313,29 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		 * @since  1.0.0
 		 */
 		public function scripts() {
-			global $willydevtheme_version;
+			global $wpcotestheme_version;
 
 			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 			/**
 			 * Styles
 			 */
-			wp_enqueue_style( 'willydevtheme-style', get_template_directory_uri() . '/style' . $suffix . '.css', array(), $willydevtheme_version );
+			wp_enqueue_style( 'wpcotestheme-style', get_template_directory_uri() . '/style' . $suffix . '.css', array(), $wpcotestheme_version );
 
-			wp_enqueue_style( 'willydevtheme-icons', get_template_directory_uri() . '/assets/css/base/icons' . $suffix . '.css', array(), $willydevtheme_version );
+			wp_enqueue_style( 'wpcotestheme-icons', get_template_directory_uri() . '/assets/css/base/icons' . $suffix . '.css', array(), $wpcotestheme_version );
 
 			/**
 			 * Scripts
 			 */
-			wp_enqueue_script( 'willydevtheme-navigation', get_template_directory_uri() . '/assets/js/navigation' . $suffix . '.js', array(), $willydevtheme_version, true );
+			wp_enqueue_script( 'wpcotestheme-navigation', get_template_directory_uri() . '/assets/js/navigation' . $suffix . '.js', array(), $wpcotestheme_version, true );
 
 			if ( has_nav_menu( 'handheld' ) ) {
-				$willydevtheme_l10n = array(
-					'expand'   => __( 'Expand child menu', 'willydevtheme' ),
-					'collapse' => __( 'Collapse child menu', 'willydevtheme' ),
+				$wpcotestheme_l10n = array(
+					'expand'   => __( 'Expand child menu', 'wpcotestheme' ),
+					'collapse' => __( 'Collapse child menu', 'wpcotestheme' ),
 				);
 
-				wp_localize_script( 'willydevtheme-navigation', 'willydevthemeScreenReaderText', $willydevtheme_l10n );
+				wp_localize_script( 'wpcotestheme-navigation', 'wpcotesthemeScreenReaderText', $wpcotestheme_l10n );
 			}
 
 			if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -351,10 +349,10 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		 * @since 2.5.0
 		 */
 		public function block_assets() {
-			global $willydevtheme_version;
+			global $wpcotestheme_version;
 
 			// Styles.
-			wp_enqueue_style( 'willydevtheme-gutenberg-blocks', get_template_directory_uri() . '/assets/css/base/gutenberg-blocks.css', array(), $willydevtheme_version );
+			wp_enqueue_style( 'wpcotestheme-gutenberg-blocks', get_template_directory_uri() . '/assets/css/base/gutenberg-blocks.css', array(), $wpcotestheme_version );
 		}
 
 		/**
@@ -367,7 +365,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		public function child_scripts() {
 			if ( is_child_theme() ) {
 				$child_theme = wp_get_theme( get_stylesheet() );
-				wp_enqueue_style( 'willydevtheme-child-style', get_stylesheet_uri(), array(), $child_theme->get( 'Version' ) );
+				wp_enqueue_style( 'wpcotestheme-child-style', get_stylesheet_uri(), array(), $child_theme->get( 'Version' ) );
 			}
 		}
 
@@ -391,18 +389,18 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		public function body_classes( $classes ) {
 			// add class sidebar activate
 			if ( is_active_sidebar( 'sidebar' ) ) {
-				$classes[] = 'willydevtheme-sidebar';
+				$classes[] = 'wpcotestheme-sidebar';
 			}
 
 			// If our main sidebar doesn't contain widgets, adjust the layout to be full-width.
 			if ( ! is_active_sidebar( 'sidebar' ) ) {
-				$classes[] = 'willydevtheme-full-width-content';
+				$classes[] = 'wpcotestheme-full-width-content';
 			}
 
 			// Remove sidebar body class in templates full width.
 			if ( is_page_template( 'layouts/fullwidth.php' ) || is_page_template( 'layouts/clean-fullwidth.php' ) ) {
-				// Remove `willydevtheme-sidebar` body class.
-				$key = array_search( 'willydevtheme-sidebar', $classes, true );
+				// Remove `wpcotestheme-sidebar` body class.
+				$key = array_search( 'wpcotestheme-sidebar', $classes, true );
 				if ( false !== $key ) {
 					unset( $classes[ $key ] );
 				}
@@ -415,12 +413,12 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 
 			// Add class when Secondary Navigation is in use.
 			if ( has_nav_menu( 'secondary' ) ) {
-				$classes[] = 'willydevtheme-secondary-navigation';
+				$classes[] = 'wpcotestheme-secondary-navigation';
 			}
 
 			// Add class if align-wide is supported.
 			if ( current_theme_supports( 'align-wide' ) ) {
-				$classes[] = 'willydevtheme-align-wide';
+				$classes[] = 'wpcotestheme-align-wide';
 			}
 
 			return $classes;
@@ -432,23 +430,23 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 		 * Se le agergó un id a la etiqueta nav, y el aria-label se agrego uno personalizado.
 		 */
 		public function navigation_markup_template() {
-			$template  = '<nav id="post-navigation" class="navigation %1$s" role="navigation" aria-label="' . esc_html__( 'Post Navigation', 'willydevtheme' ) . '">';
+			$template  = '<nav id="post-navigation" class="navigation %1$s" role="navigation" aria-label="' . esc_html__( 'Post Navigation', 'wpcotestheme' ) . '">';
 			$template .= '<h2 class="screen-reader-text">%2$s</h2>';
 			$template .= '<div class="nav-links">%3$s</div>';
 			$template .= '</nav>';
 
-			return apply_filters( 'willydevtheme_navigation_markup_template', $template );
+			return apply_filters( 'wpcotestheme_navigation_markup_template', $template );
 		}
 	
 		/**
 		 * Add styles for embeds
 		 */
 		public function print_embed_styles() {
-			global $willydevtheme_version;
+			global $wpcotestheme_version;
 
-			wp_enqueue_style( 'source-sans-pro', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,700,900', array(), $willydevtheme_version );
-			$accent_color     = get_theme_mod( 'willydevtheme_accent_color' );
-			$background_color = willydevtheme_get_content_background_color();
+			wp_enqueue_style( 'source-sans-pro', '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,700,900', array(), $wpcotestheme_version );
+			$accent_color     = get_theme_mod( 'wpcotestheme_accent_color' );
+			$background_color = wpcotestheme_get_content_background_color();
 			?>
 			<style type="text/css">
 				.wp-embed {
@@ -456,7 +454,7 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 					border: 0 !important;
 					border-radius: 3px !important;
 					font-family: "Source Sans Pro", "Open Sans", sans-serif !important;
-					background-color: <?php echo esc_html( willydevtheme_adjust_color_brightness( $background_color, -7 ) ); ?> !important;
+					background-color: <?php echo esc_html( wpcotestheme_adjust_color_brightness( $background_color, -7 ) ); ?> !important;
 				}
 
 				.wp-embed .wp-embed-featured-image {
@@ -490,4 +488,4 @@ if ( ! class_exists( 'willydevtheme' ) ) :
 	}
 endif;
 
-return new willydevtheme();
+return new WPCotesTheme();

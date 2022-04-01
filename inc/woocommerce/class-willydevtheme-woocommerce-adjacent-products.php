@@ -1,8 +1,8 @@
 <?php
 /**
- * willydevtheme WooCommerce Adjacent Products Class
+ * wpcotestheme WooCommerce Adjacent Products Class
  *
- * @package  willydevtheme
+ * @package  wpcotestheme
  * @since    2.4.3
  */
 
@@ -10,12 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'willydevtheme_WooCommerce_Adjacent_Products' ) ) :
+if ( ! class_exists( 'WPCotesTheme_WooCommerce_Adjacent_Products' ) ) :
 
 	/**
-	 * The willydevtheme WooCommerce Adjacent Products Class
+	 * The wpcotestheme WooCommerce Adjacent Products Class
 	 */
-	class willydevtheme_WooCommerce_Adjacent_Products {
+	class WPCotesTheme_WooCommerce_Adjacent_Products {
 
 		/**
 		 * The current product ID.
@@ -179,7 +179,7 @@ if ( ! class_exists( 'willydevtheme_WooCommerce_Adjacent_Products' ) ) :
 				}
 			}
 
-			$products = wc_get_products( apply_filters( 'willydevtheme_woocommerce_adjacent_query_args', $args ) );
+			$products = wc_get_products( apply_filters( 'wpcotestheme_woocommerce_adjacent_query_args', $args ) );
 
 			// At least 2 results are required, otherwise previous/next will be the same.
 			if ( ! empty( $products ) && count( $products ) >= 2 ) {

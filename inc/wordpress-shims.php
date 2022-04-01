@@ -2,7 +2,7 @@
 /**
  * WordPress shims.
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
 if ( ! function_exists( 'wp_body_open' ) ) {

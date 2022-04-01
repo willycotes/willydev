@@ -3,31 +3,31 @@ var __webpack_exports__ = {};
 /*!**********************************************!*\
   !*** ./js/woocommerce/sticky-add-to-cart.js ***!
   \**********************************************/
-/*global willydevtheme_sticky_add_to_cart_params */
+/*global wpcotestheme_sticky_add_to_cart_params */
 (function () {
   // eslint-disable-next-line @wordpress/no-global-event-listener
   document.addEventListener('DOMContentLoaded', function () {
-    var stickyAddToCart = document.getElementsByClassName('willydevtheme-sticky-add-to-cart');
+    var stickyAddToCart = document.getElementsByClassName('wpcotestheme-sticky-add-to-cart');
 
     if (!stickyAddToCart.length) {
       return;
     } // eslint-disable-next-line camelcase
 
 
-    if (typeof willydevtheme_sticky_add_to_cart_params === 'undefined') {
+    if (typeof wpcotestheme_sticky_add_to_cart_params === 'undefined') {
       return;
     }
 
-    var trigger = document.getElementsByClassName(willydevtheme_sticky_add_to_cart_params.trigger_class);
+    var trigger = document.getElementsByClassName(wpcotestheme_sticky_add_to_cart_params.trigger_class);
 
     if (trigger.length > 0) {
       var stickyAddToCartToggle = function stickyAddToCartToggle() {
         if (trigger[0].getBoundingClientRect().top + trigger[0].scrollHeight < 0) {
-          stickyAddToCart[0].classList.add('willydevtheme-sticky-add-to-cart--slideInDown');
-          stickyAddToCart[0].classList.remove('willydevtheme-sticky-add-to-cart--slideOutUp');
-        } else if (stickyAddToCart[0].classList.contains('willydevtheme-sticky-add-to-cart--slideInDown')) {
-          stickyAddToCart[0].classList.add('willydevtheme-sticky-add-to-cart--slideOutUp');
-          stickyAddToCart[0].classList.remove('willydevtheme-sticky-add-to-cart--slideInDown');
+          stickyAddToCart[0].classList.add('wpcotestheme-sticky-add-to-cart--slideInDown');
+          stickyAddToCart[0].classList.remove('wpcotestheme-sticky-add-to-cart--slideOutUp');
+        } else if (stickyAddToCart[0].classList.contains('wpcotestheme-sticky-add-to-cart--slideInDown')) {
+          stickyAddToCart[0].classList.add('wpcotestheme-sticky-add-to-cart--slideOutUp');
+          stickyAddToCart[0].classList.remove('wpcotestheme-sticky-add-to-cart--slideInDown');
         }
       };
 
@@ -49,7 +49,7 @@ var __webpack_exports__ = {};
 
         if (product) {
           if (!product.classList.contains('product-type-simple') && !product.classList.contains('product-type-external')) {
-            var selectOptions = document.getElementsByClassName('willydevtheme-sticky-add-to-cart__content-button');
+            var selectOptions = document.getElementsByClassName('wpcotestheme-sticky-add-to-cart__content-button');
             selectOptions[0].addEventListener('click', function (event) {
               event.preventDefault();
               document.getElementById('product-' + productId).scrollIntoView();

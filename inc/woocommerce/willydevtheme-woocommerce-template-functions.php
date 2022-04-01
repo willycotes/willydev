@@ -2,23 +2,23 @@
 /**
  * WooCommerce Template Functions.
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
-if ( ! function_exists( 'willydevtheme_woo_cart_available' ) ) {
+if ( ! function_exists( 'wpcotestheme_woo_cart_available' ) ) {
 	/**
 	 * Validates whether the Woo Cart instance is available in the request
 	 *
 	 * @since 2.6.0
 	 * @return bool
 	 */
-	function willydevtheme_woo_cart_available() {
+	function wpcotestheme_woo_cart_available() {
 		$woo = WC();
 		return $woo instanceof \WooCommerce && $woo->cart instanceof \WC_Cart;
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_before_content' ) ) {
+if ( ! function_exists( 'wpcotestheme_before_content' ) ) {
 	/**
 	 * Before Content
 	 * Wraps all WooCommerce content in wrappers which match the theme markup
@@ -26,7 +26,7 @@ if ( ! function_exists( 'willydevtheme_before_content' ) ) {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	function willydevtheme_before_content() {
+	function wpcotestheme_before_content() {
 		?>
 		<div id="primary" class="content-area">
 			<main id="main" class="site-main" role="main">
@@ -34,7 +34,7 @@ if ( ! function_exists( 'willydevtheme_before_content' ) ) {
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_after_content' ) ) {
+if ( ! function_exists( 'wpcotestheme_after_content' ) ) {
 	/**
 	 * After Content
 	 * Closes the wrapping divs
@@ -42,17 +42,17 @@ if ( ! function_exists( 'willydevtheme_after_content' ) ) {
 	 * @since   1.0.0
 	 * @return  void
 	 */
-	function willydevtheme_after_content() {
+	function wpcotestheme_after_content() {
 		?>
 			</main><!-- #main -->
 		</div><!-- #primary -->
 
 		<?php
-		do_action( 'willydevtheme_sidebar' );
+		do_action( 'wpcotestheme_sidebar' );
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_cart_link_fragment' ) ) {
+if ( ! function_exists( 'wpcotestheme_cart_link_fragment' ) ) {
 	/**
 	 * Cart Fragments
 	 * Ensure cart contents update when products are added to the cart via AJAX
@@ -60,22 +60,22 @@ if ( ! function_exists( 'willydevtheme_cart_link_fragment' ) ) {
 	 * @param  array $fragments Fragments to refresh via AJAX.
 	 * @return array            Fragments to refresh via AJAX
 	 */
-	function willydevtheme_cart_link_fragment( $fragments ) {
+	function wpcotestheme_cart_link_fragment( $fragments ) {
 		global $woocommerce;
 
 		ob_start();
-		willydevtheme_cart_link();
+		wpcotestheme_cart_link();
 		$fragments['a.cart-contents'] = ob_get_clean();
 
 		ob_start();
-		willydevtheme_handheld_footer_bar_cart_link();
+		wpcotestheme_handheld_footer_bar_cart_link();
 		$fragments['a.footer-cart-contents'] = ob_get_clean();
 
 		return $fragments;
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_cart_link' ) ) {
+if ( ! function_exists( 'wpcotestheme_cart_link' ) ) {
 	/**
 	 * Cart Link
 	 * Displayed a link to the cart including the number of items present and the cart total
@@ -83,29 +83,29 @@ if ( ! function_exists( 'willydevtheme_cart_link' ) ) {
 	 * @return void
 	 * @since  1.0.0
 	 */
-	function willydevtheme_cart_link() {
-		if ( ! willydevtheme_woo_cart_available() ) {
+	function wpcotestheme_cart_link() {
+		if ( ! wpcotestheme_woo_cart_available() ) {
 			return;
 		}
 		?>
-			<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'willydevtheme' ); ?>">
+			<a class="cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>" title="<?php esc_attr_e( 'View your shopping cart', 'wpcotestheme' ); ?>">
 				<?php /* translators: %d: number of items in cart */ ?>
-				<?php echo wp_kses_post( WC()->cart->get_cart_subtotal() ); ?> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'willydevtheme' ), WC()->cart->get_cart_contents_count() ) ); ?></span>
+				<?php echo wp_kses_post( WC()->cart->get_cart_subtotal() ); ?> <span class="count"><?php echo wp_kses_data( sprintf( _n( '%d item', '%d items', WC()->cart->get_cart_contents_count(), 'wpcotestheme' ), WC()->cart->get_cart_contents_count() ) ); ?></span>
 			</a>
 		<?php
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_product_search' ) ) {
+if ( ! function_exists( 'wpcotestheme_product_search' ) ) {
 	/**
 	 * Display Product Search
 	 *
 	 * @since  1.0.0
-	 * @uses  willydevtheme_is_woocommerce_activated() check if WooCommerce is activated
+	 * @uses  wpcotestheme_is_woocommerce_activated() check if WooCommerce is activated
 	 * @return void
 	 */
-	function willydevtheme_product_search() {
-		if ( willydevtheme_is_woocommerce_activated() ) {
+	function wpcotestheme_product_search() {
+		if ( wpcotestheme_is_woocommerce_activated() ) {
 			?>
 			<div class="site-search">
 				<?php the_widget( 'WC_Widget_Product_Search', 'title=' ); ?>
@@ -115,16 +115,16 @@ if ( ! function_exists( 'willydevtheme_product_search' ) ) {
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_header_cart' ) ) {
+if ( ! function_exists( 'wpcotestheme_header_cart' ) ) {
 	/**
 	 * Display Header Cart
 	 *
 	 * @since  1.0.0
-	 * @uses  willydevtheme_is_woocommerce_activated() check if WooCommerce is activated
+	 * @uses  wpcotestheme_is_woocommerce_activated() check if WooCommerce is activated
 	 * @return void
 	 */
-	function willydevtheme_header_cart() {
-		if ( willydevtheme_is_woocommerce_activated() ) {
+	function wpcotestheme_header_cart() {
+		if ( wpcotestheme_is_woocommerce_activated() ) {
 			if ( is_cart() ) {
 				$class = 'current-menu-item';
 			} else {
@@ -133,7 +133,7 @@ if ( ! function_exists( 'willydevtheme_header_cart' ) ) {
 			?>
 		<ul id="site-header-cart" class="site-header-cart menu">
 			<li class="<?php echo esc_attr( $class ); ?>">
-				<?php willydevtheme_cart_link(); ?>
+				<?php wpcotestheme_cart_link(); ?>
 			</li>
 			<li>
 				<?php the_widget( 'WC_Widget_Cart', 'title=' ); ?>
@@ -144,7 +144,7 @@ if ( ! function_exists( 'willydevtheme_header_cart' ) ) {
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_upsell_display' ) ) {
+if ( ! function_exists( 'wpcotestheme_upsell_display' ) ) {
 	/**
 	 * Upsells
 	 * Replace the default upsell function with our own which displays the correct number product columns
@@ -153,110 +153,110 @@ if ( ! function_exists( 'willydevtheme_upsell_display' ) ) {
 	 * @return  void
 	 * @uses    woocommerce_upsell_display()
 	 */
-	function willydevtheme_upsell_display() {
-		$columns = apply_filters( 'willydevtheme_upsells_columns', 3 );
+	function wpcotestheme_upsell_display() {
+		$columns = apply_filters( 'wpcotestheme_upsells_columns', 3 );
 		woocommerce_upsell_display( -1, $columns );
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_sorting_wrapper' ) ) {
+if ( ! function_exists( 'wpcotestheme_sorting_wrapper' ) ) {
 	/**
 	 * Sorting wrapper
 	 *
 	 * @since   1.4.3
 	 * @return  void
 	 */
-	function willydevtheme_sorting_wrapper() {
-		echo '<div class="willydevtheme-sorting">';
+	function wpcotestheme_sorting_wrapper() {
+		echo '<div class="wpcotestheme-sorting">';
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_sorting_wrapper_close' ) ) {
+if ( ! function_exists( 'wpcotestheme_sorting_wrapper_close' ) ) {
 	/**
 	 * Sorting wrapper close
 	 *
 	 * @since   1.4.3
 	 * @return  void
 	 */
-	function willydevtheme_sorting_wrapper_close() {
+	function wpcotestheme_sorting_wrapper_close() {
 		echo '</div>';
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_product_columns_wrapper' ) ) {
+if ( ! function_exists( 'wpcotestheme_product_columns_wrapper' ) ) {
 	/**
 	 * Product columns wrapper
 	 *
 	 * @since   2.2.0
 	 * @return  void
 	 */
-	function willydevtheme_product_columns_wrapper() {
-		$columns = willydevtheme_loop_columns();
+	function wpcotestheme_product_columns_wrapper() {
+		$columns = wpcotestheme_loop_columns();
 		echo '<div class="columns-' . absint( $columns ) . '">';
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_loop_columns' ) ) {
+if ( ! function_exists( 'wpcotestheme_loop_columns' ) ) {
 	/**
 	 * Default loop columns on product archives
 	 *
 	 * @return integer products per row
 	 * @since  1.0.0
 	 */
-	function willydevtheme_loop_columns() {
+	function wpcotestheme_loop_columns() {
 		$columns = 3; // 3 products per row
 
 		if ( function_exists( 'wc_get_default_products_per_row' ) ) {
 			$columns = wc_get_default_products_per_row();
 		}
 
-		return apply_filters( 'willydevtheme_loop_columns', $columns );
+		return apply_filters( 'wpcotestheme_loop_columns', $columns );
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_product_columns_wrapper_close' ) ) {
+if ( ! function_exists( 'wpcotestheme_product_columns_wrapper_close' ) ) {
 	/**
 	 * Product columns wrapper close
 	 *
 	 * @since   2.2.0
 	 * @return  void
 	 */
-	function willydevtheme_product_columns_wrapper_close() {
+	function wpcotestheme_product_columns_wrapper_close() {
 		echo '</div>';
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_shop_messages' ) ) {
+if ( ! function_exists( 'wpcotestheme_shop_messages' ) ) {
 	/**
-	 * willydevtheme shop messages
+	 * wpcotestheme shop messages
 	 *
 	 * @since   1.4.4
-	 * @uses    willydevtheme_do_shortcode
+	 * @uses    wpcotestheme_do_shortcode
 	 */
-	function willydevtheme_shop_messages() {
+	function wpcotestheme_shop_messages() {
 		if ( ! is_checkout() ) {
-			echo wp_kses_post( willydevtheme_do_shortcode( 'woocommerce_messages' ) );
+			echo wp_kses_post( wpcotestheme_do_shortcode( 'woocommerce_messages' ) );
 		}
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_woocommerce_pagination' ) ) {
+if ( ! function_exists( 'wpcotestheme_woocommerce_pagination' ) ) {
 	/**
-	 * willydevtheme WooCommerce Pagination
+	 * wpcotestheme WooCommerce Pagination
 	 * WooCommerce disables the product pagination inside the woocommerce_product_subcategories() function
-	 * but since willydevtheme adds pagination before that function is excuted we need a separate function to
+	 * but since wpcotestheme adds pagination before that function is excuted we need a separate function to
 	 * determine whether or not to display the pagination.
 	 *
 	 * @since 1.4.4
 	 */
-	function willydevtheme_woocommerce_pagination() {
+	function wpcotestheme_woocommerce_pagination() {
 		if ( woocommerce_products_will_display() ) {
 			woocommerce_pagination();
 		}
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_product_categories' ) ) {
+if ( ! function_exists( 'wpcotestheme_product_categories' ) ) {
 	/**
 	 * Display Product Categories
 	 * Hooked into the `homepage` action in the homepage template
@@ -265,22 +265,22 @@ if ( ! function_exists( 'willydevtheme_product_categories' ) ) {
 	 * @param array $args the product section args.
 	 * @return void
 	 */
-	function willydevtheme_product_categories( $args ) {
+	function wpcotestheme_product_categories( $args ) {
 		$args = apply_filters(
-			'willydevtheme_product_categories_args',
+			'wpcotestheme_product_categories_args',
 			array(
 				'limit'            => 3,
 				'columns'          => 3,
 				'child_categories' => 0,
 				'orderby'          => 'menu_order',
-				'title'            => __( 'Shop by Category', 'willydevtheme' ),
+				'title'            => __( 'Shop by Category', 'wpcotestheme' ),
 			)
 		);
 
-		$shortcode_content = willydevtheme_do_shortcode(
+		$shortcode_content = wpcotestheme_do_shortcode(
 			'product_categories',
 			apply_filters(
-				'willydevtheme_product_categories_shortcode_args',
+				'wpcotestheme_product_categories_shortcode_args',
 				array(
 					'number'  => intval( $args['limit'] ),
 					'columns' => intval( $args['columns'] ),
@@ -294,24 +294,24 @@ if ( ! function_exists( 'willydevtheme_product_categories' ) ) {
 		 * Only display the section if the shortcode returns product categories
 		 */
 		if ( false !== strpos( $shortcode_content, 'product-category' ) ) {
-			echo '<section class="willydevtheme-product-section willydevtheme-product-categories" aria-label="' . esc_attr__( 'Product Categories', 'willydevtheme' ) . '">';
+			echo '<section class="wpcotestheme-product-section wpcotestheme-product-categories" aria-label="' . esc_attr__( 'Product Categories', 'wpcotestheme' ) . '">';
 
-			do_action( 'willydevtheme_homepage_before_product_categories' );
+			do_action( 'wpcotestheme_homepage_before_product_categories' );
 
 			echo '<h2 class="section-title">' . wp_kses_post( $args['title'] ) . '</h2>';
 
-			do_action( 'willydevtheme_homepage_after_product_categories_title' );
+			do_action( 'wpcotestheme_homepage_after_product_categories_title' );
 
 			echo $shortcode_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-			do_action( 'willydevtheme_homepage_after_product_categories' );
+			do_action( 'wpcotestheme_homepage_after_product_categories' );
 
 			echo '</section>';
 		}
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_recent_products' ) ) {
+if ( ! function_exists( 'wpcotestheme_recent_products' ) ) {
 	/**
 	 * Display Recent Products
 	 * Hooked into the `homepage` action in the homepage template
@@ -320,22 +320,22 @@ if ( ! function_exists( 'willydevtheme_recent_products' ) ) {
 	 * @param array $args the product section args.
 	 * @return void
 	 */
-	function willydevtheme_recent_products( $args ) {
+	function wpcotestheme_recent_products( $args ) {
 		$args = apply_filters(
-			'willydevtheme_recent_products_args',
+			'wpcotestheme_recent_products_args',
 			array(
 				'limit'   => 4,
 				'columns' => 4,
 				'orderby' => 'date',
 				'order'   => 'desc',
-				'title'   => __( 'New In', 'willydevtheme' ),
+				'title'   => __( 'New In', 'wpcotestheme' ),
 			)
 		);
 
-		$shortcode_content = willydevtheme_do_shortcode(
+		$shortcode_content = wpcotestheme_do_shortcode(
 			'products',
 			apply_filters(
-				'willydevtheme_recent_products_shortcode_args',
+				'wpcotestheme_recent_products_shortcode_args',
 				array(
 					'orderby'  => esc_attr( $args['orderby'] ),
 					'order'    => esc_attr( $args['order'] ),
@@ -349,24 +349,24 @@ if ( ! function_exists( 'willydevtheme_recent_products' ) ) {
 		 * Only display the section if the shortcode returns products
 		 */
 		if ( false !== strpos( $shortcode_content, 'product' ) ) {
-			echo '<section class="willydevtheme-product-section willydevtheme-recent-products" aria-label="' . esc_attr__( 'Recent Products', 'willydevtheme' ) . '">';
+			echo '<section class="wpcotestheme-product-section wpcotestheme-recent-products" aria-label="' . esc_attr__( 'Recent Products', 'wpcotestheme' ) . '">';
 
-			do_action( 'willydevtheme_homepage_before_recent_products' );
+			do_action( 'wpcotestheme_homepage_before_recent_products' );
 
 			echo '<h2 class="section-title">' . wp_kses_post( $args['title'] ) . '</h2>';
 
-			do_action( 'willydevtheme_homepage_after_recent_products_title' );
+			do_action( 'wpcotestheme_homepage_after_recent_products_title' );
 
 			echo $shortcode_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-			do_action( 'willydevtheme_homepage_after_recent_products' );
+			do_action( 'wpcotestheme_homepage_after_recent_products' );
 
 			echo '</section>';
 		}
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_featured_products' ) ) {
+if ( ! function_exists( 'wpcotestheme_featured_products' ) ) {
 	/**
 	 * Display Featured Products
 	 * Hooked into the `homepage` action in the homepage template
@@ -375,23 +375,23 @@ if ( ! function_exists( 'willydevtheme_featured_products' ) ) {
 	 * @param array $args the product section args.
 	 * @return void
 	 */
-	function willydevtheme_featured_products( $args ) {
+	function wpcotestheme_featured_products( $args ) {
 		$args = apply_filters(
-			'willydevtheme_featured_products_args',
+			'wpcotestheme_featured_products_args',
 			array(
 				'limit'      => 4,
 				'columns'    => 4,
 				'orderby'    => 'date',
 				'order'      => 'desc',
 				'visibility' => 'featured',
-				'title'      => __( 'We Recommend', 'willydevtheme' ),
+				'title'      => __( 'We Recommend', 'wpcotestheme' ),
 			)
 		);
 
-		$shortcode_content = willydevtheme_do_shortcode(
+		$shortcode_content = wpcotestheme_do_shortcode(
 			'products',
 			apply_filters(
-				'willydevtheme_featured_products_shortcode_args',
+				'wpcotestheme_featured_products_shortcode_args',
 				array(
 					'per_page'   => intval( $args['limit'] ),
 					'columns'    => intval( $args['columns'] ),
@@ -406,24 +406,24 @@ if ( ! function_exists( 'willydevtheme_featured_products' ) ) {
 		 * Only display the section if the shortcode returns products
 		 */
 		if ( false !== strpos( $shortcode_content, 'product' ) ) {
-			echo '<section class="willydevtheme-product-section willydevtheme-featured-products" aria-label="' . esc_attr__( 'Featured Products', 'willydevtheme' ) . '">';
+			echo '<section class="wpcotestheme-product-section wpcotestheme-featured-products" aria-label="' . esc_attr__( 'Featured Products', 'wpcotestheme' ) . '">';
 
-			do_action( 'willydevtheme_homepage_before_featured_products' );
+			do_action( 'wpcotestheme_homepage_before_featured_products' );
 
 			echo '<h2 class="section-title">' . wp_kses_post( $args['title'] ) . '</h2>';
 
-			do_action( 'willydevtheme_homepage_after_featured_products_title' );
+			do_action( 'wpcotestheme_homepage_after_featured_products_title' );
 
 			echo $shortcode_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-			do_action( 'willydevtheme_homepage_after_featured_products' );
+			do_action( 'wpcotestheme_homepage_after_featured_products' );
 
 			echo '</section>';
 		}
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_popular_products' ) ) {
+if ( ! function_exists( 'wpcotestheme_popular_products' ) ) {
 	/**
 	 * Display Popular Products
 	 * Hooked into the `homepage` action in the homepage template
@@ -432,22 +432,22 @@ if ( ! function_exists( 'willydevtheme_popular_products' ) ) {
 	 * @param array $args the product section args.
 	 * @return void
 	 */
-	function willydevtheme_popular_products( $args ) {
+	function wpcotestheme_popular_products( $args ) {
 		$args = apply_filters(
-			'willydevtheme_popular_products_args',
+			'wpcotestheme_popular_products_args',
 			array(
 				'limit'   => 4,
 				'columns' => 4,
 				'orderby' => 'rating',
 				'order'   => 'desc',
-				'title'   => __( 'Fan Favorites', 'willydevtheme' ),
+				'title'   => __( 'Fan Favorites', 'wpcotestheme' ),
 			)
 		);
 
-		$shortcode_content = willydevtheme_do_shortcode(
+		$shortcode_content = wpcotestheme_do_shortcode(
 			'products',
 			apply_filters(
-				'willydevtheme_popular_products_shortcode_args',
+				'wpcotestheme_popular_products_shortcode_args',
 				array(
 					'per_page' => intval( $args['limit'] ),
 					'columns'  => intval( $args['columns'] ),
@@ -461,24 +461,24 @@ if ( ! function_exists( 'willydevtheme_popular_products' ) ) {
 		 * Only display the section if the shortcode returns products
 		 */
 		if ( false !== strpos( $shortcode_content, 'product' ) ) {
-			echo '<section class="willydevtheme-product-section willydevtheme-popular-products" aria-label="' . esc_attr__( 'Popular Products', 'willydevtheme' ) . '">';
+			echo '<section class="wpcotestheme-product-section wpcotestheme-popular-products" aria-label="' . esc_attr__( 'Popular Products', 'wpcotestheme' ) . '">';
 
-			do_action( 'willydevtheme_homepage_before_popular_products' );
+			do_action( 'wpcotestheme_homepage_before_popular_products' );
 
 			echo '<h2 class="section-title">' . wp_kses_post( $args['title'] ) . '</h2>';
 
-			do_action( 'willydevtheme_homepage_after_popular_products_title' );
+			do_action( 'wpcotestheme_homepage_after_popular_products_title' );
 
 			echo $shortcode_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-			do_action( 'willydevtheme_homepage_after_popular_products' );
+			do_action( 'wpcotestheme_homepage_after_popular_products' );
 
 			echo '</section>';
 		}
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_on_sale_products' ) ) {
+if ( ! function_exists( 'wpcotestheme_on_sale_products' ) ) {
 	/**
 	 * Display On Sale Products
 	 * Hooked into the `homepage` action in the homepage template
@@ -487,23 +487,23 @@ if ( ! function_exists( 'willydevtheme_on_sale_products' ) ) {
 	 * @since  1.0.0
 	 * @return void
 	 */
-	function willydevtheme_on_sale_products( $args ) {
+	function wpcotestheme_on_sale_products( $args ) {
 		$args = apply_filters(
-			'willydevtheme_on_sale_products_args',
+			'wpcotestheme_on_sale_products_args',
 			array(
 				'limit'   => 4,
 				'columns' => 4,
 				'orderby' => 'date',
 				'order'   => 'desc',
 				'on_sale' => 'true',
-				'title'   => __( 'On Sale', 'willydevtheme' ),
+				'title'   => __( 'On Sale', 'wpcotestheme' ),
 			)
 		);
 
-		$shortcode_content = willydevtheme_do_shortcode(
+		$shortcode_content = wpcotestheme_do_shortcode(
 			'products',
 			apply_filters(
-				'willydevtheme_on_sale_products_shortcode_args',
+				'wpcotestheme_on_sale_products_shortcode_args',
 				array(
 					'per_page' => intval( $args['limit'] ),
 					'columns'  => intval( $args['columns'] ),
@@ -518,24 +518,24 @@ if ( ! function_exists( 'willydevtheme_on_sale_products' ) ) {
 		 * Only display the section if the shortcode returns products
 		 */
 		if ( false !== strpos( $shortcode_content, 'product' ) ) {
-			echo '<section class="willydevtheme-product-section willydevtheme-on-sale-products" aria-label="' . esc_attr__( 'On Sale Products', 'willydevtheme' ) . '">';
+			echo '<section class="wpcotestheme-product-section wpcotestheme-on-sale-products" aria-label="' . esc_attr__( 'On Sale Products', 'wpcotestheme' ) . '">';
 
-			do_action( 'willydevtheme_homepage_before_on_sale_products' );
+			do_action( 'wpcotestheme_homepage_before_on_sale_products' );
 
 			echo '<h2 class="section-title">' . wp_kses_post( $args['title'] ) . '</h2>';
 
-			do_action( 'willydevtheme_homepage_after_on_sale_products_title' );
+			do_action( 'wpcotestheme_homepage_after_on_sale_products_title' );
 
 			echo $shortcode_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-			do_action( 'willydevtheme_homepage_after_on_sale_products' );
+			do_action( 'wpcotestheme_homepage_after_on_sale_products' );
 
 			echo '</section>';
 		}
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_best_selling_products' ) ) {
+if ( ! function_exists( 'wpcotestheme_best_selling_products' ) ) {
 	/**
 	 * Display Best Selling Products
 	 * Hooked into the `homepage` action in the homepage template
@@ -544,22 +544,22 @@ if ( ! function_exists( 'willydevtheme_best_selling_products' ) ) {
 	 * @param array $args the product section args.
 	 * @return void
 	 */
-	function willydevtheme_best_selling_products( $args ) {
+	function wpcotestheme_best_selling_products( $args ) {
 		$args = apply_filters(
-			'willydevtheme_best_selling_products_args',
+			'wpcotestheme_best_selling_products_args',
 			array(
 				'limit'   => 4,
 				'columns' => 4,
 				'orderby' => 'popularity',
 				'order'   => 'desc',
-				'title'   => esc_attr__( 'Best Sellers', 'willydevtheme' ),
+				'title'   => esc_attr__( 'Best Sellers', 'wpcotestheme' ),
 			)
 		);
 
-		$shortcode_content = willydevtheme_do_shortcode(
+		$shortcode_content = wpcotestheme_do_shortcode(
 			'products',
 			apply_filters(
-				'willydevtheme_best_selling_products_shortcode_args',
+				'wpcotestheme_best_selling_products_shortcode_args',
 				array(
 					'per_page' => intval( $args['limit'] ),
 					'columns'  => intval( $args['columns'] ),
@@ -573,24 +573,24 @@ if ( ! function_exists( 'willydevtheme_best_selling_products' ) ) {
 		 * Only display the section if the shortcode returns products
 		 */
 		if ( false !== strpos( $shortcode_content, 'product' ) ) {
-			echo '<section class="willydevtheme-product-section willydevtheme-best-selling-products" aria-label="' . esc_attr__( 'Best Selling Products', 'willydevtheme' ) . '">';
+			echo '<section class="wpcotestheme-product-section wpcotestheme-best-selling-products" aria-label="' . esc_attr__( 'Best Selling Products', 'wpcotestheme' ) . '">';
 
-			do_action( 'willydevtheme_homepage_before_best_selling_products' );
+			do_action( 'wpcotestheme_homepage_before_best_selling_products' );
 
 			echo '<h2 class="section-title">' . wp_kses_post( $args['title'] ) . '</h2>';
 
-			do_action( 'willydevtheme_homepage_after_best_selling_products_title' );
+			do_action( 'wpcotestheme_homepage_after_best_selling_products_title' );
 
 			echo $shortcode_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-			do_action( 'willydevtheme_homepage_after_best_selling_products' );
+			do_action( 'wpcotestheme_homepage_after_best_selling_products' );
 
 			echo '</section>';
 		}
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_promoted_products' ) ) {
+if ( ! function_exists( 'wpcotestheme_promoted_products' ) ) {
 	/**
 	 * Featured and On-Sale Products
 	 * Check for featured products then on-sale products and use the appropiate shortcode.
@@ -600,21 +600,21 @@ if ( ! function_exists( 'willydevtheme_promoted_products' ) ) {
 	 * @param integer $per_page total products to display.
 	 * @param integer $columns columns to arrange products in to.
 	 * @param boolean $recent_fallback Should the function display recent products as a fallback when there are no featured or on-sale products?.
-	 * @uses  willydevtheme_is_woocommerce_activated()
+	 * @uses  wpcotestheme_is_woocommerce_activated()
 	 * @uses  wc_get_featured_product_ids()
 	 * @uses  wc_get_product_ids_on_sale()
-	 * @uses  willydevtheme_do_shortcode()
+	 * @uses  wpcotestheme_do_shortcode()
 	 * @return void
 	 */
-	function willydevtheme_promoted_products( $per_page = '2', $columns = '2', $recent_fallback = true ) {
-		if ( willydevtheme_is_woocommerce_activated() ) {
+	function wpcotestheme_promoted_products( $per_page = '2', $columns = '2', $recent_fallback = true ) {
+		if ( wpcotestheme_is_woocommerce_activated() ) {
 
 			if ( wc_get_featured_product_ids() ) {
 
-				echo '<h2>' . esc_html__( 'Featured Products', 'willydevtheme' ) . '</h2>';
+				echo '<h2>' . esc_html__( 'Featured Products', 'wpcotestheme' ) . '</h2>';
 
 				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-				echo willydevtheme_do_shortcode(
+				echo wpcotestheme_do_shortcode(
 					'featured_products',
 					array(
 						'per_page' => $per_page,
@@ -624,10 +624,10 @@ if ( ! function_exists( 'willydevtheme_promoted_products' ) ) {
 				// phpcs:enable
 			} elseif ( wc_get_product_ids_on_sale() ) {
 
-				echo '<h2>' . esc_html__( 'On Sale Now', 'willydevtheme' ) . '</h2>';
+				echo '<h2>' . esc_html__( 'On Sale Now', 'wpcotestheme' ) . '</h2>';
 
 				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-				echo willydevtheme_do_shortcode(
+				echo wpcotestheme_do_shortcode(
 					'sale_products',
 					array(
 						'per_page' => $per_page,
@@ -637,10 +637,10 @@ if ( ! function_exists( 'willydevtheme_promoted_products' ) ) {
 				// phpcs:enable
 			} elseif ( $recent_fallback ) {
 
-				echo '<h2>' . esc_html__( 'New In Store', 'willydevtheme' ) . '</h2>';
+				echo '<h2>' . esc_html__( 'New In Store', 'wpcotestheme' ) . '</h2>';
 
 				// phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped
-				echo willydevtheme_do_shortcode(
+				echo wpcotestheme_do_shortcode(
 					'recent_products',
 					array(
 						'per_page' => $per_page,
@@ -653,25 +653,25 @@ if ( ! function_exists( 'willydevtheme_promoted_products' ) ) {
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_handheld_footer_bar' ) ) {
+if ( ! function_exists( 'wpcotestheme_handheld_footer_bar' ) ) {
 	/**
 	 * Display a menu intended for use on handheld devices
 	 *
 	 * @since 2.0.0
 	 */
-	function willydevtheme_handheld_footer_bar() {
+	function wpcotestheme_handheld_footer_bar() {
 		$links = array(
 			'my-account' => array(
 				'priority' => 10,
-				'callback' => 'willydevtheme_handheld_footer_bar_account_link',
+				'callback' => 'wpcotestheme_handheld_footer_bar_account_link',
 			),
 			'search'     => array(
 				'priority' => 20,
-				'callback' => 'willydevtheme_handheld_footer_bar_search',
+				'callback' => 'wpcotestheme_handheld_footer_bar_search',
 			),
 			'cart'       => array(
 				'priority' => 30,
-				'callback' => 'willydevtheme_handheld_footer_bar_cart_link',
+				'callback' => 'wpcotestheme_handheld_footer_bar_cart_link',
 			),
 		);
 
@@ -687,9 +687,9 @@ if ( ! function_exists( 'willydevtheme_handheld_footer_bar' ) ) {
 			unset( $links['cart'] );
 		}
 
-		$links = apply_filters( 'willydevtheme_handheld_footer_bar_links', $links );
+		$links = apply_filters( 'wpcotestheme_handheld_footer_bar_links', $links );
 		?>
-		<div class="willydevtheme-handheld-footer-bar">
+		<div class="wpcotestheme-handheld-footer-bar">
 			<ul class="columns-<?php echo count( $links ); ?>">
 				<?php foreach ( $links as $key => $link ) : ?>
 					<li class="<?php echo esc_attr( $key ); ?>">
@@ -706,100 +706,100 @@ if ( ! function_exists( 'willydevtheme_handheld_footer_bar' ) ) {
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_handheld_footer_bar_search' ) ) {
+if ( ! function_exists( 'wpcotestheme_handheld_footer_bar_search' ) ) {
 	/**
 	 * The search callback function for the handheld footer bar
 	 *
 	 * @since 2.0.0
 	 */
-	function willydevtheme_handheld_footer_bar_search() {
-		echo '<a href="">' . esc_attr__( 'Search', 'willydevtheme' ) . '</a>';
-		willydevtheme_product_search();
+	function wpcotestheme_handheld_footer_bar_search() {
+		echo '<a href="">' . esc_attr__( 'Search', 'wpcotestheme' ) . '</a>';
+		wpcotestheme_product_search();
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_handheld_footer_bar_cart_link' ) ) {
+if ( ! function_exists( 'wpcotestheme_handheld_footer_bar_cart_link' ) ) {
 	/**
 	 * The cart callback function for the handheld footer bar
 	 *
 	 * @since 2.0.0
 	 */
-	function willydevtheme_handheld_footer_bar_cart_link() {
-		if ( ! willydevtheme_woo_cart_available() ) {
+	function wpcotestheme_handheld_footer_bar_cart_link() {
+		if ( ! wpcotestheme_woo_cart_available() ) {
 			return;
 		}
 		?>
-			<a class="footer-cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>"><?php esc_html_e( 'Cart', 'willydevtheme' ); ?>
+			<a class="footer-cart-contents" href="<?php echo esc_url( wc_get_cart_url() ); ?>"><?php esc_html_e( 'Cart', 'wpcotestheme' ); ?>
 				<span class="count"><?php echo wp_kses_data( WC()->cart->get_cart_contents_count() ); ?></span>
 			</a>
 		<?php
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_handheld_footer_bar_account_link' ) ) {
+if ( ! function_exists( 'wpcotestheme_handheld_footer_bar_account_link' ) ) {
 	/**
 	 * The account callback function for the handheld footer bar
 	 *
 	 * @since 2.0.0
 	 */
-	function willydevtheme_handheld_footer_bar_account_link() {
-		echo '<a href="' . esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) . '">' . esc_attr__( 'My Account', 'willydevtheme' ) . '</a>';
+	function wpcotestheme_handheld_footer_bar_account_link() {
+		echo '<a href="' . esc_url( get_permalink( get_option( 'woocommerce_myaccount_page_id' ) ) ) . '">' . esc_attr__( 'My Account', 'wpcotestheme' ) . '</a>';
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_single_product_pagination' ) ) {
+if ( ! function_exists( 'wpcotestheme_single_product_pagination' ) ) {
 	/**
 	 * Single Product Pagination
 	 *
 	 * @since 2.3.0
 	 */
-	function willydevtheme_single_product_pagination() {
-		if ( class_exists( 'willydevtheme_Product_Pagination' ) || true !== get_theme_mod( 'willydevtheme_product_pagination' ) ) {
+	function wpcotestheme_single_product_pagination() {
+		if ( class_exists( 'WPCotesTheme_Product_Pagination' ) || true !== get_theme_mod( 'wpcotestheme_product_pagination' ) ) {
 			return;
 		}
 
 		// Show only products in the same category?
-		$in_same_term   = apply_filters( 'willydevtheme_single_product_pagination_same_category', true );
-		$excluded_terms = apply_filters( 'willydevtheme_single_product_pagination_excluded_terms', '' );
-		$taxonomy       = apply_filters( 'willydevtheme_single_product_pagination_taxonomy', 'product_cat' );
+		$in_same_term   = apply_filters( 'wpcotestheme_single_product_pagination_same_category', true );
+		$excluded_terms = apply_filters( 'wpcotestheme_single_product_pagination_excluded_terms', '' );
+		$taxonomy       = apply_filters( 'wpcotestheme_single_product_pagination_taxonomy', 'product_cat' );
 
-		$previous_product = willydevtheme_get_previous_product( $in_same_term, $excluded_terms, $taxonomy );
-		$next_product     = willydevtheme_get_next_product( $in_same_term, $excluded_terms, $taxonomy );
+		$previous_product = wpcotestheme_get_previous_product( $in_same_term, $excluded_terms, $taxonomy );
+		$next_product     = wpcotestheme_get_next_product( $in_same_term, $excluded_terms, $taxonomy );
 
 		if ( ! $previous_product && ! $next_product ) {
 			return;
 		}
 
 		?>
-		<nav class="willydevtheme-product-pagination" aria-label="<?php esc_attr_e( 'More products', 'willydevtheme' ); ?>">
+		<nav class="wpcotestheme-product-pagination" aria-label="<?php esc_attr_e( 'More products', 'wpcotestheme' ); ?>">
 			<?php if ( $previous_product ) : ?>
 				<a href="<?php echo esc_url( $previous_product->get_permalink() ); ?>" rel="prev">
 					<?php echo wp_kses_post( $previous_product->get_image() ); ?>
-					<span class="willydevtheme-product-pagination__title"><?php echo wp_kses_post( $previous_product->get_name() ); ?></span>
+					<span class="wpcotestheme-product-pagination__title"><?php echo wp_kses_post( $previous_product->get_name() ); ?></span>
 				</a>
 			<?php endif; ?>
 
 			<?php if ( $next_product ) : ?>
 				<a href="<?php echo esc_url( $next_product->get_permalink() ); ?>" rel="next">
 					<?php echo wp_kses_post( $next_product->get_image() ); ?>
-					<span class="willydevtheme-product-pagination__title"><?php echo wp_kses_post( $next_product->get_name() ); ?></span>
+					<span class="wpcotestheme-product-pagination__title"><?php echo wp_kses_post( $next_product->get_name() ); ?></span>
 				</a>
 			<?php endif; ?>
-		</nav><!-- .willydevtheme-product-pagination -->
+		</nav><!-- .wpcotestheme-product-pagination -->
 		<?php
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_sticky_single_add_to_cart' ) ) {
+if ( ! function_exists( 'wpcotestheme_sticky_single_add_to_cart' ) ) {
 	/**
 	 * Sticky Add to Cart
 	 *
 	 * @since 2.3.0
 	 */
-	function willydevtheme_sticky_single_add_to_cart() {
+	function wpcotestheme_sticky_single_add_to_cart() {
 		global $product;
 
-		if ( class_exists( 'willydevtheme_Sticky_Add_to_Cart' ) || true !== get_theme_mod( 'willydevtheme_sticky_add_to_cart' ) ) {
+		if ( class_exists( 'WPCotesTheme_Sticky_Add_to_Cart' ) || true !== get_theme_mod( 'wpcotestheme_sticky_add_to_cart' ) ) {
 			return;
 		}
 
@@ -820,36 +820,36 @@ if ( ! function_exists( 'willydevtheme_sticky_single_add_to_cart' ) ) {
 		}
 
 		$params = apply_filters(
-			'willydevtheme_sticky_add_to_cart_params',
+			'wpcotestheme_sticky_add_to_cart_params',
 			array(
 				'trigger_class' => 'entry-summary',
 			)
 		);
 
-		wp_localize_script( 'willydevtheme-sticky-add-to-cart', 'willydevtheme_sticky_add_to_cart_params', $params );
+		wp_localize_script( 'wpcotestheme-sticky-add-to-cart', 'wpcotestheme_sticky_add_to_cart_params', $params );
 
-		wp_enqueue_script( 'willydevtheme-sticky-add-to-cart' );
+		wp_enqueue_script( 'wpcotestheme-sticky-add-to-cart' );
 		?>
-			<section class="willydevtheme-sticky-add-to-cart">
+			<section class="wpcotestheme-sticky-add-to-cart">
 				<div class="col-full">
-					<div class="willydevtheme-sticky-add-to-cart__content">
+					<div class="wpcotestheme-sticky-add-to-cart__content">
 						<?php echo wp_kses_post( woocommerce_get_product_thumbnail() ); ?>
-						<div class="willydevtheme-sticky-add-to-cart__content-product-info">
-							<span class="willydevtheme-sticky-add-to-cart__content-title"><?php esc_html_e( 'You\'re viewing:', 'willydevtheme' ); ?> <strong><?php the_title(); ?></strong></span>
-							<span class="willydevtheme-sticky-add-to-cart__content-price"><?php echo wp_kses_post( $product->get_price_html() ); ?></span>
+						<div class="wpcotestheme-sticky-add-to-cart__content-product-info">
+							<span class="wpcotestheme-sticky-add-to-cart__content-title"><?php esc_html_e( 'You\'re viewing:', 'wpcotestheme' ); ?> <strong><?php the_title(); ?></strong></span>
+							<span class="wpcotestheme-sticky-add-to-cart__content-price"><?php echo wp_kses_post( $product->get_price_html() ); ?></span>
 							<?php echo wp_kses_post( wc_get_rating_html( $product->get_average_rating() ) ); ?>
 						</div>
-						<a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" class="willydevtheme-sticky-add-to-cart__content-button button alt" rel="nofollow">
+						<a href="<?php echo esc_url( $product->add_to_cart_url() ); ?>" class="wpcotestheme-sticky-add-to-cart__content-button button alt" rel="nofollow">
 							<?php echo esc_attr( $product->add_to_cart_text() ); ?>
 						</a>
 					</div>
 				</div>
-			</section><!-- .willydevtheme-sticky-add-to-cart -->
+			</section><!-- .wpcotestheme-sticky-add-to-cart -->
 		<?php
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_woocommerce_brands_homepage_section' ) ) {
+if ( ! function_exists( 'wpcotestheme_woocommerce_brands_homepage_section' ) ) {
 	/**
 	 * Display WooCommerce Brands
 	 * Hooked into the `homepage` action in the homepage template.
@@ -858,27 +858,27 @@ if ( ! function_exists( 'willydevtheme_woocommerce_brands_homepage_section' ) ) 
 	 * @since  2.3.0
 	 * @link   https://woocommerce.com/products/brands/
 	 * @uses   apply_filters()
-	 * @uses   willydevtheme_do_shortcode()
+	 * @uses   wpcotestheme_do_shortcode()
 	 * @uses   wp_kses_post()
 	 * @uses   do_action()
 	 * @return void
 	 */
-	function willydevtheme_woocommerce_brands_homepage_section() {
+	function wpcotestheme_woocommerce_brands_homepage_section() {
 		$args = apply_filters(
-			'willydevtheme_woocommerce_brands_args',
+			'wpcotestheme_woocommerce_brands_args',
 			array(
 				'number'     => 6,
 				'columns'    => 4,
 				'orderby'    => 'name',
 				'show_empty' => false,
-				'title'      => __( 'Shop by Brand', 'willydevtheme' ),
+				'title'      => __( 'Shop by Brand', 'wpcotestheme' ),
 			)
 		);
 
-		$shortcode_content = willydevtheme_do_shortcode(
+		$shortcode_content = wpcotestheme_do_shortcode(
 			'product_brand_thumbnails',
 			apply_filters(
-				'willydevtheme_woocommerce_brands_shortcode_args',
+				'wpcotestheme_woocommerce_brands_shortcode_args',
 				array(
 					'number'     => absint( $args['number'] ),
 					'columns'    => absint( $args['columns'] ),
@@ -888,23 +888,23 @@ if ( ! function_exists( 'willydevtheme_woocommerce_brands_homepage_section' ) ) 
 			)
 		);
 
-		echo '<section class="willydevtheme-product-section willydevtheme-woocommerce-brands" aria-label="' . esc_attr__( 'Product Brands', 'willydevtheme' ) . '">';
+		echo '<section class="wpcotestheme-product-section wpcotestheme-woocommerce-brands" aria-label="' . esc_attr__( 'Product Brands', 'wpcotestheme' ) . '">';
 
-		do_action( 'willydevtheme_homepage_before_woocommerce_brands' );
+		do_action( 'wpcotestheme_homepage_before_woocommerce_brands' );
 
 		echo '<h2 class="section-title">' . wp_kses_post( $args['title'] ) . '</h2>';
 
-		do_action( 'willydevtheme_homepage_after_woocommerce_brands_title' );
+		do_action( 'wpcotestheme_homepage_after_woocommerce_brands_title' );
 
 		echo $shortcode_content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
-		do_action( 'willydevtheme_homepage_after_woocommerce_brands' );
+		do_action( 'wpcotestheme_homepage_after_woocommerce_brands' );
 
 		echo '</section>';
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_woocommerce_brands_archive' ) ) {
+if ( ! function_exists( 'wpcotestheme_woocommerce_brands_archive' ) ) {
 	/**
 	 * Display brand image on brand archives
 	 * Requires WooCommerce Brands.
@@ -917,26 +917,26 @@ if ( ! function_exists( 'willydevtheme_woocommerce_brands_archive' ) ) {
 	 * @uses   get_queried_object()
 	 * @return void
 	 */
-	function willydevtheme_woocommerce_brands_archive() {
+	function wpcotestheme_woocommerce_brands_archive() {
 		if ( is_tax( 'product_brand' ) ) {
 			echo wp_kses_post( get_brand_thumbnail_image( get_queried_object() ) );
 		}
 	}
 }
 
-if ( ! function_exists( 'willydevtheme_woocommerce_brands_single' ) ) {
+if ( ! function_exists( 'wpcotestheme_woocommerce_brands_single' ) ) {
 	/**
 	 * Output product brand image for use on single product pages
 	 * Requires WooCommerce Brands.
 	 *
 	 * @since  2.3.0
 	 * @link   https://woocommerce.com/products/brands/
-	 * @uses   willydevtheme_do_shortcode()
+	 * @uses   wpcotestheme_do_shortcode()
 	 * @uses   wp_kses_post()
 	 * @return void
 	 */
-	function willydevtheme_woocommerce_brands_single() {
-		$brand = willydevtheme_do_shortcode(
+	function wpcotestheme_woocommerce_brands_single() {
+		$brand = wpcotestheme_do_shortcode(
 			'product_brand',
 			array(
 				'class' => '',
@@ -948,7 +948,7 @@ if ( ! function_exists( 'willydevtheme_woocommerce_brands_single' ) ) {
 		}
 
 		?>
-		<div class="willydevtheme-wc-brands-single-product">
+		<div class="wpcotestheme-wc-brands-single-product">
 			<?php echo wp_kses_post( $brand ); ?>
 		</div>
 		<?php

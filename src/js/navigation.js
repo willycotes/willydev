@@ -1,4 +1,4 @@
-/* global willydevthemeScreenReaderText */
+/* global wpcotesthemeScreenReaderText */
 
 /**
  * navigation.js
@@ -58,7 +58,7 @@
           const btnSpan = document.createElement('span');
           btnSpan.classList.add('screen-reader-text');
           btnSpan.appendChild(
-            document.createTextNode(willydevthemeScreenReaderText.expand),
+            document.createTextNode(wpcotesthemeScreenReaderText.expand),
           );
 
           btn.appendChild(btnSpan);
@@ -87,8 +87,8 @@
             btnSpan.appendChild(
               document.createTextNode(
                 expanded
-                  ? willydevthemeScreenReaderText.collapse
-                  : willydevthemeScreenReaderText.expand,
+                  ? wpcotesthemeScreenReaderText.collapse
+                  : wpcotesthemeScreenReaderText.expand,
               ),
             );
             btn.nextElementSibling.classList.toggle('toggled-on');

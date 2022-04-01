@@ -9,18 +9,18 @@
 		<?php
 
 		/**
-		 * Functions hooked in to willydevtheme_post_news_header_top action.
+		 * Functions hooked in to wpcotestheme_post_news_header_top action.
 		 */
-		do_action( 'willydevtheme_post_news_header_top' );
+		do_action( 'wpcotestheme_post_news_header_top' );
 
 		the_title( '<h1 class="entry-title">', '</h1>' );
 
 		/**
-		 * Functions hooked in to willydevtheme_post_news_header_bottom action.
+		 * Functions hooked in to wpcotestheme_post_news_header_bottom action.
 		 *
 		 * @hooked
 		 */
-		do_action( 'willydevtheme_post_news_header_bottom' );
+		do_action( 'wpcotestheme_post_news_header_bottom' );
 		?>
 	</header><!-- .entry-header -->
 </article><!-- #post-## -->

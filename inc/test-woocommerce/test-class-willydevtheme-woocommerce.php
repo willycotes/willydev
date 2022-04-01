@@ -7,15 +7,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 	return;
 }
 
-if ( ! class_exists( 'Willydevtheme_Woocommerce') ) {
+if ( ! class_exists( 'WPCotesTheme_Woocommerce') ) {
 	/**
-	 * The willydevtheme WooCommerce Integration class
+	 * The wpcotestheme WooCommerce Integration class
 	 */
-	class Willydevtheme_Woocommerce {
+	class WPCotesTheme_Woocommerce {
 		public function __construct() {
 			add_action( 'after_setup_theme', array( $this, 'woocommerce_setup' ) );
 			add_action( 'widgets_init', array( $this, 'register_sidebar_woocommerce' ) );
-			add_filter( 'is_active_sidebar', array( $this, 'deactivate_willydevtheme_sidebar' ), 10, 2 );
+			add_filter( 'is_active_sidebar', array( $this, 'deactivate_wpcotestheme_sidebar' ), 10, 2 );
 			add_filter( 'is_active_sidebar', array( $this, 'deactivate_woocommerce_sidebar' ), 10, 2 );
 			add_action( 'woocommerce_sidebar', array( $this, 'woocommerce_sidebar' ) );
 			add_filter( 'body_class', array( $this, 'woocommerce_body_class' ) );
@@ -29,7 +29,7 @@ if ( ! class_exists( 'Willydevtheme_Woocommerce') ) {
 			add_theme_support(
 				'woocommerce',
 				apply_filters(
-					'willydevtheme_woocommerce_args',
+					'wpcotestheme_woocommerce_args',
 					array(
 						'single_image_width'    => 416,
 						'thumbnail_image_width' => 324,
@@ -49,17 +49,17 @@ if ( ! class_exists( 'Willydevtheme_Woocommerce') ) {
 			add_theme_support( 'wc-product-gallery-slider' );
 
 			/**
-			 * Add 'willydevtheme_woocommerce_setup' action.
+			 * Add 'wpcotestheme_woocommerce_setup' action.
 			 *
 			 * @since  2.4.0
 			 */
-			do_action( 'willydevtheme_woocommerce_setup' );
+			do_action( 'wpcotestheme_woocommerce_setup' );
 		}
 
 		/**
-		 * Deactivate sidebar willydevtheme
+		 * Deactivate sidebar wpcotestheme
 		 */
-		public function deactivate_willydevtheme_sidebar( $is_active_sidebar, $index ) {
+		public function deactivate_wpcotestheme_sidebar( $is_active_sidebar, $index ) {
 			if ( is_woocommerce() && 'sidebar' === $index || is_cart() && 'sidebar' === $index || is_checkout() && 'sidebar' === $index  ) {
 				return false;
 			}
@@ -119,8 +119,8 @@ if ( ! class_exists( 'Willydevtheme_Woocommerce') ) {
 			$classes[] = 'woocommerce-active';
 			if ( is_woocommerce() && is_active_sidebar( 'woocommerce-sidebar' ) ) {
 				$classes[] = 'woocommerce-sidebar';
-				// Remove `willydevtheme-full-width-content` body class.
-				$key = array_search( 'willydevtheme-full-width-content', $classes, true );
+				// Remove `wpcotestheme-full-width-content` body class.
+				$key = array_search( 'wpcotestheme-full-width-content', $classes, true );
 				if ( false !== $key ) {
 					unset( $classes[ $key ] );
 				}
@@ -130,4 +130,4 @@ if ( ! class_exists( 'Willydevtheme_Woocommerce') ) {
 	}
 }
 
-return new Willydevtheme_Woocommerce();
+return new WPCotesTheme_Woocommerce();

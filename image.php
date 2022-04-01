@@ -3,7 +3,7 @@
  * The template for displaying image attachments
  *
  * @package WordPress
- * @subpackage willydevtheme
+ * @subpackage wpcotestheme
  * @since Twenty Twenty-One 1.0
  */
 
@@ -27,7 +27,7 @@ while ( have_posts() ) {
 				 *
 				 * @param string $image_size Image size. Default 'full'.
 				 */
-				$image_size = apply_filters( 'willydevtheme_attachment_size', 'full' );
+				$image_size = apply_filters( 'wpcotestheme_attachment_size', 'full' );
 
 				echo wp_get_attachment_image( get_the_ID(), $image_size );
 				?>
@@ -112,5 +112,5 @@ while ( have_posts() ) {
 /**
  * @hooked
  */
-do_action( 'willydevtheme_image_sidebar' );
+do_action( 'wpcotestheme_image_sidebar' );
 get_footer();

@@ -22,7 +22,7 @@ if ( !function_exists('register_scripts_menu_bar_mobile_sticky')) {
 
 //add menu bar in hook 
 
-add_action('willydevtheme_after_footer', 'menu_bar_mobile_sticky');
+add_action('wpcotestheme_after_footer', 'menu_bar_mobile_sticky');
 
 if ( !function_exists('menu_bar_mobile_sticky')) {
     function menu_bar_mobile_sticky() { 

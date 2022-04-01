@@ -1,8 +1,8 @@
 <?php
 /**
- * willydevtheme WooCommerce Class
+ * wpcotestheme WooCommerce Class
  *
- * @package  willydevtheme
+ * @package  wpcotestheme
  * @since    2.0.0
  */
 
@@ -10,12 +10,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'Willydevtheme_WooCommerce' ) ) :
+if ( ! class_exists( 'WPCotesTheme_WooCommerce' ) ) :
 
 	/**
-	 * The willydevtheme WooCommerce Integration class
+	 * The wpcotestheme WooCommerce Integration class
 	 */
-	class willydevtheme_WooCommerce {
+	class WPCotesTheme_WooCommerce {
 
 		/**
 		 * Setup class.
@@ -49,7 +49,7 @@ if ( ! class_exists( 'Willydevtheme_WooCommerce' ) ) :
 			add_theme_support(
 				'woocommerce',
 				apply_filters(
-					'willydevtheme_woocommerce_args',
+					'wpcotestheme_woocommerce_args',
 					array(
 						'single_image_width'    => 416,
 						'thumbnail_image_width' => 324,
@@ -69,11 +69,11 @@ if ( ! class_exists( 'Willydevtheme_WooCommerce' ) ) :
 			add_theme_support( 'wc-product-gallery-slider' );
 
 			/**
-			 * Add 'willydevtheme_woocommerce_setup' action.
+			 * Add 'wpcotestheme_woocommerce_setup' action.
 			 *
 			 * @since  2.4.0
 			 */
-			do_action( 'willydevtheme_woocommerce_setup' );
+			do_action( 'wpcotestheme_woocommerce_setup' );
 		}
 
 		/**
@@ -85,7 +85,7 @@ if ( ! class_exists( 'Willydevtheme_WooCommerce' ) ) :
 		public function add_core_fonts() {
 			$fonts_url = plugins_url( '/woocommerce/assets/fonts/' );
 			wp_add_inline_style(
-				'willydevtheme-woocommerce-style',
+				'wpcotestheme-woocommerce-style',
 				'@font-face {
 				font-family: star;
 				src: url(' . $fonts_url . 'star.eot);
@@ -136,20 +136,20 @@ if ( ! class_exists( 'Willydevtheme_WooCommerce' ) ) :
 		 * @since 1.0.0
 		 */
 		public function woocommerce_scripts() {
-			global $willydevtheme_version;
+			global $wpcotestheme_version;
 
 			$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-			wp_enqueue_style( 'willydevtheme-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce/woocommerce.css', array( 'willydevtheme-style', 'willydevtheme-icons' ), $willydevtheme_version );
-			wp_style_add_data( 'willydevtheme-woocommerce-style', 'rtl', 'replace' );
+			wp_enqueue_style( 'wpcotestheme-woocommerce-style', get_template_directory_uri() . '/assets/css/woocommerce/woocommerce.css', array( 'wpcotestheme-style', 'wpcotestheme-icons' ), $wpcotestheme_version );
+			wp_style_add_data( 'wpcotestheme-woocommerce-style', 'rtl', 'replace' );
 
-			wp_register_script( 'willydevtheme-header-cart', get_template_directory_uri() . '/assets/js/woocommerce/header-cart' . $suffix . '.js', array(), $willydevtheme_version, true );
-			wp_enqueue_script( 'willydevtheme-header-cart' );
+			wp_register_script( 'wpcotestheme-header-cart', get_template_directory_uri() . '/assets/js/woocommerce/header-cart' . $suffix . '.js', array(), $wpcotestheme_version, true );
+			wp_enqueue_script( 'wpcotestheme-header-cart' );
 
-			wp_enqueue_script( 'willydevtheme-handheld-footer-bar', get_template_directory_uri() . '/assets/js/woocommerce/footer' . $suffix . '.js', array(), $willydevtheme_version, true );
+			wp_enqueue_script( 'wpcotestheme-handheld-footer-bar', get_template_directory_uri() . '/assets/js/woocommerce/footer' . $suffix . '.js', array(), $wpcotestheme_version, true );
 
-			if ( ! class_exists( 'willydevtheme_Sticky_Add_to_Cart' ) && is_product() ) {
-				wp_register_script( 'willydevtheme-sticky-add-to-cart', get_template_directory_uri() . '/assets/js/woocommerce/sticky-add-to-cart' . $suffix . '.js', array(), $willydevtheme_version, true );
+			if ( ! class_exists( 'WPCotesTheme_Sticky_Add_to_Cart' ) && is_product() ) {
+				wp_register_script( 'wpcotestheme-sticky-add-to-cart', get_template_directory_uri() . '/assets/js/woocommerce/sticky-add-to-cart' . $suffix . '.js', array(), $wpcotestheme_version, true );
 			}
 		}
 
@@ -162,7 +162,7 @@ if ( ! class_exists( 'Willydevtheme_WooCommerce' ) ) :
 		 */
 		public function related_products_args( $args ) {
 			$args = apply_filters(
-				'willydevtheme_related_products_args',
+				'wpcotestheme_related_products_args',
 				array(
 					'posts_per_page' => 3,
 					'columns'        => 3,
@@ -185,7 +185,7 @@ if ( ! class_exists( 'Willydevtheme_WooCommerce' ) ) :
 				$columns = 5;
 			}
 
-			return intval( apply_filters( 'willydevtheme_product_thumbnail_columns', $columns ) );
+			return intval( apply_filters( 'wpcotestheme_product_thumbnail_columns', $columns ) );
 		}
 
 		/**
@@ -197,7 +197,7 @@ if ( ! class_exists( 'Willydevtheme_WooCommerce' ) ) :
 		 */
 		// public function change_breadcrumb_delimiter( $defaults ) {
 		// 	$defaults['delimiter']   = '<span class="breadcrumb-separator"> / </span>';
-		// 	$defaults['wrap_before'] = '<div class="willydevtheme-breadcrumb"><div class="col-full"><nav class="woocommerce-breadcrumb" aria-label="' . esc_attr__( 'breadcrumbs', 'willydevtheme' ) . '">';
+		// 	$defaults['wrap_before'] = '<div class="wpcotestheme-breadcrumb"><div class="col-full"><nav class="woocommerce-breadcrumb" aria-label="' . esc_attr__( 'breadcrumbs', 'wpcotestheme' ) . '">';
 		// 	$defaults['wrap_after']  = '</nav></div></div>';
 		// 	return $defaults;
 		// }
@@ -220,4 +220,4 @@ if ( ! class_exists( 'Willydevtheme_WooCommerce' ) ) :
 
 endif;
 
-return new willydevtheme_WooCommerce();
+return new wpcotestheme_WooCommerce();

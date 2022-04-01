@@ -13,12 +13,12 @@ var __webpack_exports__ = {};
   // Wait for DOM to be ready.
   // eslint-disable-next-line @wordpress/no-global-event-listener
   document.addEventListener('DOMContentLoaded', function () {
-    if (document.getElementsByClassName('willydevtheme-handheld-footer-bar').length === 0) {
+    if (document.getElementsByClassName('wpcotestheme-handheld-footer-bar').length === 0) {
       return;
     } // Add class to footer search when clicked.
 
 
-    [].forEach.call(document.querySelectorAll('.willydevtheme-handheld-footer-bar .search > a'), function (anchor) {
+    [].forEach.call(document.querySelectorAll('.wpcotestheme-handheld-footer-bar .search > a'), function (anchor) {
       anchor.addEventListener('click', function (event) {
         anchor.parentElement.classList.toggle('active');
         event.preventDefault();
@@ -26,7 +26,7 @@ var __webpack_exports__ = {};
     }); // Add focus class to body when an input field is focused.
     // This is used to hide the Handheld Footer Bar when an input is focused.
 
-    var footerBar = document.getElementsByClassName('willydevtheme-handheld-footer-bar');
+    var footerBar = document.getElementsByClassName('wpcotestheme-handheld-footer-bar');
     var forms = document.forms;
 
     var isFocused = function isFocused(focused) {

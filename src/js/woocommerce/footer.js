@@ -9,7 +9,7 @@
   // eslint-disable-next-line @wordpress/no-global-event-listener
   document.addEventListener('DOMContentLoaded', function () {
     if (
-      document.getElementsByClassName('willydevtheme-handheld-footer-bar')
+      document.getElementsByClassName('wpcotestheme-handheld-footer-bar')
         .length === 0
     ) {
       return;
@@ -18,7 +18,7 @@
     // Add class to footer search when clicked.
     [].forEach.call(
       document.querySelectorAll(
-        '.willydevtheme-handheld-footer-bar .search > a',
+        '.wpcotestheme-handheld-footer-bar .search > a',
       ),
       function (anchor) {
         anchor.addEventListener('click', function (event) {
@@ -31,7 +31,7 @@
     // Add focus class to body when an input field is focused.
     // This is used to hide the Handheld Footer Bar when an input is focused.
     const footerBar = document.getElementsByClassName(
-      'willydevtheme-handheld-footer-bar',
+      'wpcotestheme-handheld-footer-bar',
     );
     const forms = document.forms;
     const isFocused = function (focused) {

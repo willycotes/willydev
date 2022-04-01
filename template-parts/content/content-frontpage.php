@@ -2,19 +2,19 @@
 /**
  * Template used to display post content.
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 ?>
 
 <div id="page-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php
 	/**
-	 * Functions hooked in to willydevtheme_loop_post action.
+	 * Functions hooked in to wpcotestheme_loop_post action.
 	 *
-	 * @hooked willydevtheme_frontpage_header         - 10
+	 * @hooked wpcotestheme_frontpage_header         - 10
 	 * 
-	 * @hooked willydevtheme_frontpage_content         - 20
+	 * @hooked wpcotestheme_frontpage_content         - 20
 	 */
-	do_action( 'willydevtheme_content_frontpage' );
+	do_action( 'wpcotestheme_content_frontpage' );
 	?>
 </div>

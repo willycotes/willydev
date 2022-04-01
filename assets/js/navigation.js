@@ -3,7 +3,7 @@ var __webpack_exports__ = {};
 /*!**************************!*\
   !*** ./js/navigation.js ***!
   \**************************/
-/* global willydevthemeScreenReaderText */
+/* global wpcotesthemeScreenReaderText */
 
 /**
  * navigation.js
@@ -53,7 +53,7 @@ var __webpack_exports__ = {};
         btn.classList.add('dropdown-toggle');
         var btnSpan = document.createElement('span');
         btnSpan.classList.add('screen-reader-text');
-        btnSpan.appendChild(document.createTextNode(willydevthemeScreenReaderText.expand));
+        btnSpan.appendChild(document.createTextNode(wpcotesthemeScreenReaderText.expand));
         btn.appendChild(btnSpan);
         anchor.parentNode.insertBefore(btn, anchor.nextSibling); // Set the active submenu dropdown toggle button initial state
 
@@ -73,7 +73,7 @@ var __webpack_exports__ = {};
 
           var expanded = btn.classList.contains('toggled-on');
           btn.setAttribute('aria-expanded', expanded);
-          btnSpan.appendChild(document.createTextNode(expanded ? willydevthemeScreenReaderText.collapse : willydevthemeScreenReaderText.expand));
+          btnSpan.appendChild(document.createTextNode(expanded ? wpcotesthemeScreenReaderText.collapse : wpcotesthemeScreenReaderText.expand));
           btn.nextElementSibling.classList.toggle('toggled-on');
         });
       });

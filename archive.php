@@ -4,7 +4,7 @@
  *
  * Learn more: https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package willydevtheme
+ * @package wpcotestheme
  */
 
 get_header(); ?>
@@ -15,16 +15,16 @@ get_header(); ?>
 		/**
 		 * 
 		 */
-		do_action( 'willydevtheme_archive_main_top' );
+		do_action( 'wpcotestheme_archive_main_top' );
 		?>
 
 		<?php if ( have_posts() ) : ?>
 			
 			<?php
 			/**
-			 * @hooked willydevtheme_archive_header - 10
+			 * @hooked wpcotestheme_archive_header - 10
 			 */
-			do_action( 'willydevtheme_archive_loop_before' );
+			do_action( 'wpcotestheme_archive_loop_before' );
 			?>
 			<div class="grid-container">
 				<?php
@@ -43,9 +43,9 @@ get_header(); ?>
 
 			<?php
 			/**
-			* @hooked willydevtheme_paging_nav - 10
+			* @hooked wpcotestheme_paging_nav - 10
 			*/
-			do_action( 'willydevtheme_archive_loop_after' );
+			do_action( 'wpcotestheme_archive_loop_after' );
 
 		else :
 			get_template_part( 'template-parts/content/content', 'none' );

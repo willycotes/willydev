@@ -3,7 +3,7 @@
  * The template for displaying author info below posts.
  *
  * @package WordPress
- * @subpackage willydevtheme
+ * @subpackage wpcotestheme
  * @since Twenty Twenty-One 1.0
  */
 

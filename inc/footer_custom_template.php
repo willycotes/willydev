@@ -21,24 +21,24 @@ if ( !function_exists( 'register_scripts_footer_custom_template' )) {
 
 //remove hook of footer 
 
-// * Functions hooked in to willydevtheme_footer action
+// * Functions hooked in to wpcotestheme_footer action
 //              *
-//              * @hooked willydevtheme_footer_widgets - 10
-//              * @hooked willydevtheme_credit         - 20
+//              * @hooked wpcotestheme_footer_widgets - 10
+//              * @hooked wpcotestheme_credit         - 20
 
 add_action('wp_head', 'remove_footer_custom_template_hook');
 
 if ( !function_exists('remove_footer_custom_template_hook')) {
     function remove_footer_custom_template_hook() {
-        remove_action('willydevtheme_footer', 'willydevtheme_credit', 20);
-        remove_action('willydevtheme_footer', 'willydevtheme_handheld_footer_bar', 999 );
+        remove_action('wpcotestheme_footer', 'wpcotestheme_credit', 20);
+        remove_action('wpcotestheme_footer', 'wpcotestheme_handheld_footer_bar', 999 );
     }
 }
 
 
 //agregando nueva funcion al footer por hook 
 
-add_action('willydevtheme_footer', 'footer_custom_tempate');
+add_action('wpcotestheme_footer', 'footer_custom_tempate');
 
 if ( !function_exists('footer_custom_tempate')) {
     function footer_custom_tempate() { 
@@ -48,7 +48,7 @@ if ( !function_exists('footer_custom_tempate')) {
             <div class="social-bar">
                 <ul class="social-bar__list social-bar__list--footer">
                     <li class="social-bar__item social-bar__item">
-                        <a target="_blank" class="social-bar__link" href="https://www.facebook.com/willydevtheme/">
+                        <a target="_blank" class="social-bar__link" href="https://www.facebook.com/wpcotestheme/">
                         <svg class="icon icon--facebook" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="25px" height="25px" style="vertical-align: -0.125em;-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><path d="M8.46 18h2.93v-7.3h2.45l.37-2.84h-2.82V6.04c0-.82.23-1.38 1.41-1.38h1.51V2.11c-.26-.03-1.15-.11-2.19-.11c-2.18 0-3.66 1.33-3.66 3.76v2.1H6v2.84h2.46V18z" fill="#fff"/></svg>                        
                     </a>
                     </li>
@@ -58,7 +58,7 @@ if ( !function_exists('footer_custom_tempate')) {
                     </a>
                     </li>
                     <li class="social-bar__item social-bar__item">
-                        <a target="_blank" class="social-bar__link" href="https://www.instagram.com/willydevtheme/">
+                        <a target="_blank" class="social-bar__link" href="https://www.instagram.com/wpcotestheme/">
                         <svg class="icon icon--instagram" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="25px" height="25px" style="vertical-align: -0.125em;-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 20 20"><path d="M12.7 10c0-1.5-1.2-2.7-2.7-2.7S7.3 8.5 7.3 10s1.2 2.7 2.7 2.7c1.5 0 2.7-1.2 2.7-2.7zm1.4 0c0 2.3-1.8 4.1-4.1 4.1S5.9 12.3 5.9 10S7.7 5.9 10 5.9s4.1 1.8 4.1 4.1zm1.1-4.3c0 .6-.4 1-1 1s-1-.4-1-1s.4-1 1-1s1 .5 1 1zM10 3.4c-1.2 0-3.7-.1-4.7.3c-.7.3-1.3.9-1.5 1.6c-.4 1-.3 3.5-.3 4.7s-.1 3.7.3 4.7c.2.7.8 1.3 1.5 1.5c1 .4 3.6.3 4.7.3s3.7.1 4.7-.3c.7-.3 1.2-.8 1.5-1.5c.4-1.1.3-3.6.3-4.7s.1-3.7-.3-4.7c-.2-.7-.8-1.3-1.5-1.5c-1-.5-3.5-.4-4.7-.4zm8 6.6v3.3c0 1.2-.4 2.4-1.3 3.4c-.9.9-2.1 1.3-3.4 1.3H6.7c-1.2 0-2.4-.4-3.4-1.3c-.8-.9-1.3-2.1-1.3-3.4V10V6.7c0-1.3.5-2.5 1.3-3.4C4.3 2.5 5.5 2 6.7 2h6.6c1.2 0 2.4.4 3.4 1.3c.8.9 1.3 2.1 1.3 3.4V10z" fill="#fff"/></svg>                        
                     </a>
                     </li>

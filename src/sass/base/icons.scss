@@ -6233,7 +6233,7 @@ input[type="submit"].loading::after,
   padding-left: 2.617924em;
 }
 
-.willydevtheme-handheld-footer-bar ul li > a::before {
+.wpcotestheme-handheld-footer-bar ul li > a::before {
   position: absolute;
   top: 0;
   right: 0;
@@ -6258,20 +6258,20 @@ input[type="submit"].loading::after,
   -moz-osx-font-smoothing: grayscale;
 }
 
-.willydevtheme-handheld-footer-bar ul li.search > a::before {
+.wpcotestheme-handheld-footer-bar ul li.search > a::before {
   content: "\f002";
 }
 
-.willydevtheme-handheld-footer-bar ul li.my-account > a::before {
+.wpcotestheme-handheld-footer-bar ul li.my-account > a::before {
   content: "\f007";
 }
 
-.willydevtheme-handheld-footer-bar ul li.cart > a::before {
+.wpcotestheme-handheld-footer-bar ul li.cart > a::before {
   content: "\f291";
 }
 
-.willydevtheme-product-pagination a[rel="prev"]::after,
-.willydevtheme-product-pagination a[rel="next"]::after {
+.wpcotestheme-product-pagination a[rel="prev"]::after,
+.wpcotestheme-product-pagination a[rel="next"]::after {
   display: inline-block;
   font-family: "Font Awesome 5 Free";
   font-style: normal;
@@ -6285,12 +6285,12 @@ input[type="submit"].loading::after,
   -moz-osx-font-smoothing: grayscale;
 }
 
-.willydevtheme-product-pagination a[rel="prev"]::after {
+.wpcotestheme-product-pagination a[rel="prev"]::after {
   content: "\f104";
   padding-right: 1.41575em;
 }
 
-.willydevtheme-product-pagination a[rel="next"]::after {
+.wpcotestheme-product-pagination a[rel="next"]::after {
   content: "\f105";
   padding-left: 1.41575em;
 }

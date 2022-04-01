@@ -109,8 +109,8 @@ var __webpack_exports__ = {};
         transform: '',
         top: containerOffset.top
       });
-      $('body').addClass('sf-exiting').on('animationend.willydevtheme webkitAnimationEnd.willydevtheme', function () {
-        $(this).removeClass('sf-exiting').off('animationend.willydevtheme webkitAnimationEnd.willydevtheme').addClass('sf-hidden');
+      $('body').addClass('sf-exiting').on('animationend.wpcotestheme webkitAnimationEnd.wpcotestheme', function () {
+        $(this).removeClass('sf-exiting').off('animationend.wpcotestheme webkitAnimationEnd.wpcotestheme').addClass('sf-hidden');
         self.$container.hide();
 
         if (typeof remove !== 'undefined' && remove === true) {
@@ -124,8 +124,8 @@ var __webpack_exports__ = {};
       self.$container.show();
       var containerOffset = this.$container.offset();
       var offsetTop = parseInt(containerOffset.top, 10);
-      $('body').addClass('sf-entering').on('animationend.willydevtheme webkitAnimationEnd.willydevtheme', function () {
-        $(this).removeClass('sf-entering').off('animationend.willydevtheme webkitAnimationEnd.willydevtheme');
+      $('body').addClass('sf-entering').on('animationend.wpcotestheme webkitAnimationEnd.wpcotestheme', function () {
+        $(this).removeClass('sf-entering').off('animationend.wpcotestheme webkitAnimationEnd.wpcotestheme');
         self.$container.css({
           top: 'auto',
           transform: 'translateY(' + offsetTop + 'px)'
@@ -189,9 +189,9 @@ var __webpack_exports__ = {};
       var position = parseInt($selector.offset().top, 10) + $selector.height() / 2 - 44;
       this.$container.addClass('sf-moving').css({
         transform: 'translateY(' + position + 'px)'
-      }).on('transitionend.willydevtheme', function () {
+      }).on('transitionend.wpcotestheme', function () {
         self.$container.removeClass('sf-moving');
-        self.$container.off('transitionend.willydevtheme');
+        self.$container.off('transitionend.wpcotestheme');
       });
     },
     _getSelector: function _getSelector(pointTo) {
